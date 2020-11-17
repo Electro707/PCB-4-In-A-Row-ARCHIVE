@@ -1,0 +1,2758 @@
+
+Game_1.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   000001e4  08000000  08000000  00010000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         00001020  080001e4  080001e4  000101e4  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000000  08001204  08001204  00020004  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .ARM.extab    00000000  08001204  08001204  00020004  2**0
+                  CONTENTS
+  4 .ARM          00000000  08001204  08001204  00020004  2**0
+                  CONTENTS
+  5 .preinit_array 00000000  08001204  08001204  00020004  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .init_array   00000004  08001204  08001204  00011204  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  7 .fini_array   00000004  08001208  08001208  00011208  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  8 .data         00000004  20000000  0800120c  00020000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  9 .bss          00000044  20000004  08001210  00020004  2**2
+                  ALLOC
+ 10 ._user_heap_stack 00000600  20000048  08001210  00020048  2**0
+                  ALLOC
+ 11 .ARM.attributes 00000029  00000000  00000000  00020004  2**0
+                  CONTENTS, READONLY
+ 12 .debug_info   000020ec  00000000  00000000  0002002d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_abbrev 0000082b  00000000  00000000  00022119  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_aranges 000002c8  00000000  00000000  00022948  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_ranges 00000270  00000000  00000000  00022c10  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_macro  00012b94  00000000  00000000  00022e80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .debug_line   000020b7  00000000  00000000  00035a14  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 18 .debug_str    00065be3  00000000  00000000  00037acb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 19 .comment      0000007b  00000000  00000000  0009d6ae  2**0
+                  CONTENTS, READONLY
+ 20 .debug_frame  000009f8  00000000  00000000  0009d72c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+080001e4 <__do_global_dtors_aux>:
+ 80001e4:	b510      	push	{r4, lr}
+ 80001e6:	4c05      	ldr	r4, [pc, #20]	; (80001fc <__do_global_dtors_aux+0x18>)
+ 80001e8:	7823      	ldrb	r3, [r4, #0]
+ 80001ea:	b933      	cbnz	r3, 80001fa <__do_global_dtors_aux+0x16>
+ 80001ec:	4b04      	ldr	r3, [pc, #16]	; (8000200 <__do_global_dtors_aux+0x1c>)
+ 80001ee:	b113      	cbz	r3, 80001f6 <__do_global_dtors_aux+0x12>
+ 80001f0:	4804      	ldr	r0, [pc, #16]	; (8000204 <__do_global_dtors_aux+0x20>)
+ 80001f2:	f3af 8000 	nop.w
+ 80001f6:	2301      	movs	r3, #1
+ 80001f8:	7023      	strb	r3, [r4, #0]
+ 80001fa:	bd10      	pop	{r4, pc}
+ 80001fc:	20000004 	.word	0x20000004
+ 8000200:	00000000 	.word	0x00000000
+ 8000204:	080011ec 	.word	0x080011ec
+
+08000208 <frame_dummy>:
+ 8000208:	b508      	push	{r3, lr}
+ 800020a:	4b03      	ldr	r3, [pc, #12]	; (8000218 <frame_dummy+0x10>)
+ 800020c:	b11b      	cbz	r3, 8000216 <frame_dummy+0xe>
+ 800020e:	4903      	ldr	r1, [pc, #12]	; (800021c <frame_dummy+0x14>)
+ 8000210:	4803      	ldr	r0, [pc, #12]	; (8000220 <frame_dummy+0x18>)
+ 8000212:	f3af 8000 	nop.w
+ 8000216:	bd08      	pop	{r3, pc}
+ 8000218:	00000000 	.word	0x00000000
+ 800021c:	20000008 	.word	0x20000008
+ 8000220:	080011ec 	.word	0x080011ec
+
+08000224 <__NVIC_SetPriorityGrouping>:
+           In case of a conflict between priority grouping and available
+           priority bits (__NVIC_PRIO_BITS), the smallest possible priority group is set.
+  \param [in]      PriorityGroup  Priority grouping field.
+ */
+__STATIC_INLINE void __NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
+{
+ 8000224:	b480      	push	{r7}
+ 8000226:	b085      	sub	sp, #20
+ 8000228:	af00      	add	r7, sp, #0
+ 800022a:	6078      	str	r0, [r7, #4]
+  uint32_t reg_value;
+  uint32_t PriorityGroupTmp = (PriorityGroup & (uint32_t)0x07UL);             /* only values 0..7 are used          */
+ 800022c:	687b      	ldr	r3, [r7, #4]
+ 800022e:	f003 0307 	and.w	r3, r3, #7
+ 8000232:	60fb      	str	r3, [r7, #12]
+
+  reg_value  =  SCB->AIRCR;                                                   /* read old register configuration    */
+ 8000234:	4b0c      	ldr	r3, [pc, #48]	; (8000268 <__NVIC_SetPriorityGrouping+0x44>)
+ 8000236:	68db      	ldr	r3, [r3, #12]
+ 8000238:	60bb      	str	r3, [r7, #8]
+  reg_value &= ~((uint32_t)(SCB_AIRCR_VECTKEY_Msk | SCB_AIRCR_PRIGROUP_Msk)); /* clear bits to change               */
+ 800023a:	68ba      	ldr	r2, [r7, #8]
+ 800023c:	f64f 03ff 	movw	r3, #63743	; 0xf8ff
+ 8000240:	4013      	ands	r3, r2
+ 8000242:	60bb      	str	r3, [r7, #8]
+  reg_value  =  (reg_value                                   |
+                ((uint32_t)0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
+                (PriorityGroupTmp << SCB_AIRCR_PRIGROUP_Pos) );               /* Insert write key and priority group */
+ 8000244:	68fb      	ldr	r3, [r7, #12]
+ 8000246:	021a      	lsls	r2, r3, #8
+                ((uint32_t)0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
+ 8000248:	68bb      	ldr	r3, [r7, #8]
+ 800024a:	4313      	orrs	r3, r2
+  reg_value  =  (reg_value                                   |
+ 800024c:	f043 63bf 	orr.w	r3, r3, #100139008	; 0x5f80000
+ 8000250:	f443 3300 	orr.w	r3, r3, #131072	; 0x20000
+ 8000254:	60bb      	str	r3, [r7, #8]
+  SCB->AIRCR =  reg_value;
+ 8000256:	4a04      	ldr	r2, [pc, #16]	; (8000268 <__NVIC_SetPriorityGrouping+0x44>)
+ 8000258:	68bb      	ldr	r3, [r7, #8]
+ 800025a:	60d3      	str	r3, [r2, #12]
+}
+ 800025c:	bf00      	nop
+ 800025e:	3714      	adds	r7, #20
+ 8000260:	46bd      	mov	sp, r7
+ 8000262:	bc80      	pop	{r7}
+ 8000264:	4770      	bx	lr
+ 8000266:	bf00      	nop
+ 8000268:	e000ed00 	.word	0xe000ed00
+
+0800026c <__NVIC_EnableIRQ>:
+  \details Enables a device specific interrupt in the NVIC interrupt controller.
+  \param [in]      IRQn  Device specific interrupt number.
+  \note    IRQn must not be negative.
+ */
+__STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
+{
+ 800026c:	b480      	push	{r7}
+ 800026e:	b083      	sub	sp, #12
+ 8000270:	af00      	add	r7, sp, #0
+ 8000272:	4603      	mov	r3, r0
+ 8000274:	71fb      	strb	r3, [r7, #7]
+  if ((int32_t)(IRQn) >= 0)
+ 8000276:	f997 3007 	ldrsb.w	r3, [r7, #7]
+ 800027a:	2b00      	cmp	r3, #0
+ 800027c:	db0b      	blt.n	8000296 <__NVIC_EnableIRQ+0x2a>
+  {
+    NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
+ 800027e:	79fb      	ldrb	r3, [r7, #7]
+ 8000280:	f003 021f 	and.w	r2, r3, #31
+ 8000284:	4906      	ldr	r1, [pc, #24]	; (80002a0 <__NVIC_EnableIRQ+0x34>)
+ 8000286:	f997 3007 	ldrsb.w	r3, [r7, #7]
+ 800028a:	095b      	lsrs	r3, r3, #5
+ 800028c:	2001      	movs	r0, #1
+ 800028e:	fa00 f202 	lsl.w	r2, r0, r2
+ 8000292:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+  }
+}
+ 8000296:	bf00      	nop
+ 8000298:	370c      	adds	r7, #12
+ 800029a:	46bd      	mov	sp, r7
+ 800029c:	bc80      	pop	{r7}
+ 800029e:	4770      	bx	lr
+ 80002a0:	e000e100 	.word	0xe000e100
+
+080002a4 <LL_RCC_HSI_Enable>:
+  * @brief  Enable HSI oscillator
+  * @rmtoll CR           HSION         LL_RCC_HSI_Enable
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_HSI_Enable(void)
+{
+ 80002a4:	b480      	push	{r7}
+ 80002a6:	af00      	add	r7, sp, #0
+  SET_BIT(RCC->CR, RCC_CR_HSION);
+ 80002a8:	4b04      	ldr	r3, [pc, #16]	; (80002bc <LL_RCC_HSI_Enable+0x18>)
+ 80002aa:	681b      	ldr	r3, [r3, #0]
+ 80002ac:	4a03      	ldr	r2, [pc, #12]	; (80002bc <LL_RCC_HSI_Enable+0x18>)
+ 80002ae:	f043 0301 	orr.w	r3, r3, #1
+ 80002b2:	6013      	str	r3, [r2, #0]
+}
+ 80002b4:	bf00      	nop
+ 80002b6:	46bd      	mov	sp, r7
+ 80002b8:	bc80      	pop	{r7}
+ 80002ba:	4770      	bx	lr
+ 80002bc:	40021000 	.word	0x40021000
+
+080002c0 <LL_RCC_HSI_IsReady>:
+  * @brief  Check if HSI clock is ready
+  * @rmtoll CR           HSIRDY        LL_RCC_HSI_IsReady
+  * @retval State of bit (1 or 0).
+  */
+__STATIC_INLINE uint32_t LL_RCC_HSI_IsReady(void)
+{
+ 80002c0:	b480      	push	{r7}
+ 80002c2:	af00      	add	r7, sp, #0
+  return (READ_BIT(RCC->CR, RCC_CR_HSIRDY) == (RCC_CR_HSIRDY));
+ 80002c4:	4b06      	ldr	r3, [pc, #24]	; (80002e0 <LL_RCC_HSI_IsReady+0x20>)
+ 80002c6:	681b      	ldr	r3, [r3, #0]
+ 80002c8:	f003 0302 	and.w	r3, r3, #2
+ 80002cc:	2b02      	cmp	r3, #2
+ 80002ce:	bf0c      	ite	eq
+ 80002d0:	2301      	moveq	r3, #1
+ 80002d2:	2300      	movne	r3, #0
+ 80002d4:	b2db      	uxtb	r3, r3
+}
+ 80002d6:	4618      	mov	r0, r3
+ 80002d8:	46bd      	mov	sp, r7
+ 80002da:	bc80      	pop	{r7}
+ 80002dc:	4770      	bx	lr
+ 80002de:	bf00      	nop
+ 80002e0:	40021000 	.word	0x40021000
+
+080002e4 <LL_RCC_HSI_SetCalibTrimming>:
+  * @rmtoll CR        HSITRIM       LL_RCC_HSI_SetCalibTrimming
+  * @param  Value between Min_Data = 0x00 and Max_Data = 0x1F
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_HSI_SetCalibTrimming(uint32_t Value)
+{
+ 80002e4:	b480      	push	{r7}
+ 80002e6:	b083      	sub	sp, #12
+ 80002e8:	af00      	add	r7, sp, #0
+ 80002ea:	6078      	str	r0, [r7, #4]
+  MODIFY_REG(RCC->CR, RCC_CR_HSITRIM, Value << RCC_CR_HSITRIM_Pos);
+ 80002ec:	4b06      	ldr	r3, [pc, #24]	; (8000308 <LL_RCC_HSI_SetCalibTrimming+0x24>)
+ 80002ee:	681b      	ldr	r3, [r3, #0]
+ 80002f0:	f023 02f8 	bic.w	r2, r3, #248	; 0xf8
+ 80002f4:	687b      	ldr	r3, [r7, #4]
+ 80002f6:	00db      	lsls	r3, r3, #3
+ 80002f8:	4903      	ldr	r1, [pc, #12]	; (8000308 <LL_RCC_HSI_SetCalibTrimming+0x24>)
+ 80002fa:	4313      	orrs	r3, r2
+ 80002fc:	600b      	str	r3, [r1, #0]
+}
+ 80002fe:	bf00      	nop
+ 8000300:	370c      	adds	r7, #12
+ 8000302:	46bd      	mov	sp, r7
+ 8000304:	bc80      	pop	{r7}
+ 8000306:	4770      	bx	lr
+ 8000308:	40021000 	.word	0x40021000
+
+0800030c <LL_RCC_SetSysClkSource>:
+  *         @arg @ref LL_RCC_SYS_CLKSOURCE_HSE
+  *         @arg @ref LL_RCC_SYS_CLKSOURCE_PLL
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_SetSysClkSource(uint32_t Source)
+{
+ 800030c:	b480      	push	{r7}
+ 800030e:	b083      	sub	sp, #12
+ 8000310:	af00      	add	r7, sp, #0
+ 8000312:	6078      	str	r0, [r7, #4]
+  MODIFY_REG(RCC->CFGR, RCC_CFGR_SW, Source);
+ 8000314:	4b06      	ldr	r3, [pc, #24]	; (8000330 <LL_RCC_SetSysClkSource+0x24>)
+ 8000316:	685b      	ldr	r3, [r3, #4]
+ 8000318:	f023 0203 	bic.w	r2, r3, #3
+ 800031c:	4904      	ldr	r1, [pc, #16]	; (8000330 <LL_RCC_SetSysClkSource+0x24>)
+ 800031e:	687b      	ldr	r3, [r7, #4]
+ 8000320:	4313      	orrs	r3, r2
+ 8000322:	604b      	str	r3, [r1, #4]
+}
+ 8000324:	bf00      	nop
+ 8000326:	370c      	adds	r7, #12
+ 8000328:	46bd      	mov	sp, r7
+ 800032a:	bc80      	pop	{r7}
+ 800032c:	4770      	bx	lr
+ 800032e:	bf00      	nop
+ 8000330:	40021000 	.word	0x40021000
+
+08000334 <LL_RCC_GetSysClkSource>:
+  *         @arg @ref LL_RCC_SYS_CLKSOURCE_STATUS_HSI
+  *         @arg @ref LL_RCC_SYS_CLKSOURCE_STATUS_HSE
+  *         @arg @ref LL_RCC_SYS_CLKSOURCE_STATUS_PLL
+  */
+__STATIC_INLINE uint32_t LL_RCC_GetSysClkSource(void)
+{
+ 8000334:	b480      	push	{r7}
+ 8000336:	af00      	add	r7, sp, #0
+  return (uint32_t)(READ_BIT(RCC->CFGR, RCC_CFGR_SWS));
+ 8000338:	4b03      	ldr	r3, [pc, #12]	; (8000348 <LL_RCC_GetSysClkSource+0x14>)
+ 800033a:	685b      	ldr	r3, [r3, #4]
+ 800033c:	f003 030c 	and.w	r3, r3, #12
+}
+ 8000340:	4618      	mov	r0, r3
+ 8000342:	46bd      	mov	sp, r7
+ 8000344:	bc80      	pop	{r7}
+ 8000346:	4770      	bx	lr
+ 8000348:	40021000 	.word	0x40021000
+
+0800034c <LL_RCC_SetAHBPrescaler>:
+  *         @arg @ref LL_RCC_SYSCLK_DIV_256
+  *         @arg @ref LL_RCC_SYSCLK_DIV_512
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_SetAHBPrescaler(uint32_t Prescaler)
+{
+ 800034c:	b480      	push	{r7}
+ 800034e:	b083      	sub	sp, #12
+ 8000350:	af00      	add	r7, sp, #0
+ 8000352:	6078      	str	r0, [r7, #4]
+  MODIFY_REG(RCC->CFGR, RCC_CFGR_HPRE, Prescaler);
+ 8000354:	4b06      	ldr	r3, [pc, #24]	; (8000370 <LL_RCC_SetAHBPrescaler+0x24>)
+ 8000356:	685b      	ldr	r3, [r3, #4]
+ 8000358:	f023 02f0 	bic.w	r2, r3, #240	; 0xf0
+ 800035c:	4904      	ldr	r1, [pc, #16]	; (8000370 <LL_RCC_SetAHBPrescaler+0x24>)
+ 800035e:	687b      	ldr	r3, [r7, #4]
+ 8000360:	4313      	orrs	r3, r2
+ 8000362:	604b      	str	r3, [r1, #4]
+}
+ 8000364:	bf00      	nop
+ 8000366:	370c      	adds	r7, #12
+ 8000368:	46bd      	mov	sp, r7
+ 800036a:	bc80      	pop	{r7}
+ 800036c:	4770      	bx	lr
+ 800036e:	bf00      	nop
+ 8000370:	40021000 	.word	0x40021000
+
+08000374 <LL_RCC_SetAPB1Prescaler>:
+  *         @arg @ref LL_RCC_APB1_DIV_8
+  *         @arg @ref LL_RCC_APB1_DIV_16
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_SetAPB1Prescaler(uint32_t Prescaler)
+{
+ 8000374:	b480      	push	{r7}
+ 8000376:	b083      	sub	sp, #12
+ 8000378:	af00      	add	r7, sp, #0
+ 800037a:	6078      	str	r0, [r7, #4]
+  MODIFY_REG(RCC->CFGR, RCC_CFGR_PPRE1, Prescaler);
+ 800037c:	4b06      	ldr	r3, [pc, #24]	; (8000398 <LL_RCC_SetAPB1Prescaler+0x24>)
+ 800037e:	685b      	ldr	r3, [r3, #4]
+ 8000380:	f423 62e0 	bic.w	r2, r3, #1792	; 0x700
+ 8000384:	4904      	ldr	r1, [pc, #16]	; (8000398 <LL_RCC_SetAPB1Prescaler+0x24>)
+ 8000386:	687b      	ldr	r3, [r7, #4]
+ 8000388:	4313      	orrs	r3, r2
+ 800038a:	604b      	str	r3, [r1, #4]
+}
+ 800038c:	bf00      	nop
+ 800038e:	370c      	adds	r7, #12
+ 8000390:	46bd      	mov	sp, r7
+ 8000392:	bc80      	pop	{r7}
+ 8000394:	4770      	bx	lr
+ 8000396:	bf00      	nop
+ 8000398:	40021000 	.word	0x40021000
+
+0800039c <LL_RCC_SetAPB2Prescaler>:
+  *         @arg @ref LL_RCC_APB2_DIV_8
+  *         @arg @ref LL_RCC_APB2_DIV_16
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_SetAPB2Prescaler(uint32_t Prescaler)
+{
+ 800039c:	b480      	push	{r7}
+ 800039e:	b083      	sub	sp, #12
+ 80003a0:	af00      	add	r7, sp, #0
+ 80003a2:	6078      	str	r0, [r7, #4]
+  MODIFY_REG(RCC->CFGR, RCC_CFGR_PPRE2, Prescaler);
+ 80003a4:	4b06      	ldr	r3, [pc, #24]	; (80003c0 <LL_RCC_SetAPB2Prescaler+0x24>)
+ 80003a6:	685b      	ldr	r3, [r3, #4]
+ 80003a8:	f423 5260 	bic.w	r2, r3, #14336	; 0x3800
+ 80003ac:	4904      	ldr	r1, [pc, #16]	; (80003c0 <LL_RCC_SetAPB2Prescaler+0x24>)
+ 80003ae:	687b      	ldr	r3, [r7, #4]
+ 80003b0:	4313      	orrs	r3, r2
+ 80003b2:	604b      	str	r3, [r1, #4]
+}
+ 80003b4:	bf00      	nop
+ 80003b6:	370c      	adds	r7, #12
+ 80003b8:	46bd      	mov	sp, r7
+ 80003ba:	bc80      	pop	{r7}
+ 80003bc:	4770      	bx	lr
+ 80003be:	bf00      	nop
+ 80003c0:	40021000 	.word	0x40021000
+
+080003c4 <LL_RCC_PLL_Enable>:
+  * @brief  Enable PLL
+  * @rmtoll CR           PLLON         LL_RCC_PLL_Enable
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_PLL_Enable(void)
+{
+ 80003c4:	b480      	push	{r7}
+ 80003c6:	af00      	add	r7, sp, #0
+  SET_BIT(RCC->CR, RCC_CR_PLLON);
+ 80003c8:	4b04      	ldr	r3, [pc, #16]	; (80003dc <LL_RCC_PLL_Enable+0x18>)
+ 80003ca:	681b      	ldr	r3, [r3, #0]
+ 80003cc:	4a03      	ldr	r2, [pc, #12]	; (80003dc <LL_RCC_PLL_Enable+0x18>)
+ 80003ce:	f043 7380 	orr.w	r3, r3, #16777216	; 0x1000000
+ 80003d2:	6013      	str	r3, [r2, #0]
+}
+ 80003d4:	bf00      	nop
+ 80003d6:	46bd      	mov	sp, r7
+ 80003d8:	bc80      	pop	{r7}
+ 80003da:	4770      	bx	lr
+ 80003dc:	40021000 	.word	0x40021000
+
+080003e0 <LL_RCC_PLL_IsReady>:
+  * @brief  Check if PLL Ready
+  * @rmtoll CR           PLLRDY        LL_RCC_PLL_IsReady
+  * @retval State of bit (1 or 0).
+  */
+__STATIC_INLINE uint32_t LL_RCC_PLL_IsReady(void)
+{
+ 80003e0:	b480      	push	{r7}
+ 80003e2:	af00      	add	r7, sp, #0
+  return (READ_BIT(RCC->CR, RCC_CR_PLLRDY) == (RCC_CR_PLLRDY));
+ 80003e4:	4b06      	ldr	r3, [pc, #24]	; (8000400 <LL_RCC_PLL_IsReady+0x20>)
+ 80003e6:	681b      	ldr	r3, [r3, #0]
+ 80003e8:	f003 7300 	and.w	r3, r3, #33554432	; 0x2000000
+ 80003ec:	f1b3 7f00 	cmp.w	r3, #33554432	; 0x2000000
+ 80003f0:	bf0c      	ite	eq
+ 80003f2:	2301      	moveq	r3, #1
+ 80003f4:	2300      	movne	r3, #0
+ 80003f6:	b2db      	uxtb	r3, r3
+}
+ 80003f8:	4618      	mov	r0, r3
+ 80003fa:	46bd      	mov	sp, r7
+ 80003fc:	bc80      	pop	{r7}
+ 80003fe:	4770      	bx	lr
+ 8000400:	40021000 	.word	0x40021000
+
+08000404 <LL_RCC_PLL_ConfigDomain_SYS>:
+  *
+  *         (*) value not defined in all devices
+  * @retval None
+  */
+__STATIC_INLINE void LL_RCC_PLL_ConfigDomain_SYS(uint32_t Source, uint32_t PLLMul)
+{
+ 8000404:	b480      	push	{r7}
+ 8000406:	b083      	sub	sp, #12
+ 8000408:	af00      	add	r7, sp, #0
+ 800040a:	6078      	str	r0, [r7, #4]
+ 800040c:	6039      	str	r1, [r7, #0]
+  MODIFY_REG(RCC->CFGR, RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL,
+ 800040e:	4b08      	ldr	r3, [pc, #32]	; (8000430 <LL_RCC_PLL_ConfigDomain_SYS+0x2c>)
+ 8000410:	685b      	ldr	r3, [r3, #4]
+ 8000412:	f423 127c 	bic.w	r2, r3, #4128768	; 0x3f0000
+ 8000416:	687b      	ldr	r3, [r7, #4]
+ 8000418:	f403 3140 	and.w	r1, r3, #196608	; 0x30000
+ 800041c:	683b      	ldr	r3, [r7, #0]
+ 800041e:	430b      	orrs	r3, r1
+ 8000420:	4903      	ldr	r1, [pc, #12]	; (8000430 <LL_RCC_PLL_ConfigDomain_SYS+0x2c>)
+ 8000422:	4313      	orrs	r3, r2
+ 8000424:	604b      	str	r3, [r1, #4]
+             (Source & RCC_CFGR2_PREDIV1) | ((Source & (RCC_CFGR2_PREDIV1SRC << 4U)) >> 4U));
+#else
+  MODIFY_REG(RCC->CFGR2, RCC_CFGR2_PREDIV1, (Source & RCC_CFGR2_PREDIV1));
+#endif /*RCC_CFGR2_PREDIV1SRC*/
+#endif /*RCC_CFGR2_PREDIV1*/
+}
+ 8000426:	bf00      	nop
+ 8000428:	370c      	adds	r7, #12
+ 800042a:	46bd      	mov	sp, r7
+ 800042c:	bc80      	pop	{r7}
+ 800042e:	4770      	bx	lr
+ 8000430:	40021000 	.word	0x40021000
+
+08000434 <LL_APB1_GRP1_EnableClock>:
+  *
+  *         (*) value not defined in all devices.
+  * @retval None
+*/
+__STATIC_INLINE void LL_APB1_GRP1_EnableClock(uint32_t Periphs)
+{
+ 8000434:	b480      	push	{r7}
+ 8000436:	b085      	sub	sp, #20
+ 8000438:	af00      	add	r7, sp, #0
+ 800043a:	6078      	str	r0, [r7, #4]
+  __IO uint32_t tmpreg;
+  SET_BIT(RCC->APB1ENR, Periphs);
+ 800043c:	4b08      	ldr	r3, [pc, #32]	; (8000460 <LL_APB1_GRP1_EnableClock+0x2c>)
+ 800043e:	69da      	ldr	r2, [r3, #28]
+ 8000440:	4907      	ldr	r1, [pc, #28]	; (8000460 <LL_APB1_GRP1_EnableClock+0x2c>)
+ 8000442:	687b      	ldr	r3, [r7, #4]
+ 8000444:	4313      	orrs	r3, r2
+ 8000446:	61cb      	str	r3, [r1, #28]
+  /* Delay after an RCC peripheral clock enabling */
+  tmpreg = READ_BIT(RCC->APB1ENR, Periphs);
+ 8000448:	4b05      	ldr	r3, [pc, #20]	; (8000460 <LL_APB1_GRP1_EnableClock+0x2c>)
+ 800044a:	69da      	ldr	r2, [r3, #28]
+ 800044c:	687b      	ldr	r3, [r7, #4]
+ 800044e:	4013      	ands	r3, r2
+ 8000450:	60fb      	str	r3, [r7, #12]
+  (void)tmpreg;
+ 8000452:	68fb      	ldr	r3, [r7, #12]
+}
+ 8000454:	bf00      	nop
+ 8000456:	3714      	adds	r7, #20
+ 8000458:	46bd      	mov	sp, r7
+ 800045a:	bc80      	pop	{r7}
+ 800045c:	4770      	bx	lr
+ 800045e:	bf00      	nop
+ 8000460:	40021000 	.word	0x40021000
+
+08000464 <LL_APB2_GRP1_EnableClock>:
+  *
+  *         (*) value not defined in all devices.
+  * @retval None
+*/
+__STATIC_INLINE void LL_APB2_GRP1_EnableClock(uint32_t Periphs)
+{
+ 8000464:	b480      	push	{r7}
+ 8000466:	b085      	sub	sp, #20
+ 8000468:	af00      	add	r7, sp, #0
+ 800046a:	6078      	str	r0, [r7, #4]
+  __IO uint32_t tmpreg;
+  SET_BIT(RCC->APB2ENR, Periphs);
+ 800046c:	4b08      	ldr	r3, [pc, #32]	; (8000490 <LL_APB2_GRP1_EnableClock+0x2c>)
+ 800046e:	699a      	ldr	r2, [r3, #24]
+ 8000470:	4907      	ldr	r1, [pc, #28]	; (8000490 <LL_APB2_GRP1_EnableClock+0x2c>)
+ 8000472:	687b      	ldr	r3, [r7, #4]
+ 8000474:	4313      	orrs	r3, r2
+ 8000476:	618b      	str	r3, [r1, #24]
+  /* Delay after an RCC peripheral clock enabling */
+  tmpreg = READ_BIT(RCC->APB2ENR, Periphs);
+ 8000478:	4b05      	ldr	r3, [pc, #20]	; (8000490 <LL_APB2_GRP1_EnableClock+0x2c>)
+ 800047a:	699a      	ldr	r2, [r3, #24]
+ 800047c:	687b      	ldr	r3, [r7, #4]
+ 800047e:	4013      	ands	r3, r2
+ 8000480:	60fb      	str	r3, [r7, #12]
+  (void)tmpreg;
+ 8000482:	68fb      	ldr	r3, [r7, #12]
+}
+ 8000484:	bf00      	nop
+ 8000486:	3714      	adds	r7, #20
+ 8000488:	46bd      	mov	sp, r7
+ 800048a:	bc80      	pop	{r7}
+ 800048c:	4770      	bx	lr
+ 800048e:	bf00      	nop
+ 8000490:	40021000 	.word	0x40021000
+
+08000494 <LL_FLASH_SetLatency>:
+  *         @arg @ref LL_FLASH_LATENCY_1
+  *         @arg @ref LL_FLASH_LATENCY_2
+  * @retval None
+  */
+__STATIC_INLINE void LL_FLASH_SetLatency(uint32_t Latency)
+{
+ 8000494:	b480      	push	{r7}
+ 8000496:	b083      	sub	sp, #12
+ 8000498:	af00      	add	r7, sp, #0
+ 800049a:	6078      	str	r0, [r7, #4]
+  MODIFY_REG(FLASH->ACR, FLASH_ACR_LATENCY, Latency);
+ 800049c:	4b06      	ldr	r3, [pc, #24]	; (80004b8 <LL_FLASH_SetLatency+0x24>)
+ 800049e:	681b      	ldr	r3, [r3, #0]
+ 80004a0:	f023 0207 	bic.w	r2, r3, #7
+ 80004a4:	4904      	ldr	r1, [pc, #16]	; (80004b8 <LL_FLASH_SetLatency+0x24>)
+ 80004a6:	687b      	ldr	r3, [r7, #4]
+ 80004a8:	4313      	orrs	r3, r2
+ 80004aa:	600b      	str	r3, [r1, #0]
+}
+ 80004ac:	bf00      	nop
+ 80004ae:	370c      	adds	r7, #12
+ 80004b0:	46bd      	mov	sp, r7
+ 80004b2:	bc80      	pop	{r7}
+ 80004b4:	4770      	bx	lr
+ 80004b6:	bf00      	nop
+ 80004b8:	40022000 	.word	0x40022000
+
+080004bc <LL_FLASH_GetLatency>:
+  *         @arg @ref LL_FLASH_LATENCY_0
+  *         @arg @ref LL_FLASH_LATENCY_1
+  *         @arg @ref LL_FLASH_LATENCY_2
+  */
+__STATIC_INLINE uint32_t LL_FLASH_GetLatency(void)
+{
+ 80004bc:	b480      	push	{r7}
+ 80004be:	af00      	add	r7, sp, #0
+  return (uint32_t)(READ_BIT(FLASH->ACR, FLASH_ACR_LATENCY));
+ 80004c0:	4b03      	ldr	r3, [pc, #12]	; (80004d0 <LL_FLASH_GetLatency+0x14>)
+ 80004c2:	681b      	ldr	r3, [r3, #0]
+ 80004c4:	f003 0307 	and.w	r3, r3, #7
+}
+ 80004c8:	4618      	mov	r0, r3
+ 80004ca:	46bd      	mov	sp, r7
+ 80004cc:	bc80      	pop	{r7}
+ 80004ce:	4770      	bx	lr
+ 80004d0:	40022000 	.word	0x40022000
+
+080004d4 <LL_SYSTICK_SetClkSource>:
+  *         @arg @ref LL_SYSTICK_CLKSOURCE_HCLK_DIV8
+  *         @arg @ref LL_SYSTICK_CLKSOURCE_HCLK
+  * @retval None
+  */
+__STATIC_INLINE void LL_SYSTICK_SetClkSource(uint32_t Source)
+{
+ 80004d4:	b480      	push	{r7}
+ 80004d6:	b083      	sub	sp, #12
+ 80004d8:	af00      	add	r7, sp, #0
+ 80004da:	6078      	str	r0, [r7, #4]
+  if (Source == LL_SYSTICK_CLKSOURCE_HCLK)
+ 80004dc:	687b      	ldr	r3, [r7, #4]
+ 80004de:	2b04      	cmp	r3, #4
+ 80004e0:	d106      	bne.n	80004f0 <LL_SYSTICK_SetClkSource+0x1c>
+  {
+    SET_BIT(SysTick->CTRL, LL_SYSTICK_CLKSOURCE_HCLK);
+ 80004e2:	4b09      	ldr	r3, [pc, #36]	; (8000508 <LL_SYSTICK_SetClkSource+0x34>)
+ 80004e4:	681b      	ldr	r3, [r3, #0]
+ 80004e6:	4a08      	ldr	r2, [pc, #32]	; (8000508 <LL_SYSTICK_SetClkSource+0x34>)
+ 80004e8:	f043 0304 	orr.w	r3, r3, #4
+ 80004ec:	6013      	str	r3, [r2, #0]
+  }
+  else
+  {
+    CLEAR_BIT(SysTick->CTRL, LL_SYSTICK_CLKSOURCE_HCLK);
+  }
+}
+ 80004ee:	e005      	b.n	80004fc <LL_SYSTICK_SetClkSource+0x28>
+    CLEAR_BIT(SysTick->CTRL, LL_SYSTICK_CLKSOURCE_HCLK);
+ 80004f0:	4b05      	ldr	r3, [pc, #20]	; (8000508 <LL_SYSTICK_SetClkSource+0x34>)
+ 80004f2:	681b      	ldr	r3, [r3, #0]
+ 80004f4:	4a04      	ldr	r2, [pc, #16]	; (8000508 <LL_SYSTICK_SetClkSource+0x34>)
+ 80004f6:	f023 0304 	bic.w	r3, r3, #4
+ 80004fa:	6013      	str	r3, [r2, #0]
+}
+ 80004fc:	bf00      	nop
+ 80004fe:	370c      	adds	r7, #12
+ 8000500:	46bd      	mov	sp, r7
+ 8000502:	bc80      	pop	{r7}
+ 8000504:	4770      	bx	lr
+ 8000506:	bf00      	nop
+ 8000508:	e000e010 	.word	0xe000e010
+
+0800050c <playerToLed>:
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+// Function to take player's location and convert it to an LED matrix
+void playerToLed(){
+ 800050c:	b480      	push	{r7}
+ 800050e:	b085      	sub	sp, #20
+ 8000510:	af00      	add	r7, sp, #0
+	// Clear LED buffer
+	for(int r=0;r<6;r++){LED[r] = 0;}
+ 8000512:	2300      	movs	r3, #0
+ 8000514:	60fb      	str	r3, [r7, #12]
+ 8000516:	e007      	b.n	8000528 <playerToLed+0x1c>
+ 8000518:	4a2b      	ldr	r2, [pc, #172]	; (80005c8 <playerToLed+0xbc>)
+ 800051a:	68fb      	ldr	r3, [r7, #12]
+ 800051c:	2100      	movs	r1, #0
+ 800051e:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
+ 8000522:	68fb      	ldr	r3, [r7, #12]
+ 8000524:	3301      	adds	r3, #1
+ 8000526:	60fb      	str	r3, [r7, #12]
+ 8000528:	68fb      	ldr	r3, [r7, #12]
+ 800052a:	2b05      	cmp	r3, #5
+ 800052c:	ddf4      	ble.n	8000518 <playerToLed+0xc>
+
+	for(int r=0;r<6;r++){
+ 800052e:	2300      	movs	r3, #0
+ 8000530:	60bb      	str	r3, [r7, #8]
+ 8000532:	e041      	b.n	80005b8 <playerToLed+0xac>
+		for(int c=0;c<7;c++){
+ 8000534:	2300      	movs	r3, #0
+ 8000536:	607b      	str	r3, [r7, #4]
+ 8000538:	e038      	b.n	80005ac <playerToLed+0xa0>
+			uint8_t playerAtLoc = (players[r] >> c*2) & 0b11;
+ 800053a:	4a24      	ldr	r2, [pc, #144]	; (80005cc <playerToLed+0xc0>)
+ 800053c:	68bb      	ldr	r3, [r7, #8]
+ 800053e:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000542:	461a      	mov	r2, r3
+ 8000544:	687b      	ldr	r3, [r7, #4]
+ 8000546:	005b      	lsls	r3, r3, #1
+ 8000548:	fa42 f303 	asr.w	r3, r2, r3
+ 800054c:	b2db      	uxtb	r3, r3
+ 800054e:	f003 0303 	and.w	r3, r3, #3
+ 8000552:	70fb      	strb	r3, [r7, #3]
+			if(playerAtLoc == 0b01){
+ 8000554:	78fb      	ldrb	r3, [r7, #3]
+ 8000556:	2b01      	cmp	r3, #1
+ 8000558:	d111      	bne.n	800057e <playerToLed+0x72>
+				LED[r] |= (PLAYER1COLOR << c*3);
+ 800055a:	4a1b      	ldr	r2, [pc, #108]	; (80005c8 <playerToLed+0xbc>)
+ 800055c:	68bb      	ldr	r3, [r7, #8]
+ 800055e:	f852 1023 	ldr.w	r1, [r2, r3, lsl #2]
+ 8000562:	687a      	ldr	r2, [r7, #4]
+ 8000564:	4613      	mov	r3, r2
+ 8000566:	005b      	lsls	r3, r3, #1
+ 8000568:	4413      	add	r3, r2
+ 800056a:	2201      	movs	r2, #1
+ 800056c:	fa02 f303 	lsl.w	r3, r2, r3
+ 8000570:	ea41 0203 	orr.w	r2, r1, r3
+ 8000574:	4914      	ldr	r1, [pc, #80]	; (80005c8 <playerToLed+0xbc>)
+ 8000576:	68bb      	ldr	r3, [r7, #8]
+ 8000578:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+ 800057c:	e013      	b.n	80005a6 <playerToLed+0x9a>
+			}
+			else if(playerAtLoc == 0b10){
+ 800057e:	78fb      	ldrb	r3, [r7, #3]
+ 8000580:	2b02      	cmp	r3, #2
+ 8000582:	d110      	bne.n	80005a6 <playerToLed+0x9a>
+				LED[r] |= (PLAYER2COLOR << c*3);
+ 8000584:	4a10      	ldr	r2, [pc, #64]	; (80005c8 <playerToLed+0xbc>)
+ 8000586:	68bb      	ldr	r3, [r7, #8]
+ 8000588:	f852 1023 	ldr.w	r1, [r2, r3, lsl #2]
+ 800058c:	687a      	ldr	r2, [r7, #4]
+ 800058e:	4613      	mov	r3, r2
+ 8000590:	005b      	lsls	r3, r3, #1
+ 8000592:	4413      	add	r3, r2
+ 8000594:	2203      	movs	r2, #3
+ 8000596:	fa02 f303 	lsl.w	r3, r2, r3
+ 800059a:	ea41 0203 	orr.w	r2, r1, r3
+ 800059e:	490a      	ldr	r1, [pc, #40]	; (80005c8 <playerToLed+0xbc>)
+ 80005a0:	68bb      	ldr	r3, [r7, #8]
+ 80005a2:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+		for(int c=0;c<7;c++){
+ 80005a6:	687b      	ldr	r3, [r7, #4]
+ 80005a8:	3301      	adds	r3, #1
+ 80005aa:	607b      	str	r3, [r7, #4]
+ 80005ac:	687b      	ldr	r3, [r7, #4]
+ 80005ae:	2b06      	cmp	r3, #6
+ 80005b0:	ddc3      	ble.n	800053a <playerToLed+0x2e>
+	for(int r=0;r<6;r++){
+ 80005b2:	68bb      	ldr	r3, [r7, #8]
+ 80005b4:	3301      	adds	r3, #1
+ 80005b6:	60bb      	str	r3, [r7, #8]
+ 80005b8:	68bb      	ldr	r3, [r7, #8]
+ 80005ba:	2b05      	cmp	r3, #5
+ 80005bc:	ddba      	ble.n	8000534 <playerToLed+0x28>
+			}
+		}
+	}
+}
+ 80005be:	bf00      	nop
+ 80005c0:	3714      	adds	r7, #20
+ 80005c2:	46bd      	mov	sp, r7
+ 80005c4:	bc80      	pop	{r7}
+ 80005c6:	4770      	bx	lr
+ 80005c8:	20000030 	.word	0x20000030
+ 80005cc:	20000024 	.word	0x20000024
+
+080005d0 <waitForButtonInput>:
+		players[i] = 0;
+	}
+}
+
+// Function that waits for a single button press. Returns the index of the button pressed
+int waitForButtonInput(){
+ 80005d0:	b580      	push	{r7, lr}
+ 80005d2:	b084      	sub	sp, #16
+ 80005d4:	af00      	add	r7, sp, #0
+	int lastButton = 0; // Stores the previous state of the button GPIOC register
+ 80005d6:	2300      	movs	r3, #0
+ 80005d8:	60fb      	str	r3, [r7, #12]
+	while(1){
+		uint16_t buttons = 0;			// Stores the shifted GPIOC input register
+ 80005da:	2300      	movs	r3, #0
+ 80005dc:	807b      	strh	r3, [r7, #2]
+		uint16_t buttonColumn = 0;		// Stores the number of the button, from 0 to 8
+ 80005de:	2300      	movs	r3, #0
+ 80005e0:	817b      	strh	r3, [r7, #10]
+		delayMs(20);
+ 80005e2:	2014      	movs	r0, #20
+ 80005e4:	f000 fdb4 	bl	8001150 <delayMs>
+		buttons = (GPIOC->IDR >> 3) & 0b111111111;
+ 80005e8:	4b1c      	ldr	r3, [pc, #112]	; (800065c <waitForButtonInput+0x8c>)
+ 80005ea:	689b      	ldr	r3, [r3, #8]
+ 80005ec:	08db      	lsrs	r3, r3, #3
+ 80005ee:	b29b      	uxth	r3, r3
+ 80005f0:	f3c3 0308 	ubfx	r3, r3, #0, #9
+ 80005f4:	807b      	strh	r3, [r7, #2]
+		for(int i=0;i<9;i++){	// Look for the button number that is pressed
+ 80005f6:	2300      	movs	r3, #0
+ 80005f8:	607b      	str	r3, [r7, #4]
+ 80005fa:	e00d      	b.n	8000618 <waitForButtonInput+0x48>
+			if(((buttons >> i) & 0b1) == 0){
+ 80005fc:	887a      	ldrh	r2, [r7, #2]
+ 80005fe:	687b      	ldr	r3, [r7, #4]
+ 8000600:	fa42 f303 	asr.w	r3, r2, r3
+ 8000604:	f003 0301 	and.w	r3, r3, #1
+ 8000608:	2b00      	cmp	r3, #0
+ 800060a:	d102      	bne.n	8000612 <waitForButtonInput+0x42>
+				buttonColumn = i;
+ 800060c:	687b      	ldr	r3, [r7, #4]
+ 800060e:	817b      	strh	r3, [r7, #10]
+				break;
+ 8000610:	e005      	b.n	800061e <waitForButtonInput+0x4e>
+		for(int i=0;i<9;i++){	// Look for the button number that is pressed
+ 8000612:	687b      	ldr	r3, [r7, #4]
+ 8000614:	3301      	adds	r3, #1
+ 8000616:	607b      	str	r3, [r7, #4]
+ 8000618:	687b      	ldr	r3, [r7, #4]
+ 800061a:	2b08      	cmp	r3, #8
+ 800061c:	ddee      	ble.n	80005fc <waitForButtonInput+0x2c>
+			}
+		}
+		if( ((buttons >> buttonColumn) & 1) == ((lastButton >> buttonColumn) & 1) ){
+ 800061e:	887a      	ldrh	r2, [r7, #2]
+ 8000620:	897b      	ldrh	r3, [r7, #10]
+ 8000622:	411a      	asrs	r2, r3
+ 8000624:	897b      	ldrh	r3, [r7, #10]
+ 8000626:	68f9      	ldr	r1, [r7, #12]
+ 8000628:	fa41 f303 	asr.w	r3, r1, r3
+ 800062c:	4053      	eors	r3, r2
+ 800062e:	f003 0301 	and.w	r3, r3, #1
+ 8000632:	2b00      	cmp	r3, #0
+ 8000634:	d00b      	beq.n	800064e <waitForButtonInput+0x7e>
+			// Last and previous states are the same, do nothing
+		}
+		else{
+			// Last and previous states are different
+			if( ((buttons >> buttonColumn) & 1) == 0 ){ // If pressed the button to a logic high
+ 8000636:	887a      	ldrh	r2, [r7, #2]
+ 8000638:	897b      	ldrh	r3, [r7, #10]
+ 800063a:	fa42 f303 	asr.w	r3, r2, r3
+ 800063e:	f003 0301 	and.w	r3, r3, #1
+ 8000642:	2b00      	cmp	r3, #0
+ 8000644:	d103      	bne.n	800064e <waitForButtonInput+0x7e>
+				lastButton = buttons;
+ 8000646:	887b      	ldrh	r3, [r7, #2]
+ 8000648:	60fb      	str	r3, [r7, #12]
+				return buttonColumn;
+ 800064a:	897b      	ldrh	r3, [r7, #10]
+ 800064c:	e002      	b.n	8000654 <waitForButtonInput+0x84>
+			}
+		}
+		lastButton = buttons;		// If the button high is the same as before,
+ 800064e:	887b      	ldrh	r3, [r7, #2]
+ 8000650:	60fb      	str	r3, [r7, #12]
+	while(1){
+ 8000652:	e7c2      	b.n	80005da <waitForButtonInput+0xa>
+	}
+}
+ 8000654:	4618      	mov	r0, r3
+ 8000656:	3710      	adds	r7, #16
+ 8000658:	46bd      	mov	sp, r7
+ 800065a:	bd80      	pop	{r7, pc}
+ 800065c:	40011000 	.word	0x40011000
+
+08000660 <clearBuffer>:
+
+// Function to clear the buffer of an array
+void clearBuffer(uint16_t *c, int array_lenght){
+ 8000660:	b480      	push	{r7}
+ 8000662:	b085      	sub	sp, #20
+ 8000664:	af00      	add	r7, sp, #0
+ 8000666:	6078      	str	r0, [r7, #4]
+ 8000668:	6039      	str	r1, [r7, #0]
+	for(int i=0;i<array_lenght;i++){
+ 800066a:	2300      	movs	r3, #0
+ 800066c:	60fb      	str	r3, [r7, #12]
+ 800066e:	e008      	b.n	8000682 <clearBuffer+0x22>
+		c[i] = 0;
+ 8000670:	68fb      	ldr	r3, [r7, #12]
+ 8000672:	005b      	lsls	r3, r3, #1
+ 8000674:	687a      	ldr	r2, [r7, #4]
+ 8000676:	4413      	add	r3, r2
+ 8000678:	2200      	movs	r2, #0
+ 800067a:	801a      	strh	r2, [r3, #0]
+	for(int i=0;i<array_lenght;i++){
+ 800067c:	68fb      	ldr	r3, [r7, #12]
+ 800067e:	3301      	adds	r3, #1
+ 8000680:	60fb      	str	r3, [r7, #12]
+ 8000682:	68fa      	ldr	r2, [r7, #12]
+ 8000684:	683b      	ldr	r3, [r7, #0]
+ 8000686:	429a      	cmp	r2, r3
+ 8000688:	dbf2      	blt.n	8000670 <clearBuffer+0x10>
+	}
+}
+ 800068a:	bf00      	nop
+ 800068c:	3714      	adds	r7, #20
+ 800068e:	46bd      	mov	sp, r7
+ 8000690:	bc80      	pop	{r7}
+ 8000692:	4770      	bx	lr
+
+08000694 <checkForWinner>:
+
+// Function to check for a game winner
+// Returns 0 if none, 1 for player 1, and 2 for player 2
+uint8_t checkForWinner(){
+ 8000694:	b480      	push	{r7}
+ 8000696:	b091      	sub	sp, #68	; 0x44
+ 8000698:	af00      	add	r7, sp, #0
+	uint8_t winner_player = 0;
+ 800069a:	2300      	movs	r3, #0
+ 800069c:	f887 303f 	strb.w	r3, [r7, #63]	; 0x3f
+	// Check vertical
+	for(int c=0;c<7;c++){		// Check every column
+ 80006a0:	2300      	movs	r3, #0
+ 80006a2:	63bb      	str	r3, [r7, #56]	; 0x38
+ 80006a4:	e05c      	b.n	8000760 <checkForWinner+0xcc>
+		uint8_t similarCounter = 0;		// Stores the number of same player in a row
+ 80006a6:	2300      	movs	r3, #0
+ 80006a8:	f887 3037 	strb.w	r3, [r7, #55]	; 0x37
+		uint8_t simlarPlayer = 0;		// Stores the player for the previous variable
+ 80006ac:	2300      	movs	r3, #0
+ 80006ae:	f887 3036 	strb.w	r3, [r7, #54]	; 0x36
+		for(int r=0;r<(6-1);r++){
+ 80006b2:	2300      	movs	r3, #0
+ 80006b4:	633b      	str	r3, [r7, #48]	; 0x30
+ 80006b6:	e044      	b.n	8000742 <checkForWinner+0xae>
+			if( ((players[r]>>(c*2)) & 0b11) == ((players[r+1]>>(c*2)) & 0b11) ){		// If the player from the current and next row is the same, increment a counter
+ 80006b8:	4a9d      	ldr	r2, [pc, #628]	; (8000930 <checkForWinner+0x29c>)
+ 80006ba:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 80006bc:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 80006c0:	461a      	mov	r2, r3
+ 80006c2:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+ 80006c4:	005b      	lsls	r3, r3, #1
+ 80006c6:	411a      	asrs	r2, r3
+ 80006c8:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 80006ca:	3301      	adds	r3, #1
+ 80006cc:	4998      	ldr	r1, [pc, #608]	; (8000930 <checkForWinner+0x29c>)
+ 80006ce:	f831 3013 	ldrh.w	r3, [r1, r3, lsl #1]
+ 80006d2:	4619      	mov	r1, r3
+ 80006d4:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+ 80006d6:	005b      	lsls	r3, r3, #1
+ 80006d8:	fa41 f303 	asr.w	r3, r1, r3
+ 80006dc:	4053      	eors	r3, r2
+ 80006de:	f003 0303 	and.w	r3, r3, #3
+ 80006e2:	2b00      	cmp	r3, #0
+ 80006e4:	d124      	bne.n	8000730 <checkForWinner+0x9c>
+				if(((players[r]>>(c*2)) & 0b11) != 0){   		// Only increment counter if the player isn't 0 (none)
+ 80006e6:	4a92      	ldr	r2, [pc, #584]	; (8000930 <checkForWinner+0x29c>)
+ 80006e8:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 80006ea:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 80006ee:	461a      	mov	r2, r3
+ 80006f0:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+ 80006f2:	005b      	lsls	r3, r3, #1
+ 80006f4:	fa42 f303 	asr.w	r3, r2, r3
+ 80006f8:	f003 0303 	and.w	r3, r3, #3
+ 80006fc:	2b00      	cmp	r3, #0
+ 80006fe:	d01d      	beq.n	800073c <checkForWinner+0xa8>
+					simlarPlayer = (players[r]>>(c*2))&0b11;	// Record the similar player
+ 8000700:	4a8b      	ldr	r2, [pc, #556]	; (8000930 <checkForWinner+0x29c>)
+ 8000702:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8000704:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000708:	461a      	mov	r2, r3
+ 800070a:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+ 800070c:	005b      	lsls	r3, r3, #1
+ 800070e:	fa42 f303 	asr.w	r3, r2, r3
+ 8000712:	b2db      	uxtb	r3, r3
+ 8000714:	f003 0303 	and.w	r3, r3, #3
+ 8000718:	f887 3036 	strb.w	r3, [r7, #54]	; 0x36
+					similarCounter++;							// Increment counter
+ 800071c:	f897 3037 	ldrb.w	r3, [r7, #55]	; 0x37
+ 8000720:	3301      	adds	r3, #1
+ 8000722:	f887 3037 	strb.w	r3, [r7, #55]	; 0x37
+					if(similarCounter >= 3){					// If counter is increment to 3 ( repreating player 4 times), return
+ 8000726:	f897 3037 	ldrb.w	r3, [r7, #55]	; 0x37
+ 800072a:	2b02      	cmp	r3, #2
+ 800072c:	d906      	bls.n	800073c <checkForWinner+0xa8>
+						break;
+ 800072e:	e00b      	b.n	8000748 <checkForWinner+0xb4>
+					}
+				}
+			}
+			else{			// If the player isn't the same as the next row, reset the counter and player variable
+				similarCounter = 0;
+ 8000730:	2300      	movs	r3, #0
+ 8000732:	f887 3037 	strb.w	r3, [r7, #55]	; 0x37
+				simlarPlayer = 0;
+ 8000736:	2300      	movs	r3, #0
+ 8000738:	f887 3036 	strb.w	r3, [r7, #54]	; 0x36
+		for(int r=0;r<(6-1);r++){
+ 800073c:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 800073e:	3301      	adds	r3, #1
+ 8000740:	633b      	str	r3, [r7, #48]	; 0x30
+ 8000742:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8000744:	2b04      	cmp	r3, #4
+ 8000746:	ddb7      	ble.n	80006b8 <checkForWinner+0x24>
+			}
+		}
+		// If there was a similarity, exit and return the player number
+		if(similarCounter == 3){
+ 8000748:	f897 3037 	ldrb.w	r3, [r7, #55]	; 0x37
+ 800074c:	2b03      	cmp	r3, #3
+ 800074e:	d104      	bne.n	800075a <checkForWinner+0xc6>
+			winner_player = simlarPlayer;
+ 8000750:	f897 3036 	ldrb.w	r3, [r7, #54]	; 0x36
+ 8000754:	f887 303f 	strb.w	r3, [r7, #63]	; 0x3f
+			break;
+ 8000758:	e005      	b.n	8000766 <checkForWinner+0xd2>
+	for(int c=0;c<7;c++){		// Check every column
+ 800075a:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+ 800075c:	3301      	adds	r3, #1
+ 800075e:	63bb      	str	r3, [r7, #56]	; 0x38
+ 8000760:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+ 8000762:	2b06      	cmp	r3, #6
+ 8000764:	dd9f      	ble.n	80006a6 <checkForWinner+0x12>
+		}
+	}
+
+	// Check horizontal
+	for(int r=0;r<6;r++){		// Check every row
+ 8000766:	2300      	movs	r3, #0
+ 8000768:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 800076a:	e05c      	b.n	8000826 <checkForWinner+0x192>
+		uint8_t similarCounter = 0;		// Stores the number of same player in a column
+ 800076c:	2300      	movs	r3, #0
+ 800076e:	f887 302b 	strb.w	r3, [r7, #43]	; 0x2b
+		uint8_t simlarPlayer = 0;		// Stores the player for the previous variable
+ 8000772:	2300      	movs	r3, #0
+ 8000774:	f887 302a 	strb.w	r3, [r7, #42]	; 0x2a
+		for(int c=0;c<(7-1);c++){
+ 8000778:	2300      	movs	r3, #0
+ 800077a:	627b      	str	r3, [r7, #36]	; 0x24
+ 800077c:	e044      	b.n	8000808 <checkForWinner+0x174>
+			if( ((players[r]>>(c*2)) & 0b11) == ((players[r]>>((c+1)*2)) & 0b11) ){		// If the player from the current and next column is the same, increment a counter
+ 800077e:	4a6c      	ldr	r2, [pc, #432]	; (8000930 <checkForWinner+0x29c>)
+ 8000780:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8000782:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000786:	461a      	mov	r2, r3
+ 8000788:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 800078a:	005b      	lsls	r3, r3, #1
+ 800078c:	411a      	asrs	r2, r3
+ 800078e:	4968      	ldr	r1, [pc, #416]	; (8000930 <checkForWinner+0x29c>)
+ 8000790:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8000792:	f831 3013 	ldrh.w	r3, [r1, r3, lsl #1]
+ 8000796:	4619      	mov	r1, r3
+ 8000798:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 800079a:	3301      	adds	r3, #1
+ 800079c:	005b      	lsls	r3, r3, #1
+ 800079e:	fa41 f303 	asr.w	r3, r1, r3
+ 80007a2:	4053      	eors	r3, r2
+ 80007a4:	f003 0303 	and.w	r3, r3, #3
+ 80007a8:	2b00      	cmp	r3, #0
+ 80007aa:	d124      	bne.n	80007f6 <checkForWinner+0x162>
+				if(((players[r]>>(c*2)) & 0b11) != 0){   		// Only increment counter if the player isn't 0 (none)
+ 80007ac:	4a60      	ldr	r2, [pc, #384]	; (8000930 <checkForWinner+0x29c>)
+ 80007ae:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 80007b0:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 80007b4:	461a      	mov	r2, r3
+ 80007b6:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 80007b8:	005b      	lsls	r3, r3, #1
+ 80007ba:	fa42 f303 	asr.w	r3, r2, r3
+ 80007be:	f003 0303 	and.w	r3, r3, #3
+ 80007c2:	2b00      	cmp	r3, #0
+ 80007c4:	d01d      	beq.n	8000802 <checkForWinner+0x16e>
+					simlarPlayer = (players[r]>>(c*2))&0b11;	// Record the similar player
+ 80007c6:	4a5a      	ldr	r2, [pc, #360]	; (8000930 <checkForWinner+0x29c>)
+ 80007c8:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 80007ca:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 80007ce:	461a      	mov	r2, r3
+ 80007d0:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 80007d2:	005b      	lsls	r3, r3, #1
+ 80007d4:	fa42 f303 	asr.w	r3, r2, r3
+ 80007d8:	b2db      	uxtb	r3, r3
+ 80007da:	f003 0303 	and.w	r3, r3, #3
+ 80007de:	f887 302a 	strb.w	r3, [r7, #42]	; 0x2a
+					similarCounter++;							// Increment counter
+ 80007e2:	f897 302b 	ldrb.w	r3, [r7, #43]	; 0x2b
+ 80007e6:	3301      	adds	r3, #1
+ 80007e8:	f887 302b 	strb.w	r3, [r7, #43]	; 0x2b
+					if(similarCounter >= 3){					// If counter is increment to 3 ( repreating player 4 times), return
+ 80007ec:	f897 302b 	ldrb.w	r3, [r7, #43]	; 0x2b
+ 80007f0:	2b02      	cmp	r3, #2
+ 80007f2:	d906      	bls.n	8000802 <checkForWinner+0x16e>
+						break;
+ 80007f4:	e00b      	b.n	800080e <checkForWinner+0x17a>
+					}
+				}
+			}
+			else{			// If the player isn't the same as the next row, reset the counter and player variable
+				similarCounter = 0;
+ 80007f6:	2300      	movs	r3, #0
+ 80007f8:	f887 302b 	strb.w	r3, [r7, #43]	; 0x2b
+				simlarPlayer = 0;
+ 80007fc:	2300      	movs	r3, #0
+ 80007fe:	f887 302a 	strb.w	r3, [r7, #42]	; 0x2a
+		for(int c=0;c<(7-1);c++){
+ 8000802:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8000804:	3301      	adds	r3, #1
+ 8000806:	627b      	str	r3, [r7, #36]	; 0x24
+ 8000808:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 800080a:	2b05      	cmp	r3, #5
+ 800080c:	ddb7      	ble.n	800077e <checkForWinner+0xea>
+			}
+		}
+		// If there was a similarity, exit and return the player number
+		if(similarCounter == 3){
+ 800080e:	f897 302b 	ldrb.w	r3, [r7, #43]	; 0x2b
+ 8000812:	2b03      	cmp	r3, #3
+ 8000814:	d104      	bne.n	8000820 <checkForWinner+0x18c>
+			winner_player = simlarPlayer;
+ 8000816:	f897 302a 	ldrb.w	r3, [r7, #42]	; 0x2a
+ 800081a:	f887 303f 	strb.w	r3, [r7, #63]	; 0x3f
+			break;
+ 800081e:	e005      	b.n	800082c <checkForWinner+0x198>
+	for(int r=0;r<6;r++){		// Check every row
+ 8000820:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8000822:	3301      	adds	r3, #1
+ 8000824:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 8000826:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8000828:	2b05      	cmp	r3, #5
+ 800082a:	dd9f      	ble.n	800076c <checkForWinner+0xd8>
+		}
+	}
+
+	// Check diagonal (positive slope)
+	// Check 4 diagonal in a row from the last 3 row and the first 4 column ( the only combination)
+	for(int c=0;c<4;c++){
+ 800082c:	2300      	movs	r3, #0
+ 800082e:	623b      	str	r3, [r7, #32]
+ 8000830:	e06d      	b.n	800090e <checkForWinner+0x27a>
+		for(int r=3;r<6;r++){
+ 8000832:	2303      	movs	r3, #3
+ 8000834:	61fb      	str	r3, [r7, #28]
+ 8000836:	e064      	b.n	8000902 <checkForWinner+0x26e>
+			uint8_t similarCounter = 0;		// Stores the number of same player in a column
+ 8000838:	2300      	movs	r3, #0
+ 800083a:	76fb      	strb	r3, [r7, #27]
+			uint8_t simlarPlayer = 0;		// Stores the player for the previous variable
+ 800083c:	2300      	movs	r3, #0
+ 800083e:	76bb      	strb	r3, [r7, #26]
+			for(int i=0;i<(4-1);i++){
+ 8000840:	2300      	movs	r3, #0
+ 8000842:	617b      	str	r3, [r7, #20]
+ 8000844:	e050      	b.n	80008e8 <checkForWinner+0x254>
+				if( ((players[r-i]>>((c+i)*2)) & 0b11) == ((players[r-i-1]>>((c+i+1)*2)) & 0b11) ){		// If the player from the current and next column is the same, increment a counter
+ 8000846:	69fa      	ldr	r2, [r7, #28]
+ 8000848:	697b      	ldr	r3, [r7, #20]
+ 800084a:	1ad3      	subs	r3, r2, r3
+ 800084c:	4a38      	ldr	r2, [pc, #224]	; (8000930 <checkForWinner+0x29c>)
+ 800084e:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000852:	4619      	mov	r1, r3
+ 8000854:	6a3a      	ldr	r2, [r7, #32]
+ 8000856:	697b      	ldr	r3, [r7, #20]
+ 8000858:	4413      	add	r3, r2
+ 800085a:	005b      	lsls	r3, r3, #1
+ 800085c:	fa41 f203 	asr.w	r2, r1, r3
+ 8000860:	69f9      	ldr	r1, [r7, #28]
+ 8000862:	697b      	ldr	r3, [r7, #20]
+ 8000864:	1acb      	subs	r3, r1, r3
+ 8000866:	3b01      	subs	r3, #1
+ 8000868:	4931      	ldr	r1, [pc, #196]	; (8000930 <checkForWinner+0x29c>)
+ 800086a:	f831 3013 	ldrh.w	r3, [r1, r3, lsl #1]
+ 800086e:	4618      	mov	r0, r3
+ 8000870:	6a39      	ldr	r1, [r7, #32]
+ 8000872:	697b      	ldr	r3, [r7, #20]
+ 8000874:	440b      	add	r3, r1
+ 8000876:	3301      	adds	r3, #1
+ 8000878:	005b      	lsls	r3, r3, #1
+ 800087a:	fa40 f303 	asr.w	r3, r0, r3
+ 800087e:	4053      	eors	r3, r2
+ 8000880:	f003 0303 	and.w	r3, r3, #3
+ 8000884:	2b00      	cmp	r3, #0
+ 8000886:	d128      	bne.n	80008da <checkForWinner+0x246>
+					if(((players[r-i]>>((c+i)*2)) & 0b11) != 0){   		// Only increment counter if the player isn't 0 (none)
+ 8000888:	69fa      	ldr	r2, [r7, #28]
+ 800088a:	697b      	ldr	r3, [r7, #20]
+ 800088c:	1ad3      	subs	r3, r2, r3
+ 800088e:	4a28      	ldr	r2, [pc, #160]	; (8000930 <checkForWinner+0x29c>)
+ 8000890:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000894:	4619      	mov	r1, r3
+ 8000896:	6a3a      	ldr	r2, [r7, #32]
+ 8000898:	697b      	ldr	r3, [r7, #20]
+ 800089a:	4413      	add	r3, r2
+ 800089c:	005b      	lsls	r3, r3, #1
+ 800089e:	fa41 f303 	asr.w	r3, r1, r3
+ 80008a2:	f003 0303 	and.w	r3, r3, #3
+ 80008a6:	2b00      	cmp	r3, #0
+ 80008a8:	d01b      	beq.n	80008e2 <checkForWinner+0x24e>
+						simlarPlayer = (players[r-i]>>((c+i)*2)) & 0b11;	// Record the similar player
+ 80008aa:	69fa      	ldr	r2, [r7, #28]
+ 80008ac:	697b      	ldr	r3, [r7, #20]
+ 80008ae:	1ad3      	subs	r3, r2, r3
+ 80008b0:	4a1f      	ldr	r2, [pc, #124]	; (8000930 <checkForWinner+0x29c>)
+ 80008b2:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 80008b6:	4619      	mov	r1, r3
+ 80008b8:	6a3a      	ldr	r2, [r7, #32]
+ 80008ba:	697b      	ldr	r3, [r7, #20]
+ 80008bc:	4413      	add	r3, r2
+ 80008be:	005b      	lsls	r3, r3, #1
+ 80008c0:	fa41 f303 	asr.w	r3, r1, r3
+ 80008c4:	b2db      	uxtb	r3, r3
+ 80008c6:	f003 0303 	and.w	r3, r3, #3
+ 80008ca:	76bb      	strb	r3, [r7, #26]
+						similarCounter++;							// Increment counter
+ 80008cc:	7efb      	ldrb	r3, [r7, #27]
+ 80008ce:	3301      	adds	r3, #1
+ 80008d0:	76fb      	strb	r3, [r7, #27]
+						if(similarCounter >= 3){					// If counter is increment to 3 ( repreating player 4 times), return
+ 80008d2:	7efb      	ldrb	r3, [r7, #27]
+ 80008d4:	2b02      	cmp	r3, #2
+ 80008d6:	d904      	bls.n	80008e2 <checkForWinner+0x24e>
+							break;
+ 80008d8:	e009      	b.n	80008ee <checkForWinner+0x25a>
+						}
+					}
+				}
+				else{			// If the player isn't the same as the next row, reset the counter and player variable
+					similarCounter = 0;
+ 80008da:	2300      	movs	r3, #0
+ 80008dc:	76fb      	strb	r3, [r7, #27]
+					simlarPlayer = 0;
+ 80008de:	2300      	movs	r3, #0
+ 80008e0:	76bb      	strb	r3, [r7, #26]
+			for(int i=0;i<(4-1);i++){
+ 80008e2:	697b      	ldr	r3, [r7, #20]
+ 80008e4:	3301      	adds	r3, #1
+ 80008e6:	617b      	str	r3, [r7, #20]
+ 80008e8:	697b      	ldr	r3, [r7, #20]
+ 80008ea:	2b02      	cmp	r3, #2
+ 80008ec:	ddab      	ble.n	8000846 <checkForWinner+0x1b2>
+				}
+			}
+			// If there was a similarity, exit and return the player number
+			if(similarCounter == 3){
+ 80008ee:	7efb      	ldrb	r3, [r7, #27]
+ 80008f0:	2b03      	cmp	r3, #3
+ 80008f2:	d103      	bne.n	80008fc <checkForWinner+0x268>
+				winner_player = simlarPlayer;
+ 80008f4:	7ebb      	ldrb	r3, [r7, #26]
+ 80008f6:	f887 303f 	strb.w	r3, [r7, #63]	; 0x3f
+				break;
+ 80008fa:	e005      	b.n	8000908 <checkForWinner+0x274>
+		for(int r=3;r<6;r++){
+ 80008fc:	69fb      	ldr	r3, [r7, #28]
+ 80008fe:	3301      	adds	r3, #1
+ 8000900:	61fb      	str	r3, [r7, #28]
+ 8000902:	69fb      	ldr	r3, [r7, #28]
+ 8000904:	2b05      	cmp	r3, #5
+ 8000906:	dd97      	ble.n	8000838 <checkForWinner+0x1a4>
+	for(int c=0;c<4;c++){
+ 8000908:	6a3b      	ldr	r3, [r7, #32]
+ 800090a:	3301      	adds	r3, #1
+ 800090c:	623b      	str	r3, [r7, #32]
+ 800090e:	6a3b      	ldr	r3, [r7, #32]
+ 8000910:	2b03      	cmp	r3, #3
+ 8000912:	dd8e      	ble.n	8000832 <checkForWinner+0x19e>
+		}
+	}
+
+	// Check diagonal (negative slope)
+	// Check 4 diagonal in a row from the last 3 row and the first 4 column ( the only combination)
+	for(int c=6;c>2;c--){
+ 8000914:	2306      	movs	r3, #6
+ 8000916:	613b      	str	r3, [r7, #16]
+ 8000918:	e070      	b.n	80009fc <checkForWinner+0x368>
+		for(int r=3;r<6;r++){
+ 800091a:	2303      	movs	r3, #3
+ 800091c:	60fb      	str	r3, [r7, #12]
+ 800091e:	e067      	b.n	80009f0 <checkForWinner+0x35c>
+			uint8_t similarCounter = 0;		// Stores the number of same player in a column
+ 8000920:	2300      	movs	r3, #0
+ 8000922:	72fb      	strb	r3, [r7, #11]
+			uint8_t simlarPlayer = 0;		// Stores the player for the previous variable
+ 8000924:	2300      	movs	r3, #0
+ 8000926:	72bb      	strb	r3, [r7, #10]
+			for(int i=0;i<(4-1);i++){
+ 8000928:	2300      	movs	r3, #0
+ 800092a:	607b      	str	r3, [r7, #4]
+ 800092c:	e053      	b.n	80009d6 <checkForWinner+0x342>
+ 800092e:	bf00      	nop
+ 8000930:	20000024 	.word	0x20000024
+				if( ((players[r-i]>>((c-i)*2)) & 0b11) == ((players[r-i-1]>>((c-i-1)*2)) & 0b11) ){		// If the player from the current and next column is the same, increment a counter
+ 8000934:	68fa      	ldr	r2, [r7, #12]
+ 8000936:	687b      	ldr	r3, [r7, #4]
+ 8000938:	1ad3      	subs	r3, r2, r3
+ 800093a:	4a35      	ldr	r2, [pc, #212]	; (8000a10 <checkForWinner+0x37c>)
+ 800093c:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000940:	4619      	mov	r1, r3
+ 8000942:	693a      	ldr	r2, [r7, #16]
+ 8000944:	687b      	ldr	r3, [r7, #4]
+ 8000946:	1ad3      	subs	r3, r2, r3
+ 8000948:	005b      	lsls	r3, r3, #1
+ 800094a:	fa41 f203 	asr.w	r2, r1, r3
+ 800094e:	68f9      	ldr	r1, [r7, #12]
+ 8000950:	687b      	ldr	r3, [r7, #4]
+ 8000952:	1acb      	subs	r3, r1, r3
+ 8000954:	3b01      	subs	r3, #1
+ 8000956:	492e      	ldr	r1, [pc, #184]	; (8000a10 <checkForWinner+0x37c>)
+ 8000958:	f831 3013 	ldrh.w	r3, [r1, r3, lsl #1]
+ 800095c:	4618      	mov	r0, r3
+ 800095e:	6939      	ldr	r1, [r7, #16]
+ 8000960:	687b      	ldr	r3, [r7, #4]
+ 8000962:	1acb      	subs	r3, r1, r3
+ 8000964:	3b01      	subs	r3, #1
+ 8000966:	005b      	lsls	r3, r3, #1
+ 8000968:	fa40 f303 	asr.w	r3, r0, r3
+ 800096c:	4053      	eors	r3, r2
+ 800096e:	f003 0303 	and.w	r3, r3, #3
+ 8000972:	2b00      	cmp	r3, #0
+ 8000974:	d128      	bne.n	80009c8 <checkForWinner+0x334>
+					if(((players[r-i]>>((c-i)*2)) & 0b11) != 0){   		// Only increment counter if the player isn't 0 (none)
+ 8000976:	68fa      	ldr	r2, [r7, #12]
+ 8000978:	687b      	ldr	r3, [r7, #4]
+ 800097a:	1ad3      	subs	r3, r2, r3
+ 800097c:	4a24      	ldr	r2, [pc, #144]	; (8000a10 <checkForWinner+0x37c>)
+ 800097e:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000982:	4619      	mov	r1, r3
+ 8000984:	693a      	ldr	r2, [r7, #16]
+ 8000986:	687b      	ldr	r3, [r7, #4]
+ 8000988:	1ad3      	subs	r3, r2, r3
+ 800098a:	005b      	lsls	r3, r3, #1
+ 800098c:	fa41 f303 	asr.w	r3, r1, r3
+ 8000990:	f003 0303 	and.w	r3, r3, #3
+ 8000994:	2b00      	cmp	r3, #0
+ 8000996:	d01b      	beq.n	80009d0 <checkForWinner+0x33c>
+						simlarPlayer = (players[r-i]>>((c-i)*2)) & 0b11;	// Record the similar player
+ 8000998:	68fa      	ldr	r2, [r7, #12]
+ 800099a:	687b      	ldr	r3, [r7, #4]
+ 800099c:	1ad3      	subs	r3, r2, r3
+ 800099e:	4a1c      	ldr	r2, [pc, #112]	; (8000a10 <checkForWinner+0x37c>)
+ 80009a0:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 80009a4:	4619      	mov	r1, r3
+ 80009a6:	693a      	ldr	r2, [r7, #16]
+ 80009a8:	687b      	ldr	r3, [r7, #4]
+ 80009aa:	1ad3      	subs	r3, r2, r3
+ 80009ac:	005b      	lsls	r3, r3, #1
+ 80009ae:	fa41 f303 	asr.w	r3, r1, r3
+ 80009b2:	b2db      	uxtb	r3, r3
+ 80009b4:	f003 0303 	and.w	r3, r3, #3
+ 80009b8:	72bb      	strb	r3, [r7, #10]
+						similarCounter++;							// Increment counter
+ 80009ba:	7afb      	ldrb	r3, [r7, #11]
+ 80009bc:	3301      	adds	r3, #1
+ 80009be:	72fb      	strb	r3, [r7, #11]
+						if(similarCounter >= 3){					// If counter is increment to 3 ( repreating player 4 times), return
+ 80009c0:	7afb      	ldrb	r3, [r7, #11]
+ 80009c2:	2b02      	cmp	r3, #2
+ 80009c4:	d904      	bls.n	80009d0 <checkForWinner+0x33c>
+							break;
+ 80009c6:	e009      	b.n	80009dc <checkForWinner+0x348>
+						}
+					}
+				}
+				else{			// If the player isn't the same as the next row, reset the counter and player variable
+					similarCounter = 0;
+ 80009c8:	2300      	movs	r3, #0
+ 80009ca:	72fb      	strb	r3, [r7, #11]
+					simlarPlayer = 0;
+ 80009cc:	2300      	movs	r3, #0
+ 80009ce:	72bb      	strb	r3, [r7, #10]
+			for(int i=0;i<(4-1);i++){
+ 80009d0:	687b      	ldr	r3, [r7, #4]
+ 80009d2:	3301      	adds	r3, #1
+ 80009d4:	607b      	str	r3, [r7, #4]
+ 80009d6:	687b      	ldr	r3, [r7, #4]
+ 80009d8:	2b02      	cmp	r3, #2
+ 80009da:	ddab      	ble.n	8000934 <checkForWinner+0x2a0>
+				}
+			}
+			// If there was a similarity, exit and return the player number
+			if(similarCounter == 3){
+ 80009dc:	7afb      	ldrb	r3, [r7, #11]
+ 80009de:	2b03      	cmp	r3, #3
+ 80009e0:	d103      	bne.n	80009ea <checkForWinner+0x356>
+				winner_player = simlarPlayer;
+ 80009e2:	7abb      	ldrb	r3, [r7, #10]
+ 80009e4:	f887 303f 	strb.w	r3, [r7, #63]	; 0x3f
+				break;
+ 80009e8:	e005      	b.n	80009f6 <checkForWinner+0x362>
+		for(int r=3;r<6;r++){
+ 80009ea:	68fb      	ldr	r3, [r7, #12]
+ 80009ec:	3301      	adds	r3, #1
+ 80009ee:	60fb      	str	r3, [r7, #12]
+ 80009f0:	68fb      	ldr	r3, [r7, #12]
+ 80009f2:	2b05      	cmp	r3, #5
+ 80009f4:	dd94      	ble.n	8000920 <checkForWinner+0x28c>
+	for(int c=6;c>2;c--){
+ 80009f6:	693b      	ldr	r3, [r7, #16]
+ 80009f8:	3b01      	subs	r3, #1
+ 80009fa:	613b      	str	r3, [r7, #16]
+ 80009fc:	693b      	ldr	r3, [r7, #16]
+ 80009fe:	2b02      	cmp	r3, #2
+ 8000a00:	dc8b      	bgt.n	800091a <checkForWinner+0x286>
+			}
+		}
+	}
+	return winner_player;
+ 8000a02:	f897 303f 	ldrb.w	r3, [r7, #63]	; 0x3f
+}
+ 8000a06:	4618      	mov	r0, r3
+ 8000a08:	3744      	adds	r7, #68	; 0x44
+ 8000a0a:	46bd      	mov	sp, r7
+ 8000a0c:	bc80      	pop	{r7}
+ 8000a0e:	4770      	bx	lr
+ 8000a10:	20000024 	.word	0x20000024
+
+08000a14 <LEDInteruptSetup>:
+// Void to set up the interupt to update the LEDs
+// The interupt handler will execute, for now, about once every 1 mS
+void LEDInteruptSetup(void){
+ 8000a14:	b580      	push	{r7, lr}
+ 8000a16:	af00      	add	r7, sp, #0
+  \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+           Can only be executed in Privileged modes.
+ */
+__STATIC_FORCEINLINE void __enable_irq(void)
+{
+  __ASM volatile ("cpsie i" : : : "memory");
+ 8000a18:	b662      	cpsie	i
+	__enable_irq();
+	NVIC_EnableIRQ(TIM6_IRQn);
+ 8000a1a:	2036      	movs	r0, #54	; 0x36
+ 8000a1c:	f7ff fc26 	bl	800026c <__NVIC_EnableIRQ>
+
+	RCC->APB1ENR |= (1<<4); 	// Turn on tim6 clock
+ 8000a20:	4b17      	ldr	r3, [pc, #92]	; (8000a80 <LEDInteruptSetup+0x6c>)
+ 8000a22:	69db      	ldr	r3, [r3, #28]
+ 8000a24:	4a16      	ldr	r2, [pc, #88]	; (8000a80 <LEDInteruptSetup+0x6c>)
+ 8000a26:	f043 0310 	orr.w	r3, r3, #16
+ 8000a2a:	61d3      	str	r3, [r2, #28]
+	TIM6->CR1 &= ~(1<<0);		// Disable Counter
+ 8000a2c:	4b15      	ldr	r3, [pc, #84]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a2e:	681b      	ldr	r3, [r3, #0]
+ 8000a30:	4a14      	ldr	r2, [pc, #80]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a32:	f023 0301 	bic.w	r3, r3, #1
+ 8000a36:	6013      	str	r3, [r2, #0]
+	TIM6->CR1 |= (1<<2); 		// Set so only overflow/underflow generates event
+ 8000a38:	4b12      	ldr	r3, [pc, #72]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a3a:	681b      	ldr	r3, [r3, #0]
+ 8000a3c:	4a11      	ldr	r2, [pc, #68]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a3e:	f043 0304 	orr.w	r3, r3, #4
+ 8000a42:	6013      	str	r3, [r2, #0]
+	TIM6->CR1 &= ~(1<<3); 		//Turn off one-pulse mode
+ 8000a44:	4b0f      	ldr	r3, [pc, #60]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a46:	681b      	ldr	r3, [r3, #0]
+ 8000a48:	4a0e      	ldr	r2, [pc, #56]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a4a:	f023 0308 	bic.w	r3, r3, #8
+ 8000a4e:	6013      	str	r3, [r2, #0]
+	TIM6->PSC = 141; 			// Set prescaler
+ 8000a50:	4b0c      	ldr	r3, [pc, #48]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a52:	228d      	movs	r2, #141	; 0x8d
+ 8000a54:	629a      	str	r2, [r3, #40]	; 0x28
+	TIM6->DIER |= (1<<0); 		// Enable interrupt
+ 8000a56:	4b0b      	ldr	r3, [pc, #44]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a58:	68db      	ldr	r3, [r3, #12]
+ 8000a5a:	4a0a      	ldr	r2, [pc, #40]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a5c:	f043 0301 	orr.w	r3, r3, #1
+ 8000a60:	60d3      	str	r3, [r2, #12]
+	TIM6->CNT = 0x00; 			// Clear the timer
+ 8000a62:	4b08      	ldr	r3, [pc, #32]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a64:	2200      	movs	r2, #0
+ 8000a66:	625a      	str	r2, [r3, #36]	; 0x24
+	TIM6->ARR = 0x00FF; 		// Set count value to
+ 8000a68:	4b06      	ldr	r3, [pc, #24]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a6a:	22ff      	movs	r2, #255	; 0xff
+ 8000a6c:	62da      	str	r2, [r3, #44]	; 0x2c
+
+	TIM6->EGR |= (1<<0);// Update register
+ 8000a6e:	4b05      	ldr	r3, [pc, #20]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a70:	695b      	ldr	r3, [r3, #20]
+ 8000a72:	4a04      	ldr	r2, [pc, #16]	; (8000a84 <LEDInteruptSetup+0x70>)
+ 8000a74:	f043 0301 	orr.w	r3, r3, #1
+ 8000a78:	6153      	str	r3, [r2, #20]
+}
+ 8000a7a:	bf00      	nop
+ 8000a7c:	bd80      	pop	{r7, pc}
+ 8000a7e:	bf00      	nop
+ 8000a80:	40021000 	.word	0x40021000
+ 8000a84:	40001000 	.word	0x40001000
+
+08000a88 <main>:
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+ 8000a88:	b580      	push	{r7, lr}
+ 8000a8a:	b088      	sub	sp, #32
+ 8000a8c:	af00      	add	r7, sp, #0
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  
+
+  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_AFIO);
+ 8000a8e:	2001      	movs	r0, #1
+ 8000a90:	f7ff fce8 	bl	8000464 <LL_APB2_GRP1_EnableClock>
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
+ 8000a94:	f04f 5080 	mov.w	r0, #268435456	; 0x10000000
+ 8000a98:	f7ff fccc 	bl	8000434 <LL_APB1_GRP1_EnableClock>
+
+  NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 8000a9c:	2003      	movs	r0, #3
+ 8000a9e:	f7ff fbc1 	bl	8000224 <__NVIC_SetPriorityGrouping>
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+ 8000aa2:	f000 f9b7 	bl	8000e14 <SystemClock_Config>
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+ 8000aa6:	f000 f9f9 	bl	8000e9c <MX_GPIO_Init>
+  /* USER CODE BEGIN 2 */
+
+  delaySetup();
+ 8000aaa:	f000 fb25 	bl	80010f8 <delaySetup>
+
+	RCC->APB2ENR |= (1<<4); 	// Enable PORTC clock
+ 8000aae:	4b99      	ldr	r3, [pc, #612]	; (8000d14 <main+0x28c>)
+ 8000ab0:	699b      	ldr	r3, [r3, #24]
+ 8000ab2:	4a98      	ldr	r2, [pc, #608]	; (8000d14 <main+0x28c>)
+ 8000ab4:	f043 0310 	orr.w	r3, r3, #16
+ 8000ab8:	6193      	str	r3, [r2, #24]
+	RCC->APB2ENR |= (1<<3); 	// Enable PORTB clock
+ 8000aba:	4b96      	ldr	r3, [pc, #600]	; (8000d14 <main+0x28c>)
+ 8000abc:	699b      	ldr	r3, [r3, #24]
+ 8000abe:	4a95      	ldr	r2, [pc, #596]	; (8000d14 <main+0x28c>)
+ 8000ac0:	f043 0308 	orr.w	r3, r3, #8
+ 8000ac4:	6193      	str	r3, [r2, #24]
+	RCC->APB2ENR |= (1<<2); 	// Enable PORTA clock
+ 8000ac6:	4b93      	ldr	r3, [pc, #588]	; (8000d14 <main+0x28c>)
+ 8000ac8:	699b      	ldr	r3, [r3, #24]
+ 8000aca:	4a92      	ldr	r2, [pc, #584]	; (8000d14 <main+0x28c>)
+ 8000acc:	f043 0304 	orr.w	r3, r3, #4
+ 8000ad0:	6193      	str	r3, [r2, #24]
+	RCC->APB2ENR |= (1<<0);		// Enable Alternate Function clock
+ 8000ad2:	4b90      	ldr	r3, [pc, #576]	; (8000d14 <main+0x28c>)
+ 8000ad4:	699b      	ldr	r3, [r3, #24]
+ 8000ad6:	4a8f      	ldr	r2, [pc, #572]	; (8000d14 <main+0x28c>)
+ 8000ad8:	f043 0301 	orr.w	r3, r3, #1
+ 8000adc:	6193      	str	r3, [r2, #24]
+	// Re-map PB3 and PB4 so they can act as output
+	AFIO->MAPR |= (0b010<<24);
+ 8000ade:	4b8e      	ldr	r3, [pc, #568]	; (8000d18 <main+0x290>)
+ 8000ae0:	685b      	ldr	r3, [r3, #4]
+ 8000ae2:	4a8d      	ldr	r2, [pc, #564]	; (8000d18 <main+0x290>)
+ 8000ae4:	f043 7300 	orr.w	r3, r3, #33554432	; 0x2000000
+ 8000ae8:	6053      	str	r3, [r2, #4]
+	// Enable single-RGB led output pins as...outputs (Max of 2Mhz, 0b0010 per pin)
+	GPIOC->CRL &= ~(0xFFF<<0);
+ 8000aea:	4b8c      	ldr	r3, [pc, #560]	; (8000d1c <main+0x294>)
+ 8000aec:	681b      	ldr	r3, [r3, #0]
+ 8000aee:	4a8b      	ldr	r2, [pc, #556]	; (8000d1c <main+0x294>)
+ 8000af0:	f423 637f 	bic.w	r3, r3, #4080	; 0xff0
+ 8000af4:	f023 030f 	bic.w	r3, r3, #15
+ 8000af8:	6013      	str	r3, [r2, #0]
+	GPIOC->CRL |= (0x222<<0);
+ 8000afa:	4b88      	ldr	r3, [pc, #544]	; (8000d1c <main+0x294>)
+ 8000afc:	681b      	ldr	r3, [r3, #0]
+ 8000afe:	4a87      	ldr	r2, [pc, #540]	; (8000d1c <main+0x294>)
+ 8000b00:	f443 7308 	orr.w	r3, r3, #544	; 0x220
+ 8000b04:	f043 0302 	orr.w	r3, r3, #2
+ 8000b08:	6013      	str	r3, [r2, #0]
+	// Enable the pushbutton with internal pull-up (0b1000 per pin)
+	GPIOC->CRL &= ~(0xFFFFF<<12);
+ 8000b0a:	4b84      	ldr	r3, [pc, #528]	; (8000d1c <main+0x294>)
+ 8000b0c:	681b      	ldr	r3, [r3, #0]
+ 8000b0e:	4a83      	ldr	r2, [pc, #524]	; (8000d1c <main+0x294>)
+ 8000b10:	f3c3 030b 	ubfx	r3, r3, #0, #12
+ 8000b14:	6013      	str	r3, [r2, #0]
+	GPIOC->CRL |= (0x88888<<12);
+ 8000b16:	4b81      	ldr	r3, [pc, #516]	; (8000d1c <main+0x294>)
+ 8000b18:	681a      	ldr	r2, [r3, #0]
+ 8000b1a:	4980      	ldr	r1, [pc, #512]	; (8000d1c <main+0x294>)
+ 8000b1c:	4b80      	ldr	r3, [pc, #512]	; (8000d20 <main+0x298>)
+ 8000b1e:	4313      	orrs	r3, r2
+ 8000b20:	600b      	str	r3, [r1, #0]
+	GPIOC->CRH &= ~(0xFFFF);
+ 8000b22:	4b7e      	ldr	r3, [pc, #504]	; (8000d1c <main+0x294>)
+ 8000b24:	685b      	ldr	r3, [r3, #4]
+ 8000b26:	4a7d      	ldr	r2, [pc, #500]	; (8000d1c <main+0x294>)
+ 8000b28:	0c1b      	lsrs	r3, r3, #16
+ 8000b2a:	041b      	lsls	r3, r3, #16
+ 8000b2c:	6053      	str	r3, [r2, #4]
+	GPIOC->CRH |= (0x8888);
+ 8000b2e:	4b7b      	ldr	r3, [pc, #492]	; (8000d1c <main+0x294>)
+ 8000b30:	685b      	ldr	r3, [r3, #4]
+ 8000b32:	4a7a      	ldr	r2, [pc, #488]	; (8000d1c <main+0x294>)
+ 8000b34:	f443 4308 	orr.w	r3, r3, #34816	; 0x8800
+ 8000b38:	f043 0388 	orr.w	r3, r3, #136	; 0x88
+ 8000b3c:	6053      	str	r3, [r2, #4]
+	GPIOC->ODR |= (0b111111111<<3);	// Enable internal pull-up for pushbuttons
+ 8000b3e:	4b77      	ldr	r3, [pc, #476]	; (8000d1c <main+0x294>)
+ 8000b40:	68db      	ldr	r3, [r3, #12]
+ 8000b42:	4a76      	ldr	r2, [pc, #472]	; (8000d1c <main+0x294>)
+ 8000b44:	f443 637f 	orr.w	r3, r3, #4080	; 0xff0
+ 8000b48:	f043 0308 	orr.w	r3, r3, #8
+ 8000b4c:	60d3      	str	r3, [r2, #12]
+
+	// Set GPIOB and GPIOA pins to outputs (the ones meant as output) (0b0001 or 0x1 per pin)
+	GPIOA->CRL = 0x11111114;
+ 8000b4e:	4b75      	ldr	r3, [pc, #468]	; (8000d24 <main+0x29c>)
+ 8000b50:	4a75      	ldr	r2, [pc, #468]	; (8000d28 <main+0x2a0>)
+ 8000b52:	601a      	str	r2, [r3, #0]
+	GPIOA->CRH = 0x44411111;
+ 8000b54:	4b73      	ldr	r3, [pc, #460]	; (8000d24 <main+0x29c>)
+ 8000b56:	4a75      	ldr	r2, [pc, #468]	; (8000d2c <main+0x2a4>)
+ 8000b58:	605a      	str	r2, [r3, #4]
+	GPIOB->CRL = 0x11111111;
+ 8000b5a:	4b75      	ldr	r3, [pc, #468]	; (8000d30 <main+0x2a8>)
+ 8000b5c:	f04f 3211 	mov.w	r2, #286331153	; 0x11111111
+ 8000b60:	601a      	str	r2, [r3, #0]
+	GPIOB->CRH = 0x11111141;
+ 8000b62:	4b73      	ldr	r3, [pc, #460]	; (8000d30 <main+0x2a8>)
+ 8000b64:	4a73      	ldr	r2, [pc, #460]	; (8000d34 <main+0x2ac>)
+ 8000b66:	605a      	str	r2, [r3, #4]
+
+	LEDInteruptSetup();			// Set up the LED refresh interrupt
+ 8000b68:	f7ff ff54 	bl	8000a14 <LEDInteruptSetup>
+	LEDInteruptStart			// Start the interrupt
+ 8000b6c:	4b72      	ldr	r3, [pc, #456]	; (8000d38 <main+0x2b0>)
+ 8000b6e:	681b      	ldr	r3, [r3, #0]
+ 8000b70:	4a71      	ldr	r2, [pc, #452]	; (8000d38 <main+0x2b0>)
+ 8000b72:	f043 0301 	orr.w	r3, r3, #1
+ 8000b76:	6013      	str	r3, [r2, #0]
+
+	active_player = 1;			// Set the active player to player 1
+ 8000b78:	4b70      	ldr	r3, [pc, #448]	; (8000d3c <main+0x2b4>)
+ 8000b7a:	2201      	movs	r2, #1
+ 8000b7c:	701a      	strb	r2, [r3, #0]
+
+	int number_of_turns = 0;	// Variable to record the current number of moves
+ 8000b7e:	2300      	movs	r3, #0
+ 8000b80:	61fb      	str	r3, [r7, #28]
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+  if(active_player == 1){INDICATE_RED}else{INDICATE_YELLOW} // Turn on the indicator LED depending on who is the active player
+ 8000b82:	4b6e      	ldr	r3, [pc, #440]	; (8000d3c <main+0x2b4>)
+ 8000b84:	781b      	ldrb	r3, [r3, #0]
+ 8000b86:	2b01      	cmp	r3, #1
+ 8000b88:	d10c      	bne.n	8000ba4 <main+0x11c>
+ 8000b8a:	4b64      	ldr	r3, [pc, #400]	; (8000d1c <main+0x294>)
+ 8000b8c:	68db      	ldr	r3, [r3, #12]
+ 8000b8e:	4a63      	ldr	r2, [pc, #396]	; (8000d1c <main+0x294>)
+ 8000b90:	f023 0307 	bic.w	r3, r3, #7
+ 8000b94:	60d3      	str	r3, [r2, #12]
+ 8000b96:	4b61      	ldr	r3, [pc, #388]	; (8000d1c <main+0x294>)
+ 8000b98:	68db      	ldr	r3, [r3, #12]
+ 8000b9a:	4a60      	ldr	r2, [pc, #384]	; (8000d1c <main+0x294>)
+ 8000b9c:	f043 0301 	orr.w	r3, r3, #1
+ 8000ba0:	60d3      	str	r3, [r2, #12]
+ 8000ba2:	e00b      	b.n	8000bbc <main+0x134>
+ 8000ba4:	4b5d      	ldr	r3, [pc, #372]	; (8000d1c <main+0x294>)
+ 8000ba6:	68db      	ldr	r3, [r3, #12]
+ 8000ba8:	4a5c      	ldr	r2, [pc, #368]	; (8000d1c <main+0x294>)
+ 8000baa:	f023 0307 	bic.w	r3, r3, #7
+ 8000bae:	60d3      	str	r3, [r2, #12]
+ 8000bb0:	4b5a      	ldr	r3, [pc, #360]	; (8000d1c <main+0x294>)
+ 8000bb2:	68db      	ldr	r3, [r3, #12]
+ 8000bb4:	4a59      	ldr	r2, [pc, #356]	; (8000d1c <main+0x294>)
+ 8000bb6:	f043 0303 	orr.w	r3, r3, #3
+ 8000bba:	60d3      	str	r3, [r2, #12]
+	int c = waitForButtonInput();		// Wait for the user to press a button
+ 8000bbc:	f7ff fd08 	bl	80005d0 <waitForButtonInput>
+ 8000bc0:	60b8      	str	r0, [r7, #8]
+	int w;								// Creates w variable for the winner/reset loop
+	if(c > 6){			// If pushed the last 2 pushbuttons ( the ones next to the indicator)
+ 8000bc2:	68bb      	ldr	r3, [r7, #8]
+ 8000bc4:	2b06      	cmp	r3, #6
+ 8000bc6:	dd06      	ble.n	8000bd6 <main+0x14e>
+		if(c == 8){		// If the one pushed is the last one...
+ 8000bc8:	68bb      	ldr	r3, [r7, #8]
+ 8000bca:	2b08      	cmp	r3, #8
+ 8000bcc:	f040 8092 	bne.w	8000cf4 <main+0x26c>
+			w = 3;			// Set the game so it resets without a winner
+ 8000bd0:	2303      	movs	r3, #3
+ 8000bd2:	61bb      	str	r3, [r7, #24]
+ 8000bd4:	e08e      	b.n	8000cf4 <main+0x26c>
+		}
+	}
+	else{				// If the button pressed is one of the column ones
+		int foundRow = 0;		// Variable to store if the lowest row has been found thru the for loop
+ 8000bd6:	2300      	movs	r3, #0
+ 8000bd8:	617b      	str	r3, [r7, #20]
+		// Check for the lowest row to assign the player's column selection to
+		if(((players[0] >> (c*2)) & 0b11) == 0){		// Only switch player and find the row if the column isn't fully occupied
+ 8000bda:	4b59      	ldr	r3, [pc, #356]	; (8000d40 <main+0x2b8>)
+ 8000bdc:	881b      	ldrh	r3, [r3, #0]
+ 8000bde:	461a      	mov	r2, r3
+ 8000be0:	68bb      	ldr	r3, [r7, #8]
+ 8000be2:	005b      	lsls	r3, r3, #1
+ 8000be4:	fa42 f303 	asr.w	r3, r2, r3
+ 8000be8:	f003 0303 	and.w	r3, r3, #3
+ 8000bec:	2b00      	cmp	r3, #0
+ 8000bee:	d17b      	bne.n	8000ce8 <main+0x260>
+			for(int r=1;r<6;r++){		// Cycle thru all but one row
+ 8000bf0:	2301      	movs	r3, #1
+ 8000bf2:	613b      	str	r3, [r7, #16]
+ 8000bf4:	e046      	b.n	8000c84 <main+0x1fc>
+				players[r-1] |= active_player << (c*2);		// Set the row LED on of the last row on the loop
+ 8000bf6:	693b      	ldr	r3, [r7, #16]
+ 8000bf8:	3b01      	subs	r3, #1
+ 8000bfa:	4a51      	ldr	r2, [pc, #324]	; (8000d40 <main+0x2b8>)
+ 8000bfc:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000c00:	b21a      	sxth	r2, r3
+ 8000c02:	4b4e      	ldr	r3, [pc, #312]	; (8000d3c <main+0x2b4>)
+ 8000c04:	781b      	ldrb	r3, [r3, #0]
+ 8000c06:	4619      	mov	r1, r3
+ 8000c08:	68bb      	ldr	r3, [r7, #8]
+ 8000c0a:	005b      	lsls	r3, r3, #1
+ 8000c0c:	fa01 f303 	lsl.w	r3, r1, r3
+ 8000c10:	b21b      	sxth	r3, r3
+ 8000c12:	4313      	orrs	r3, r2
+ 8000c14:	b21a      	sxth	r2, r3
+ 8000c16:	693b      	ldr	r3, [r7, #16]
+ 8000c18:	3b01      	subs	r3, #1
+ 8000c1a:	b291      	uxth	r1, r2
+ 8000c1c:	4a48      	ldr	r2, [pc, #288]	; (8000d40 <main+0x2b8>)
+ 8000c1e:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+				if(r != 1){players[r-2] &= ~(0b11 << (c*2));}		// If the loop isn't the first one, set the last last row off
+ 8000c22:	693b      	ldr	r3, [r7, #16]
+ 8000c24:	2b01      	cmp	r3, #1
+ 8000c26:	d015      	beq.n	8000c54 <main+0x1cc>
+ 8000c28:	693b      	ldr	r3, [r7, #16]
+ 8000c2a:	3b02      	subs	r3, #2
+ 8000c2c:	4a44      	ldr	r2, [pc, #272]	; (8000d40 <main+0x2b8>)
+ 8000c2e:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000c32:	b21a      	sxth	r2, r3
+ 8000c34:	68bb      	ldr	r3, [r7, #8]
+ 8000c36:	005b      	lsls	r3, r3, #1
+ 8000c38:	2103      	movs	r1, #3
+ 8000c3a:	fa01 f303 	lsl.w	r3, r1, r3
+ 8000c3e:	b21b      	sxth	r3, r3
+ 8000c40:	43db      	mvns	r3, r3
+ 8000c42:	b21b      	sxth	r3, r3
+ 8000c44:	4013      	ands	r3, r2
+ 8000c46:	b21a      	sxth	r2, r3
+ 8000c48:	693b      	ldr	r3, [r7, #16]
+ 8000c4a:	3b02      	subs	r3, #2
+ 8000c4c:	b291      	uxth	r1, r2
+ 8000c4e:	4a3c      	ldr	r2, [pc, #240]	; (8000d40 <main+0x2b8>)
+ 8000c50:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+				if(((players[r] >> (c*2)) & 0b11) != 0){		// If the row is occupied, exit the loop ( the led should be set from the last 2 lines)
+ 8000c54:	4a3a      	ldr	r2, [pc, #232]	; (8000d40 <main+0x2b8>)
+ 8000c56:	693b      	ldr	r3, [r7, #16]
+ 8000c58:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000c5c:	461a      	mov	r2, r3
+ 8000c5e:	68bb      	ldr	r3, [r7, #8]
+ 8000c60:	005b      	lsls	r3, r3, #1
+ 8000c62:	fa42 f303 	asr.w	r3, r2, r3
+ 8000c66:	f003 0303 	and.w	r3, r3, #3
+ 8000c6a:	2b00      	cmp	r3, #0
+ 8000c6c:	d002      	beq.n	8000c74 <main+0x1ec>
+					foundRow = 1;		// Set the foundRow variable to a 1
+ 8000c6e:	2301      	movs	r3, #1
+ 8000c70:	617b      	str	r3, [r7, #20]
+					break;		// Break out of the for loop
+ 8000c72:	e00a      	b.n	8000c8a <main+0x202>
+				}
+				playerToLed();		// Update the LED array to showcase the animation
+ 8000c74:	f7ff fc4a 	bl	800050c <playerToLed>
+				delayMs(75);		// Delay for animation
+ 8000c78:	204b      	movs	r0, #75	; 0x4b
+ 8000c7a:	f000 fa69 	bl	8001150 <delayMs>
+			for(int r=1;r<6;r++){		// Cycle thru all but one row
+ 8000c7e:	693b      	ldr	r3, [r7, #16]
+ 8000c80:	3301      	adds	r3, #1
+ 8000c82:	613b      	str	r3, [r7, #16]
+ 8000c84:	693b      	ldr	r3, [r7, #16]
+ 8000c86:	2b05      	cmp	r3, #5
+ 8000c88:	ddb5      	ble.n	8000bf6 <main+0x16e>
+			}
+			if(foundRow == 0){		// If didn't find the non-ocupied row, must be the last one
+ 8000c8a:	697b      	ldr	r3, [r7, #20]
+ 8000c8c:	2b00      	cmp	r3, #0
+ 8000c8e:	d11f      	bne.n	8000cd0 <main+0x248>
+				players[5] |= active_player << (c*2);
+ 8000c90:	4b2b      	ldr	r3, [pc, #172]	; (8000d40 <main+0x2b8>)
+ 8000c92:	895b      	ldrh	r3, [r3, #10]
+ 8000c94:	b21a      	sxth	r2, r3
+ 8000c96:	4b29      	ldr	r3, [pc, #164]	; (8000d3c <main+0x2b4>)
+ 8000c98:	781b      	ldrb	r3, [r3, #0]
+ 8000c9a:	4619      	mov	r1, r3
+ 8000c9c:	68bb      	ldr	r3, [r7, #8]
+ 8000c9e:	005b      	lsls	r3, r3, #1
+ 8000ca0:	fa01 f303 	lsl.w	r3, r1, r3
+ 8000ca4:	b21b      	sxth	r3, r3
+ 8000ca6:	4313      	orrs	r3, r2
+ 8000ca8:	b21b      	sxth	r3, r3
+ 8000caa:	b29a      	uxth	r2, r3
+ 8000cac:	4b24      	ldr	r3, [pc, #144]	; (8000d40 <main+0x2b8>)
+ 8000cae:	815a      	strh	r2, [r3, #10]
+				players[5-1] &= ~(0b11 << (c*2));
+ 8000cb0:	4b23      	ldr	r3, [pc, #140]	; (8000d40 <main+0x2b8>)
+ 8000cb2:	891b      	ldrh	r3, [r3, #8]
+ 8000cb4:	b21a      	sxth	r2, r3
+ 8000cb6:	68bb      	ldr	r3, [r7, #8]
+ 8000cb8:	005b      	lsls	r3, r3, #1
+ 8000cba:	2103      	movs	r1, #3
+ 8000cbc:	fa01 f303 	lsl.w	r3, r1, r3
+ 8000cc0:	b21b      	sxth	r3, r3
+ 8000cc2:	43db      	mvns	r3, r3
+ 8000cc4:	b21b      	sxth	r3, r3
+ 8000cc6:	4013      	ands	r3, r2
+ 8000cc8:	b21b      	sxth	r3, r3
+ 8000cca:	b29a      	uxth	r2, r3
+ 8000ccc:	4b1c      	ldr	r3, [pc, #112]	; (8000d40 <main+0x2b8>)
+ 8000cce:	811a      	strh	r2, [r3, #8]
+			}
+			SWITCH_ACTIVE_PLAYER		// Switch the active player if the row isn't fully occupied
+ 8000cd0:	4b1a      	ldr	r3, [pc, #104]	; (8000d3c <main+0x2b4>)
+ 8000cd2:	781b      	ldrb	r3, [r3, #0]
+ 8000cd4:	2b01      	cmp	r3, #1
+ 8000cd6:	d101      	bne.n	8000cdc <main+0x254>
+ 8000cd8:	2202      	movs	r2, #2
+ 8000cda:	e000      	b.n	8000cde <main+0x256>
+ 8000cdc:	2201      	movs	r2, #1
+ 8000cde:	4b17      	ldr	r3, [pc, #92]	; (8000d3c <main+0x2b4>)
+ 8000ce0:	701a      	strb	r2, [r3, #0]
+			number_of_turns++;			// Increase the number of turns
+ 8000ce2:	69fb      	ldr	r3, [r7, #28]
+ 8000ce4:	3301      	adds	r3, #1
+ 8000ce6:	61fb      	str	r3, [r7, #28]
+		}
+		playerToLed();
+ 8000ce8:	f7ff fc10 	bl	800050c <playerToLed>
+
+		w=checkForWinner();	// Check for who, or none, player that one
+ 8000cec:	f7ff fcd2 	bl	8000694 <checkForWinner>
+ 8000cf0:	4603      	mov	r3, r0
+ 8000cf2:	61bb      	str	r3, [r7, #24]
+	}
+
+	// If there is nothing to exit out of the game loop and there is more number of turns than the number of LEDs, consider it a tie
+	if(w == 0 && number_of_turns == (6*7)){		// If there is no winner, check if the board is fully occupied
+ 8000cf4:	69bb      	ldr	r3, [r7, #24]
+ 8000cf6:	2b00      	cmp	r3, #0
+ 8000cf8:	d104      	bne.n	8000d04 <main+0x27c>
+ 8000cfa:	69fb      	ldr	r3, [r7, #28]
+ 8000cfc:	2b2a      	cmp	r3, #42	; 0x2a
+ 8000cfe:	d101      	bne.n	8000d04 <main+0x27c>
+		w = 3;		// Set the reset flag to reset with no winner
+ 8000d00:	2303      	movs	r3, #3
+ 8000d02:	61bb      	str	r3, [r7, #24]
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Reset loop, only is activated if there is a winner or it is to be reset by software
+	if(w!= 0){
+ 8000d04:	69bb      	ldr	r3, [r7, #24]
+ 8000d06:	2b00      	cmp	r3, #0
+ 8000d08:	f43f af3b 	beq.w	8000b82 <main+0xfa>
+		// Blink thru the indicator LED
+		for(int i=0;i<5;i++){
+ 8000d0c:	2300      	movs	r3, #0
+ 8000d0e:	60fb      	str	r3, [r7, #12]
+ 8000d10:	e058      	b.n	8000dc4 <main+0x33c>
+ 8000d12:	bf00      	nop
+ 8000d14:	40021000 	.word	0x40021000
+ 8000d18:	40010000 	.word	0x40010000
+ 8000d1c:	40011000 	.word	0x40011000
+ 8000d20:	88888000 	.word	0x88888000
+ 8000d24:	40010800 	.word	0x40010800
+ 8000d28:	11111114 	.word	0x11111114
+ 8000d2c:	44411111 	.word	0x44411111
+ 8000d30:	40010c00 	.word	0x40010c00
+ 8000d34:	11111141 	.word	0x11111141
+ 8000d38:	40001000 	.word	0x40001000
+ 8000d3c:	20000020 	.word	0x20000020
+ 8000d40:	20000024 	.word	0x20000024
+			INDICATE_CLEAR
+ 8000d44:	4b30      	ldr	r3, [pc, #192]	; (8000e08 <main+0x380>)
+ 8000d46:	68db      	ldr	r3, [r3, #12]
+ 8000d48:	4a2f      	ldr	r2, [pc, #188]	; (8000e08 <main+0x380>)
+ 8000d4a:	f023 0307 	bic.w	r3, r3, #7
+ 8000d4e:	60d3      	str	r3, [r2, #12]
+			delayMs(400);
+ 8000d50:	f44f 70c8 	mov.w	r0, #400	; 0x190
+ 8000d54:	f000 f9fc 	bl	8001150 <delayMs>
+			if(w == 1){INDICATE_CYAN}
+ 8000d58:	69bb      	ldr	r3, [r7, #24]
+ 8000d5a:	2b01      	cmp	r3, #1
+ 8000d5c:	d10c      	bne.n	8000d78 <main+0x2f0>
+ 8000d5e:	4b2a      	ldr	r3, [pc, #168]	; (8000e08 <main+0x380>)
+ 8000d60:	68db      	ldr	r3, [r3, #12]
+ 8000d62:	4a29      	ldr	r2, [pc, #164]	; (8000e08 <main+0x380>)
+ 8000d64:	f023 0307 	bic.w	r3, r3, #7
+ 8000d68:	60d3      	str	r3, [r2, #12]
+ 8000d6a:	4b27      	ldr	r3, [pc, #156]	; (8000e08 <main+0x380>)
+ 8000d6c:	68db      	ldr	r3, [r3, #12]
+ 8000d6e:	4a26      	ldr	r2, [pc, #152]	; (8000e08 <main+0x380>)
+ 8000d70:	f043 0306 	orr.w	r3, r3, #6
+ 8000d74:	60d3      	str	r3, [r2, #12]
+ 8000d76:	e01e      	b.n	8000db6 <main+0x32e>
+			else if(w == 2){INDICATE_PURPLE}
+ 8000d78:	69bb      	ldr	r3, [r7, #24]
+ 8000d7a:	2b02      	cmp	r3, #2
+ 8000d7c:	d10c      	bne.n	8000d98 <main+0x310>
+ 8000d7e:	4b22      	ldr	r3, [pc, #136]	; (8000e08 <main+0x380>)
+ 8000d80:	68db      	ldr	r3, [r3, #12]
+ 8000d82:	4a21      	ldr	r2, [pc, #132]	; (8000e08 <main+0x380>)
+ 8000d84:	f023 0307 	bic.w	r3, r3, #7
+ 8000d88:	60d3      	str	r3, [r2, #12]
+ 8000d8a:	4b1f      	ldr	r3, [pc, #124]	; (8000e08 <main+0x380>)
+ 8000d8c:	68db      	ldr	r3, [r3, #12]
+ 8000d8e:	4a1e      	ldr	r2, [pc, #120]	; (8000e08 <main+0x380>)
+ 8000d90:	f043 0305 	orr.w	r3, r3, #5
+ 8000d94:	60d3      	str	r3, [r2, #12]
+ 8000d96:	e00e      	b.n	8000db6 <main+0x32e>
+			else if(w == 3){INDICATE_WHITE}		//w = 3 if the board is full or game reset
+ 8000d98:	69bb      	ldr	r3, [r7, #24]
+ 8000d9a:	2b03      	cmp	r3, #3
+ 8000d9c:	d10b      	bne.n	8000db6 <main+0x32e>
+ 8000d9e:	4b1a      	ldr	r3, [pc, #104]	; (8000e08 <main+0x380>)
+ 8000da0:	68db      	ldr	r3, [r3, #12]
+ 8000da2:	4a19      	ldr	r2, [pc, #100]	; (8000e08 <main+0x380>)
+ 8000da4:	f023 0307 	bic.w	r3, r3, #7
+ 8000da8:	60d3      	str	r3, [r2, #12]
+ 8000daa:	4b17      	ldr	r3, [pc, #92]	; (8000e08 <main+0x380>)
+ 8000dac:	68db      	ldr	r3, [r3, #12]
+ 8000dae:	4a16      	ldr	r2, [pc, #88]	; (8000e08 <main+0x380>)
+ 8000db0:	f043 0307 	orr.w	r3, r3, #7
+ 8000db4:	60d3      	str	r3, [r2, #12]
+			delayMs(400);
+ 8000db6:	f44f 70c8 	mov.w	r0, #400	; 0x190
+ 8000dba:	f000 f9c9 	bl	8001150 <delayMs>
+		for(int i=0;i<5;i++){
+ 8000dbe:	68fb      	ldr	r3, [r7, #12]
+ 8000dc0:	3301      	adds	r3, #1
+ 8000dc2:	60fb      	str	r3, [r7, #12]
+ 8000dc4:	68fb      	ldr	r3, [r7, #12]
+ 8000dc6:	2b04      	cmp	r3, #4
+ 8000dc8:	ddbc      	ble.n	8000d44 <main+0x2bc>
+		}
+		INDICATE_BLUE
+ 8000dca:	4b0f      	ldr	r3, [pc, #60]	; (8000e08 <main+0x380>)
+ 8000dcc:	68db      	ldr	r3, [r3, #12]
+ 8000dce:	4a0e      	ldr	r2, [pc, #56]	; (8000e08 <main+0x380>)
+ 8000dd0:	f023 0307 	bic.w	r3, r3, #7
+ 8000dd4:	60d3      	str	r3, [r2, #12]
+ 8000dd6:	4b0c      	ldr	r3, [pc, #48]	; (8000e08 <main+0x380>)
+ 8000dd8:	68db      	ldr	r3, [r3, #12]
+ 8000dda:	4a0b      	ldr	r2, [pc, #44]	; (8000e08 <main+0x380>)
+ 8000ddc:	f043 0304 	orr.w	r3, r3, #4
+ 8000de0:	60d3      	str	r3, [r2, #12]
+		while(1){	// Wait until button is pressed to reset game
+			int c = waitForButtonInput();
+ 8000de2:	f7ff fbf5 	bl	80005d0 <waitForButtonInput>
+ 8000de6:	6078      	str	r0, [r7, #4]
+			if(c == 7){		// If pressed the button right of the indicator
+ 8000de8:	687b      	ldr	r3, [r7, #4]
+ 8000dea:	2b07      	cmp	r3, #7
+ 8000dec:	d1f9      	bne.n	8000de2 <main+0x35a>
+				// Reset the variables
+				active_player = 1;
+ 8000dee:	4b07      	ldr	r3, [pc, #28]	; (8000e0c <main+0x384>)
+ 8000df0:	2201      	movs	r2, #1
+ 8000df2:	701a      	strb	r2, [r3, #0]
+				number_of_turns = 0;
+ 8000df4:	2300      	movs	r3, #0
+ 8000df6:	61fb      	str	r3, [r7, #28]
+				// Clear the buffer
+				clearBuffer(players, 6);
+ 8000df8:	2106      	movs	r1, #6
+ 8000dfa:	4805      	ldr	r0, [pc, #20]	; (8000e10 <main+0x388>)
+ 8000dfc:	f7ff fc30 	bl	8000660 <clearBuffer>
+				playerToLed();
+ 8000e00:	f7ff fb84 	bl	800050c <playerToLed>
+				// Exit out of this loop to return to the game loop
+				break;
+ 8000e04:	bf00      	nop
+  {
+ 8000e06:	e6bc      	b.n	8000b82 <main+0xfa>
+ 8000e08:	40011000 	.word	0x40011000
+ 8000e0c:	20000020 	.word	0x20000020
+ 8000e10:	20000024 	.word	0x20000024
+
+08000e14 <SystemClock_Config>:
+/**
+  * @brief System Clock Configuration
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
+ 8000e14:	b580      	push	{r7, lr}
+ 8000e16:	af00      	add	r7, sp, #0
+  LL_FLASH_SetLatency(LL_FLASH_LATENCY_1);
+ 8000e18:	2001      	movs	r0, #1
+ 8000e1a:	f7ff fb3b 	bl	8000494 <LL_FLASH_SetLatency>
+
+  if(LL_FLASH_GetLatency() != LL_FLASH_LATENCY_1)
+ 8000e1e:	f7ff fb4d 	bl	80004bc <LL_FLASH_GetLatency>
+ 8000e22:	4603      	mov	r3, r0
+ 8000e24:	2b01      	cmp	r3, #1
+ 8000e26:	d001      	beq.n	8000e2c <SystemClock_Config+0x18>
+  {
+    Error_Handler();  
+ 8000e28:	f000 f8a6 	bl	8000f78 <Error_Handler>
+  }
+  LL_RCC_HSI_SetCalibTrimming(16);
+ 8000e2c:	2010      	movs	r0, #16
+ 8000e2e:	f7ff fa59 	bl	80002e4 <LL_RCC_HSI_SetCalibTrimming>
+  LL_RCC_HSI_Enable();
+ 8000e32:	f7ff fa37 	bl	80002a4 <LL_RCC_HSI_Enable>
+
+   /* Wait till HSI is ready */
+  while(LL_RCC_HSI_IsReady() != 1)
+ 8000e36:	bf00      	nop
+ 8000e38:	f7ff fa42 	bl	80002c0 <LL_RCC_HSI_IsReady>
+ 8000e3c:	4603      	mov	r3, r0
+ 8000e3e:	2b01      	cmp	r3, #1
+ 8000e40:	d1fa      	bne.n	8000e38 <SystemClock_Config+0x24>
+  {
+    
+  }
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI_DIV_2, LL_RCC_PLL_MUL_8);
+ 8000e42:	f44f 11c0 	mov.w	r1, #1572864	; 0x180000
+ 8000e46:	2000      	movs	r0, #0
+ 8000e48:	f7ff fadc 	bl	8000404 <LL_RCC_PLL_ConfigDomain_SYS>
+  LL_RCC_PLL_Enable();
+ 8000e4c:	f7ff faba 	bl	80003c4 <LL_RCC_PLL_Enable>
+
+   /* Wait till PLL is ready */
+  while(LL_RCC_PLL_IsReady() != 1)
+ 8000e50:	bf00      	nop
+ 8000e52:	f7ff fac5 	bl	80003e0 <LL_RCC_PLL_IsReady>
+ 8000e56:	4603      	mov	r3, r0
+ 8000e58:	2b01      	cmp	r3, #1
+ 8000e5a:	d1fa      	bne.n	8000e52 <SystemClock_Config+0x3e>
+  {
+    
+  }
+  LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
+ 8000e5c:	2000      	movs	r0, #0
+ 8000e5e:	f7ff fa75 	bl	800034c <LL_RCC_SetAHBPrescaler>
+  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+ 8000e62:	2000      	movs	r0, #0
+ 8000e64:	f7ff fa86 	bl	8000374 <LL_RCC_SetAPB1Prescaler>
+  LL_RCC_SetAPB2Prescaler(LL_RCC_APB2_DIV_1);
+ 8000e68:	2000      	movs	r0, #0
+ 8000e6a:	f7ff fa97 	bl	800039c <LL_RCC_SetAPB2Prescaler>
+  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_PLL);
+ 8000e6e:	2002      	movs	r0, #2
+ 8000e70:	f7ff fa4c 	bl	800030c <LL_RCC_SetSysClkSource>
+
+   /* Wait till System clock is ready */
+  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL)
+ 8000e74:	bf00      	nop
+ 8000e76:	f7ff fa5d 	bl	8000334 <LL_RCC_GetSysClkSource>
+ 8000e7a:	4603      	mov	r3, r0
+ 8000e7c:	2b08      	cmp	r3, #8
+ 8000e7e:	d1fa      	bne.n	8000e76 <SystemClock_Config+0x62>
+  {
+  
+  }
+  LL_Init1msTick(32000000);
+ 8000e80:	4805      	ldr	r0, [pc, #20]	; (8000e98 <SystemClock_Config+0x84>)
+ 8000e82:	f000 f91d 	bl	80010c0 <LL_Init1msTick>
+  LL_SYSTICK_SetClkSource(LL_SYSTICK_CLKSOURCE_HCLK);
+ 8000e86:	2004      	movs	r0, #4
+ 8000e88:	f7ff fb24 	bl	80004d4 <LL_SYSTICK_SetClkSource>
+  LL_SetSystemCoreClock(32000000);
+ 8000e8c:	4802      	ldr	r0, [pc, #8]	; (8000e98 <SystemClock_Config+0x84>)
+ 8000e8e:	f000 f925 	bl	80010dc <LL_SetSystemCoreClock>
+}
+ 8000e92:	bf00      	nop
+ 8000e94:	bd80      	pop	{r7, pc}
+ 8000e96:	bf00      	nop
+ 8000e98:	01e84800 	.word	0x01e84800
+
+08000e9c <MX_GPIO_Init>:
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+ 8000e9c:	b580      	push	{r7, lr}
+ 8000e9e:	af00      	add	r7, sp, #0
+
+  /* GPIO Ports Clock Enable */
+  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);
+ 8000ea0:	2004      	movs	r0, #4
+ 8000ea2:	f7ff fadf 	bl	8000464 <LL_APB2_GRP1_EnableClock>
+
+}
+ 8000ea6:	bf00      	nop
+ 8000ea8:	bd80      	pop	{r7, pc}
+	...
+
+08000eac <TIM6_IRQHandler>:
+
+/* USER CODE BEGIN 4 */
+void TIM6_IRQHandler(void){
+ 8000eac:	b480      	push	{r7}
+ 8000eae:	b083      	sub	sp, #12
+ 8000eb0:	af00      	add	r7, sp, #0
+	TIM6->SR = 0x00; // Clear statue
+ 8000eb2:	4b2c      	ldr	r3, [pc, #176]	; (8000f64 <TIM6_IRQHandler+0xb8>)
+ 8000eb4:	2200      	movs	r2, #0
+ 8000eb6:	611a      	str	r2, [r3, #16]
+
+	int gpioAodr = 0;
+ 8000eb8:	2300      	movs	r3, #0
+ 8000eba:	607b      	str	r3, [r7, #4]
+	int gpioBodr = 0;
+ 8000ebc:	2300      	movs	r3, #0
+ 8000ebe:	603b      	str	r3, [r7, #0]
+
+	gpioAodr |= (LED[InteruptRowCounter] & 0b1111111) << 1;
+ 8000ec0:	4b29      	ldr	r3, [pc, #164]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000ec2:	781b      	ldrb	r3, [r3, #0]
+ 8000ec4:	461a      	mov	r2, r3
+ 8000ec6:	4b29      	ldr	r3, [pc, #164]	; (8000f6c <TIM6_IRQHandler+0xc0>)
+ 8000ec8:	f853 3022 	ldr.w	r3, [r3, r2, lsl #2]
+ 8000ecc:	005b      	lsls	r3, r3, #1
+ 8000ece:	b2db      	uxtb	r3, r3
+ 8000ed0:	687a      	ldr	r2, [r7, #4]
+ 8000ed2:	4313      	orrs	r3, r2
+ 8000ed4:	607b      	str	r3, [r7, #4]
+	gpioAodr |= ((LED[InteruptRowCounter] >> 16) & 0b11111) << 8;
+ 8000ed6:	4b24      	ldr	r3, [pc, #144]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000ed8:	781b      	ldrb	r3, [r3, #0]
+ 8000eda:	461a      	mov	r2, r3
+ 8000edc:	4b23      	ldr	r3, [pc, #140]	; (8000f6c <TIM6_IRQHandler+0xc0>)
+ 8000ede:	f853 3022 	ldr.w	r3, [r3, r2, lsl #2]
+ 8000ee2:	141b      	asrs	r3, r3, #16
+ 8000ee4:	021b      	lsls	r3, r3, #8
+ 8000ee6:	f403 53f8 	and.w	r3, r3, #7936	; 0x1f00
+ 8000eea:	687a      	ldr	r2, [r7, #4]
+ 8000eec:	4313      	orrs	r3, r2
+ 8000eee:	607b      	str	r3, [r7, #4]
+
+	gpioBodr |= ((LED[InteruptRowCounter] >> 7) & 0b111);
+ 8000ef0:	4b1d      	ldr	r3, [pc, #116]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000ef2:	781b      	ldrb	r3, [r3, #0]
+ 8000ef4:	461a      	mov	r2, r3
+ 8000ef6:	4b1d      	ldr	r3, [pc, #116]	; (8000f6c <TIM6_IRQHandler+0xc0>)
+ 8000ef8:	f853 3022 	ldr.w	r3, [r3, r2, lsl #2]
+ 8000efc:	11db      	asrs	r3, r3, #7
+ 8000efe:	f003 0307 	and.w	r3, r3, #7
+ 8000f02:	683a      	ldr	r2, [r7, #0]
+ 8000f04:	4313      	orrs	r3, r2
+ 8000f06:	603b      	str	r3, [r7, #0]
+	gpioBodr |= ((LED[InteruptRowCounter] >> 10) & 0b111111) << 10;
+ 8000f08:	4b17      	ldr	r3, [pc, #92]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000f0a:	781b      	ldrb	r3, [r3, #0]
+ 8000f0c:	461a      	mov	r2, r3
+ 8000f0e:	4b17      	ldr	r3, [pc, #92]	; (8000f6c <TIM6_IRQHandler+0xc0>)
+ 8000f10:	f853 3022 	ldr.w	r3, [r3, r2, lsl #2]
+ 8000f14:	f403 437c 	and.w	r3, r3, #64512	; 0xfc00
+ 8000f18:	683a      	ldr	r2, [r7, #0]
+ 8000f1a:	4313      	orrs	r3, r2
+ 8000f1c:	603b      	str	r3, [r7, #0]
+	gpioBodr |= (1<<((5-InteruptRowCounter)+3));
+ 8000f1e:	4b12      	ldr	r3, [pc, #72]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000f20:	781b      	ldrb	r3, [r3, #0]
+ 8000f22:	f1c3 0308 	rsb	r3, r3, #8
+ 8000f26:	2201      	movs	r2, #1
+ 8000f28:	fa02 f303 	lsl.w	r3, r2, r3
+ 8000f2c:	683a      	ldr	r2, [r7, #0]
+ 8000f2e:	4313      	orrs	r3, r2
+ 8000f30:	603b      	str	r3, [r7, #0]
+
+	GPIOA->ODR = gpioAodr;
+ 8000f32:	4a0f      	ldr	r2, [pc, #60]	; (8000f70 <TIM6_IRQHandler+0xc4>)
+ 8000f34:	687b      	ldr	r3, [r7, #4]
+ 8000f36:	60d3      	str	r3, [r2, #12]
+	GPIOB->ODR = gpioBodr;
+ 8000f38:	4a0e      	ldr	r2, [pc, #56]	; (8000f74 <TIM6_IRQHandler+0xc8>)
+ 8000f3a:	683b      	ldr	r3, [r7, #0]
+ 8000f3c:	60d3      	str	r3, [r2, #12]
+
+	InteruptRowCounter++;
+ 8000f3e:	4b0a      	ldr	r3, [pc, #40]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000f40:	781b      	ldrb	r3, [r3, #0]
+ 8000f42:	3301      	adds	r3, #1
+ 8000f44:	b2da      	uxtb	r2, r3
+ 8000f46:	4b08      	ldr	r3, [pc, #32]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000f48:	701a      	strb	r2, [r3, #0]
+	if(InteruptRowCounter > 5){
+ 8000f4a:	4b07      	ldr	r3, [pc, #28]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000f4c:	781b      	ldrb	r3, [r3, #0]
+ 8000f4e:	2b05      	cmp	r3, #5
+ 8000f50:	d902      	bls.n	8000f58 <TIM6_IRQHandler+0xac>
+		InteruptRowCounter = 0;
+ 8000f52:	4b05      	ldr	r3, [pc, #20]	; (8000f68 <TIM6_IRQHandler+0xbc>)
+ 8000f54:	2200      	movs	r2, #0
+ 8000f56:	701a      	strb	r2, [r3, #0]
+	}
+}
+ 8000f58:	bf00      	nop
+ 8000f5a:	370c      	adds	r7, #12
+ 8000f5c:	46bd      	mov	sp, r7
+ 8000f5e:	bc80      	pop	{r7}
+ 8000f60:	4770      	bx	lr
+ 8000f62:	bf00      	nop
+ 8000f64:	40001000 	.word	0x40001000
+ 8000f68:	20000021 	.word	0x20000021
+ 8000f6c:	20000030 	.word	0x20000030
+ 8000f70:	40010800 	.word	0x40010800
+ 8000f74:	40010c00 	.word	0x40010c00
+
+08000f78 <Error_Handler>:
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
+ 8000f78:	b480      	push	{r7}
+ 8000f7a:	af00      	add	r7, sp, #0
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+
+  /* USER CODE END Error_Handler_Debug */
+}
+ 8000f7c:	bf00      	nop
+ 8000f7e:	46bd      	mov	sp, r7
+ 8000f80:	bc80      	pop	{r7}
+ 8000f82:	4770      	bx	lr
+
+08000f84 <NMI_Handler>:
+/******************************************************************************/
+/**
+  * @brief This function handles Non maskable interrupt.
+  */
+void NMI_Handler(void)
+{
+ 8000f84:	b480      	push	{r7}
+ 8000f86:	af00      	add	r7, sp, #0
+
+  /* USER CODE END NonMaskableInt_IRQn 0 */
+  /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+
+  /* USER CODE END NonMaskableInt_IRQn 1 */
+}
+ 8000f88:	bf00      	nop
+ 8000f8a:	46bd      	mov	sp, r7
+ 8000f8c:	bc80      	pop	{r7}
+ 8000f8e:	4770      	bx	lr
+
+08000f90 <HardFault_Handler>:
+
+/**
+  * @brief This function handles Hard fault interrupt.
+  */
+void HardFault_Handler(void)
+{
+ 8000f90:	b480      	push	{r7}
+ 8000f92:	af00      	add	r7, sp, #0
+  /* USER CODE BEGIN HardFault_IRQn 0 */
+
+  /* USER CODE END HardFault_IRQn 0 */
+  while (1)
+ 8000f94:	e7fe      	b.n	8000f94 <HardFault_Handler+0x4>
+
+08000f96 <MemManage_Handler>:
+
+/**
+  * @brief This function handles Memory management fault.
+  */
+void MemManage_Handler(void)
+{
+ 8000f96:	b480      	push	{r7}
+ 8000f98:	af00      	add	r7, sp, #0
+  /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+
+  /* USER CODE END MemoryManagement_IRQn 0 */
+  while (1)
+ 8000f9a:	e7fe      	b.n	8000f9a <MemManage_Handler+0x4>
+
+08000f9c <BusFault_Handler>:
+
+/**
+  * @brief This function handles Prefetch fault, memory access fault.
+  */
+void BusFault_Handler(void)
+{
+ 8000f9c:	b480      	push	{r7}
+ 8000f9e:	af00      	add	r7, sp, #0
+  /* USER CODE BEGIN BusFault_IRQn 0 */
+
+  /* USER CODE END BusFault_IRQn 0 */
+  while (1)
+ 8000fa0:	e7fe      	b.n	8000fa0 <BusFault_Handler+0x4>
+
+08000fa2 <UsageFault_Handler>:
+
+/**
+  * @brief This function handles Undefined instruction or illegal state.
+  */
+void UsageFault_Handler(void)
+{
+ 8000fa2:	b480      	push	{r7}
+ 8000fa4:	af00      	add	r7, sp, #0
+  /* USER CODE BEGIN UsageFault_IRQn 0 */
+
+  /* USER CODE END UsageFault_IRQn 0 */
+  while (1)
+ 8000fa6:	e7fe      	b.n	8000fa6 <UsageFault_Handler+0x4>
+
+08000fa8 <SVC_Handler>:
+
+/**
+  * @brief This function handles System service call via SWI instruction.
+  */
+void SVC_Handler(void)
+{
+ 8000fa8:	b480      	push	{r7}
+ 8000faa:	af00      	add	r7, sp, #0
+
+  /* USER CODE END SVCall_IRQn 0 */
+  /* USER CODE BEGIN SVCall_IRQn 1 */
+
+  /* USER CODE END SVCall_IRQn 1 */
+}
+ 8000fac:	bf00      	nop
+ 8000fae:	46bd      	mov	sp, r7
+ 8000fb0:	bc80      	pop	{r7}
+ 8000fb2:	4770      	bx	lr
+
+08000fb4 <DebugMon_Handler>:
+
+/**
+  * @brief This function handles Debug monitor.
+  */
+void DebugMon_Handler(void)
+{
+ 8000fb4:	b480      	push	{r7}
+ 8000fb6:	af00      	add	r7, sp, #0
+
+  /* USER CODE END DebugMonitor_IRQn 0 */
+  /* USER CODE BEGIN DebugMonitor_IRQn 1 */
+
+  /* USER CODE END DebugMonitor_IRQn 1 */
+}
+ 8000fb8:	bf00      	nop
+ 8000fba:	46bd      	mov	sp, r7
+ 8000fbc:	bc80      	pop	{r7}
+ 8000fbe:	4770      	bx	lr
+
+08000fc0 <PendSV_Handler>:
+
+/**
+  * @brief This function handles Pendable request for system service.
+  */
+void PendSV_Handler(void)
+{
+ 8000fc0:	b480      	push	{r7}
+ 8000fc2:	af00      	add	r7, sp, #0
+
+  /* USER CODE END PendSV_IRQn 0 */
+  /* USER CODE BEGIN PendSV_IRQn 1 */
+
+  /* USER CODE END PendSV_IRQn 1 */
+}
+ 8000fc4:	bf00      	nop
+ 8000fc6:	46bd      	mov	sp, r7
+ 8000fc8:	bc80      	pop	{r7}
+ 8000fca:	4770      	bx	lr
+
+08000fcc <SysTick_Handler>:
+
+/**
+  * @brief This function handles System tick timer.
+  */
+void SysTick_Handler(void)
+{
+ 8000fcc:	b480      	push	{r7}
+ 8000fce:	af00      	add	r7, sp, #0
+  /* USER CODE END SysTick_IRQn 0 */
+  
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+
+  /* USER CODE END SysTick_IRQn 1 */
+}
+ 8000fd0:	bf00      	nop
+ 8000fd2:	46bd      	mov	sp, r7
+ 8000fd4:	bc80      	pop	{r7}
+ 8000fd6:	4770      	bx	lr
+
+08000fd8 <SystemInit>:
+  * @note   This function should be used only after reset.
+  * @param  None
+  * @retval None
+  */
+void SystemInit (void)
+{
+ 8000fd8:	b480      	push	{r7}
+ 8000fda:	af00      	add	r7, sp, #0
+  /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
+  /* Set HSION bit */
+  RCC->CR |= 0x00000001U;
+ 8000fdc:	4b15      	ldr	r3, [pc, #84]	; (8001034 <SystemInit+0x5c>)
+ 8000fde:	681b      	ldr	r3, [r3, #0]
+ 8000fe0:	4a14      	ldr	r2, [pc, #80]	; (8001034 <SystemInit+0x5c>)
+ 8000fe2:	f043 0301 	orr.w	r3, r3, #1
+ 8000fe6:	6013      	str	r3, [r2, #0]
+
+  /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+#if !defined(STM32F105xC) && !defined(STM32F107xC)
+  RCC->CFGR &= 0xF8FF0000U;
+ 8000fe8:	4b12      	ldr	r3, [pc, #72]	; (8001034 <SystemInit+0x5c>)
+ 8000fea:	685a      	ldr	r2, [r3, #4]
+ 8000fec:	4911      	ldr	r1, [pc, #68]	; (8001034 <SystemInit+0x5c>)
+ 8000fee:	4b12      	ldr	r3, [pc, #72]	; (8001038 <SystemInit+0x60>)
+ 8000ff0:	4013      	ands	r3, r2
+ 8000ff2:	604b      	str	r3, [r1, #4]
+#else
+  RCC->CFGR &= 0xF0FF0000U;
+#endif /* STM32F105xC */   
+  
+  /* Reset HSEON, CSSON and PLLON bits */
+  RCC->CR &= 0xFEF6FFFFU;
+ 8000ff4:	4b0f      	ldr	r3, [pc, #60]	; (8001034 <SystemInit+0x5c>)
+ 8000ff6:	681b      	ldr	r3, [r3, #0]
+ 8000ff8:	4a0e      	ldr	r2, [pc, #56]	; (8001034 <SystemInit+0x5c>)
+ 8000ffa:	f023 7384 	bic.w	r3, r3, #17301504	; 0x1080000
+ 8000ffe:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 8001002:	6013      	str	r3, [r2, #0]
+
+  /* Reset HSEBYP bit */
+  RCC->CR &= 0xFFFBFFFFU;
+ 8001004:	4b0b      	ldr	r3, [pc, #44]	; (8001034 <SystemInit+0x5c>)
+ 8001006:	681b      	ldr	r3, [r3, #0]
+ 8001008:	4a0a      	ldr	r2, [pc, #40]	; (8001034 <SystemInit+0x5c>)
+ 800100a:	f423 2380 	bic.w	r3, r3, #262144	; 0x40000
+ 800100e:	6013      	str	r3, [r2, #0]
+
+  /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
+  RCC->CFGR &= 0xFF80FFFFU;
+ 8001010:	4b08      	ldr	r3, [pc, #32]	; (8001034 <SystemInit+0x5c>)
+ 8001012:	685b      	ldr	r3, [r3, #4]
+ 8001014:	4a07      	ldr	r2, [pc, #28]	; (8001034 <SystemInit+0x5c>)
+ 8001016:	f423 03fe 	bic.w	r3, r3, #8323072	; 0x7f0000
+ 800101a:	6053      	str	r3, [r2, #4]
+
+  /* Reset CFGR2 register */
+  RCC->CFGR2 = 0x00000000U;      
+#else
+  /* Disable all interrupts and clear pending bits  */
+  RCC->CIR = 0x009F0000U;
+ 800101c:	4b05      	ldr	r3, [pc, #20]	; (8001034 <SystemInit+0x5c>)
+ 800101e:	f44f 021f 	mov.w	r2, #10420224	; 0x9f0000
+ 8001022:	609a      	str	r2, [r3, #8]
+#endif 
+
+#ifdef VECT_TAB_SRAM
+  SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
+#else
+  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
+ 8001024:	4b05      	ldr	r3, [pc, #20]	; (800103c <SystemInit+0x64>)
+ 8001026:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 800102a:	609a      	str	r2, [r3, #8]
+#endif 
+}
+ 800102c:	bf00      	nop
+ 800102e:	46bd      	mov	sp, r7
+ 8001030:	bc80      	pop	{r7}
+ 8001032:	4770      	bx	lr
+ 8001034:	40021000 	.word	0x40021000
+ 8001038:	f8ff0000 	.word	0xf8ff0000
+ 800103c:	e000ed00 	.word	0xe000ed00
+
+08001040 <Reset_Handler>:
+  .weak Reset_Handler
+  .type Reset_Handler, %function
+Reset_Handler:
+
+/* Copy the data segment initializers from flash to SRAM */
+  movs r1, #0
+ 8001040:	2100      	movs	r1, #0
+  b LoopCopyDataInit
+ 8001042:	e003      	b.n	800104c <LoopCopyDataInit>
+
+08001044 <CopyDataInit>:
+
+CopyDataInit:
+  ldr r3, =_sidata
+ 8001044:	4b0b      	ldr	r3, [pc, #44]	; (8001074 <LoopFillZerobss+0x14>)
+  ldr r3, [r3, r1]
+ 8001046:	585b      	ldr	r3, [r3, r1]
+  str r3, [r0, r1]
+ 8001048:	5043      	str	r3, [r0, r1]
+  adds r1, r1, #4
+ 800104a:	3104      	adds	r1, #4
+
+0800104c <LoopCopyDataInit>:
+
+LoopCopyDataInit:
+  ldr r0, =_sdata
+ 800104c:	480a      	ldr	r0, [pc, #40]	; (8001078 <LoopFillZerobss+0x18>)
+  ldr r3, =_edata
+ 800104e:	4b0b      	ldr	r3, [pc, #44]	; (800107c <LoopFillZerobss+0x1c>)
+  adds r2, r0, r1
+ 8001050:	1842      	adds	r2, r0, r1
+  cmp r2, r3
+ 8001052:	429a      	cmp	r2, r3
+  bcc CopyDataInit
+ 8001054:	d3f6      	bcc.n	8001044 <CopyDataInit>
+  ldr r2, =_sbss
+ 8001056:	4a0a      	ldr	r2, [pc, #40]	; (8001080 <LoopFillZerobss+0x20>)
+  b LoopFillZerobss
+ 8001058:	e002      	b.n	8001060 <LoopFillZerobss>
+
+0800105a <FillZerobss>:
+/* Zero fill the bss segment. */
+FillZerobss:
+  movs r3, #0
+ 800105a:	2300      	movs	r3, #0
+  str r3, [r2], #4
+ 800105c:	f842 3b04 	str.w	r3, [r2], #4
+
+08001060 <LoopFillZerobss>:
+
+LoopFillZerobss:
+  ldr r3, = _ebss
+ 8001060:	4b08      	ldr	r3, [pc, #32]	; (8001084 <LoopFillZerobss+0x24>)
+  cmp r2, r3
+ 8001062:	429a      	cmp	r2, r3
+  bcc FillZerobss
+ 8001064:	d3f9      	bcc.n	800105a <FillZerobss>
+
+/* Call the clock system intitialization function.*/
+    bl  SystemInit
+ 8001066:	f7ff ffb7 	bl	8000fd8 <SystemInit>
+/* Call static constructors */
+    bl __libc_init_array
+ 800106a:	f000 f89b 	bl	80011a4 <__libc_init_array>
+/* Call the application's entry point.*/
+  bl main
+ 800106e:	f7ff fd0b 	bl	8000a88 <main>
+  bx lr
+ 8001072:	4770      	bx	lr
+  ldr r3, =_sidata
+ 8001074:	0800120c 	.word	0x0800120c
+  ldr r0, =_sdata
+ 8001078:	20000000 	.word	0x20000000
+  ldr r3, =_edata
+ 800107c:	20000004 	.word	0x20000004
+  ldr r2, =_sbss
+ 8001080:	20000004 	.word	0x20000004
+  ldr r3, = _ebss
+ 8001084:	20000048 	.word	0x20000048
+
+08001088 <ADC1_2_IRQHandler>:
+ * @retval : None
+*/
+    .section .text.Default_Handler,"ax",%progbits
+Default_Handler:
+Infinite_Loop:
+  b Infinite_Loop
+ 8001088:	e7fe      	b.n	8001088 <ADC1_2_IRQHandler>
+	...
+
+0800108c <LL_InitTick>:
+  *         configuration by calling this function, for a delay use rather osDelay RTOS service.
+  * @param  Ticks Number of ticks
+  * @retval None
+  */
+__STATIC_INLINE void LL_InitTick(uint32_t HCLKFrequency, uint32_t Ticks)
+{
+ 800108c:	b480      	push	{r7}
+ 800108e:	b083      	sub	sp, #12
+ 8001090:	af00      	add	r7, sp, #0
+ 8001092:	6078      	str	r0, [r7, #4]
+ 8001094:	6039      	str	r1, [r7, #0]
+  /* Configure the SysTick to have interrupt in 1ms time base */
+  SysTick->LOAD  = (uint32_t)((HCLKFrequency / Ticks) - 1UL);  /* set reload register */
+ 8001096:	687a      	ldr	r2, [r7, #4]
+ 8001098:	683b      	ldr	r3, [r7, #0]
+ 800109a:	fbb2 f3f3 	udiv	r3, r2, r3
+ 800109e:	4a07      	ldr	r2, [pc, #28]	; (80010bc <LL_InitTick+0x30>)
+ 80010a0:	3b01      	subs	r3, #1
+ 80010a2:	6053      	str	r3, [r2, #4]
+  SysTick->VAL   = 0UL;                                       /* Load the SysTick Counter Value */
+ 80010a4:	4b05      	ldr	r3, [pc, #20]	; (80010bc <LL_InitTick+0x30>)
+ 80010a6:	2200      	movs	r2, #0
+ 80010a8:	609a      	str	r2, [r3, #8]
+  SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk |
+ 80010aa:	4b04      	ldr	r3, [pc, #16]	; (80010bc <LL_InitTick+0x30>)
+ 80010ac:	2205      	movs	r2, #5
+ 80010ae:	601a      	str	r2, [r3, #0]
+                   SysTick_CTRL_ENABLE_Msk;                   /* Enable the Systick Timer */
+}
+ 80010b0:	bf00      	nop
+ 80010b2:	370c      	adds	r7, #12
+ 80010b4:	46bd      	mov	sp, r7
+ 80010b6:	bc80      	pop	{r7}
+ 80010b8:	4770      	bx	lr
+ 80010ba:	bf00      	nop
+ 80010bc:	e000e010 	.word	0xe000e010
+
+080010c0 <LL_Init1msTick>:
+  * @param  HCLKFrequency HCLK frequency in Hz
+  * @note   HCLK frequency can be calculated thanks to RCC helper macro or function @ref LL_RCC_GetSystemClocksFreq
+  * @retval None
+  */
+void LL_Init1msTick(uint32_t HCLKFrequency)
+{
+ 80010c0:	b580      	push	{r7, lr}
+ 80010c2:	b082      	sub	sp, #8
+ 80010c4:	af00      	add	r7, sp, #0
+ 80010c6:	6078      	str	r0, [r7, #4]
+  /* Use frequency provided in argument */
+  LL_InitTick(HCLKFrequency, 1000U);
+ 80010c8:	f44f 717a 	mov.w	r1, #1000	; 0x3e8
+ 80010cc:	6878      	ldr	r0, [r7, #4]
+ 80010ce:	f7ff ffdd 	bl	800108c <LL_InitTick>
+}
+ 80010d2:	bf00      	nop
+ 80010d4:	3708      	adds	r7, #8
+ 80010d6:	46bd      	mov	sp, r7
+ 80010d8:	bd80      	pop	{r7, pc}
+	...
+
+080010dc <LL_SetSystemCoreClock>:
+  * @note   Variable can be calculated also through SystemCoreClockUpdate function.
+  * @param  HCLKFrequency HCLK frequency in Hz (can be calculated thanks to RCC helper macro)
+  * @retval None
+  */
+void LL_SetSystemCoreClock(uint32_t HCLKFrequency)
+{
+ 80010dc:	b480      	push	{r7}
+ 80010de:	b083      	sub	sp, #12
+ 80010e0:	af00      	add	r7, sp, #0
+ 80010e2:	6078      	str	r0, [r7, #4]
+  /* HCLK clock frequency */
+  SystemCoreClock = HCLKFrequency;
+ 80010e4:	4a03      	ldr	r2, [pc, #12]	; (80010f4 <LL_SetSystemCoreClock+0x18>)
+ 80010e6:	687b      	ldr	r3, [r7, #4]
+ 80010e8:	6013      	str	r3, [r2, #0]
+}
+ 80010ea:	bf00      	nop
+ 80010ec:	370c      	adds	r7, #12
+ 80010ee:	46bd      	mov	sp, r7
+ 80010f0:	bc80      	pop	{r7}
+ 80010f2:	4770      	bx	lr
+ 80010f4:	20000000 	.word	0x20000000
+
+080010f8 <delaySetup>:
+#include "delay.h"
+
+// Function to setup the delay function (MOVE TO IT'S OWN FILE)
+void delaySetup(void){
+ 80010f8:	b480      	push	{r7}
+ 80010fa:	af00      	add	r7, sp, #0
+	RCC->APB1ENR |= (1<<5); // Turn on tim7 clock
+ 80010fc:	4b12      	ldr	r3, [pc, #72]	; (8001148 <delaySetup+0x50>)
+ 80010fe:	69db      	ldr	r3, [r3, #28]
+ 8001100:	4a11      	ldr	r2, [pc, #68]	; (8001148 <delaySetup+0x50>)
+ 8001102:	f043 0320 	orr.w	r3, r3, #32
+ 8001106:	61d3      	str	r3, [r2, #28]
+	TIM7->CR1 &= ~(1<<0); 	// Disable Counter
+ 8001108:	4b10      	ldr	r3, [pc, #64]	; (800114c <delaySetup+0x54>)
+ 800110a:	681b      	ldr	r3, [r3, #0]
+ 800110c:	4a0f      	ldr	r2, [pc, #60]	; (800114c <delaySetup+0x54>)
+ 800110e:	f023 0301 	bic.w	r3, r3, #1
+ 8001112:	6013      	str	r3, [r2, #0]
+	TIM7->CR1 |= (1<<2); 	// Set so only overflow/underflow generates event
+ 8001114:	4b0d      	ldr	r3, [pc, #52]	; (800114c <delaySetup+0x54>)
+ 8001116:	681b      	ldr	r3, [r3, #0]
+ 8001118:	4a0c      	ldr	r2, [pc, #48]	; (800114c <delaySetup+0x54>)
+ 800111a:	f043 0304 	orr.w	r3, r3, #4
+ 800111e:	6013      	str	r3, [r2, #0]
+	TIM7->CR1 &= ~(1<<3); 	//Turn off one-pulse mode
+ 8001120:	4b0a      	ldr	r3, [pc, #40]	; (800114c <delaySetup+0x54>)
+ 8001122:	681b      	ldr	r3, [r3, #0]
+ 8001124:	4a09      	ldr	r2, [pc, #36]	; (800114c <delaySetup+0x54>)
+ 8001126:	f023 0308 	bic.w	r3, r3, #8
+ 800112a:	6013      	str	r3, [r2, #0]
+	TIM7->PSC = 141; 		// Set prescaler so each 0xFF count is  1mS
+ 800112c:	4b07      	ldr	r3, [pc, #28]	; (800114c <delaySetup+0x54>)
+ 800112e:	228d      	movs	r2, #141	; 0x8d
+ 8001130:	629a      	str	r2, [r3, #40]	; 0x28
+	TIM7->EGR |= (1<<0);	// Update Timer
+ 8001132:	4b06      	ldr	r3, [pc, #24]	; (800114c <delaySetup+0x54>)
+ 8001134:	695b      	ldr	r3, [r3, #20]
+ 8001136:	4a05      	ldr	r2, [pc, #20]	; (800114c <delaySetup+0x54>)
+ 8001138:	f043 0301 	orr.w	r3, r3, #1
+ 800113c:	6153      	str	r3, [r2, #20]
+}
+ 800113e:	bf00      	nop
+ 8001140:	46bd      	mov	sp, r7
+ 8001142:	bc80      	pop	{r7}
+ 8001144:	4770      	bx	lr
+ 8001146:	bf00      	nop
+ 8001148:	40021000 	.word	0x40021000
+ 800114c:	40001400 	.word	0x40001400
+
+08001150 <delayMs>:
+void delayMs(int ms){
+ 8001150:	b480      	push	{r7}
+ 8001152:	b083      	sub	sp, #12
+ 8001154:	af00      	add	r7, sp, #0
+ 8001156:	6078      	str	r0, [r7, #4]
+	TIM7->CNT = 0x00; 					// Clear the timer
+ 8001158:	4b11      	ldr	r3, [pc, #68]	; (80011a0 <delayMs+0x50>)
+ 800115a:	2200      	movs	r2, #0
+ 800115c:	625a      	str	r2, [r3, #36]	; 0x24
+	TIM7->ARR = 0x00FF*ms; 				// Set count value to 0xFF times mS
+ 800115e:	687a      	ldr	r2, [r7, #4]
+ 8001160:	4613      	mov	r3, r2
+ 8001162:	021b      	lsls	r3, r3, #8
+ 8001164:	1a9a      	subs	r2, r3, r2
+ 8001166:	4b0e      	ldr	r3, [pc, #56]	; (80011a0 <delayMs+0x50>)
+ 8001168:	62da      	str	r2, [r3, #44]	; 0x2c
+	TIM7->CR1 |= (1<<0); 				// Enable Counter
+ 800116a:	4b0d      	ldr	r3, [pc, #52]	; (80011a0 <delayMs+0x50>)
+ 800116c:	681b      	ldr	r3, [r3, #0]
+ 800116e:	4a0c      	ldr	r2, [pc, #48]	; (80011a0 <delayMs+0x50>)
+ 8001170:	f043 0301 	orr.w	r3, r3, #1
+ 8001174:	6013      	str	r3, [r2, #0]
+	while((TIM7->SR & 0x01) == 0x00); 	// Wait until update
+ 8001176:	bf00      	nop
+ 8001178:	4b09      	ldr	r3, [pc, #36]	; (80011a0 <delayMs+0x50>)
+ 800117a:	691b      	ldr	r3, [r3, #16]
+ 800117c:	f003 0301 	and.w	r3, r3, #1
+ 8001180:	2b00      	cmp	r3, #0
+ 8001182:	d0f9      	beq.n	8001178 <delayMs+0x28>
+	TIM7->SR = 0x00;					// Clear statue
+ 8001184:	4b06      	ldr	r3, [pc, #24]	; (80011a0 <delayMs+0x50>)
+ 8001186:	2200      	movs	r2, #0
+ 8001188:	611a      	str	r2, [r3, #16]
+	TIM7->CR1 &= ~(1<<0); 				// Disable Counter
+ 800118a:	4b05      	ldr	r3, [pc, #20]	; (80011a0 <delayMs+0x50>)
+ 800118c:	681b      	ldr	r3, [r3, #0]
+ 800118e:	4a04      	ldr	r2, [pc, #16]	; (80011a0 <delayMs+0x50>)
+ 8001190:	f023 0301 	bic.w	r3, r3, #1
+ 8001194:	6013      	str	r3, [r2, #0]
+}
+ 8001196:	bf00      	nop
+ 8001198:	370c      	adds	r7, #12
+ 800119a:	46bd      	mov	sp, r7
+ 800119c:	bc80      	pop	{r7}
+ 800119e:	4770      	bx	lr
+ 80011a0:	40001400 	.word	0x40001400
+
+080011a4 <__libc_init_array>:
+ 80011a4:	b570      	push	{r4, r5, r6, lr}
+ 80011a6:	2500      	movs	r5, #0
+ 80011a8:	4e0c      	ldr	r6, [pc, #48]	; (80011dc <__libc_init_array+0x38>)
+ 80011aa:	4c0d      	ldr	r4, [pc, #52]	; (80011e0 <__libc_init_array+0x3c>)
+ 80011ac:	1ba4      	subs	r4, r4, r6
+ 80011ae:	10a4      	asrs	r4, r4, #2
+ 80011b0:	42a5      	cmp	r5, r4
+ 80011b2:	d109      	bne.n	80011c8 <__libc_init_array+0x24>
+ 80011b4:	f000 f81a 	bl	80011ec <_init>
+ 80011b8:	2500      	movs	r5, #0
+ 80011ba:	4e0a      	ldr	r6, [pc, #40]	; (80011e4 <__libc_init_array+0x40>)
+ 80011bc:	4c0a      	ldr	r4, [pc, #40]	; (80011e8 <__libc_init_array+0x44>)
+ 80011be:	1ba4      	subs	r4, r4, r6
+ 80011c0:	10a4      	asrs	r4, r4, #2
+ 80011c2:	42a5      	cmp	r5, r4
+ 80011c4:	d105      	bne.n	80011d2 <__libc_init_array+0x2e>
+ 80011c6:	bd70      	pop	{r4, r5, r6, pc}
+ 80011c8:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 80011cc:	4798      	blx	r3
+ 80011ce:	3501      	adds	r5, #1
+ 80011d0:	e7ee      	b.n	80011b0 <__libc_init_array+0xc>
+ 80011d2:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 80011d6:	4798      	blx	r3
+ 80011d8:	3501      	adds	r5, #1
+ 80011da:	e7f2      	b.n	80011c2 <__libc_init_array+0x1e>
+ 80011dc:	08001204 	.word	0x08001204
+ 80011e0:	08001204 	.word	0x08001204
+ 80011e4:	08001204 	.word	0x08001204
+ 80011e8:	08001208 	.word	0x08001208
+
+080011ec <_init>:
+ 80011ec:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 80011ee:	bf00      	nop
+ 80011f0:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 80011f2:	bc08      	pop	{r3}
+ 80011f4:	469e      	mov	lr, r3
+ 80011f6:	4770      	bx	lr
+
+080011f8 <_fini>:
+ 80011f8:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 80011fa:	bf00      	nop
+ 80011fc:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 80011fe:	bc08      	pop	{r3}
+ 8001200:	469e      	mov	lr, r3
+ 8001202:	4770      	bx	lr

@@ -1,0 +1,1959 @@
+EESchema Schematic File Version 5
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+Comment5 ""
+Comment6 ""
+Comment7 ""
+Comment8 ""
+Comment9 ""
+$EndDescr
+Wire Wire Line
+	3550 1100 3550 1200
+Wire Wire Line
+	3750 1100 3750 1200
+$Comp
+L Device:R R16
+U 1 1 5F6D6A58
+P 3350 1350
+F 0 "R16" H 3350 1500 50  0000 L CNN
+F 1 "330" V 3350 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3280 1350 50  0001 C CNN
+F 3 "~" H 3350 1350 50  0001 C CNN
+	1    3350 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R17
+U 1 1 5F6D6A5E
+P 3550 1350
+F 0 "R17" H 3550 1500 50  0000 L CNN
+F 1 "330" V 3550 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3480 1350 50  0001 C CNN
+F 3 "~" H 3550 1350 50  0001 C CNN
+	1    3550 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R18
+U 1 1 5F6D6A64
+P 3750 1350
+F 0 "R18" H 3750 1500 50  0000 L CNN
+F 1 "330" V 3750 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3680 1350 50  0001 C CNN
+F 3 "~" H 3750 1350 50  0001 C CNN
+	1    3750 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 2400 3550 2300
+Wire Wire Line
+	3550 3200 3550 3100
+Wire Wire Line
+	4200 1200 4200 1100
+Wire Wire Line
+	4400 1100 4400 1200
+Wire Wire Line
+	4600 1100 4600 1200
+$Comp
+L Device:R R19
+U 1 1 5F6D6A72
+P 4200 1350
+F 0 "R19" H 4200 1500 50  0000 L CNN
+F 1 "330" V 4200 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4130 1350 50  0001 C CNN
+F 3 "~" H 4200 1350 50  0001 C CNN
+	1    4200 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R20
+U 1 1 5F6D6A78
+P 4400 1350
+F 0 "R20" H 4400 1500 50  0000 L CNN
+F 1 "330" V 4400 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4330 1350 50  0001 C CNN
+F 3 "~" H 4400 1350 50  0001 C CNN
+	1    4400 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R21
+U 1 1 5F6D6A7E
+P 4600 1350
+F 0 "R21" H 4600 1500 50  0000 L CNN
+F 1 "330" V 4600 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4530 1350 50  0001 C CNN
+F 3 "~" H 4600 1350 50  0001 C CNN
+	1    4600 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5050 1200 5050 1100
+Wire Wire Line
+	5250 1100 5250 1200
+Wire Wire Line
+	5450 1100 5450 1200
+$Comp
+L Device:R R22
+U 1 1 5F6D6A8A
+P 5050 1350
+F 0 "R22" H 5050 1500 50  0000 L CNN
+F 1 "330" V 5050 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4980 1350 50  0001 C CNN
+F 3 "~" H 5050 1350 50  0001 C CNN
+	1    5050 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R23
+U 1 1 5F6D6A90
+P 5250 1350
+F 0 "R23" H 5250 1500 50  0000 L CNN
+F 1 "330" V 5250 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5180 1350 50  0001 C CNN
+F 3 "~" H 5250 1350 50  0001 C CNN
+	1    5250 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R24
+U 1 1 5F6D6A96
+P 5450 1350
+F 0 "R24" H 5450 1500 50  0000 L CNN
+F 1 "330" V 5450 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5380 1350 50  0001 C CNN
+F 3 "~" H 5450 1350 50  0001 C CNN
+	1    5450 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 1200 5900 1100
+Wire Wire Line
+	6100 1100 6100 1200
+Wire Wire Line
+	6300 1100 6300 1200
+$Comp
+L Device:R R25
+U 1 1 5F6D6AA2
+P 5900 1350
+F 0 "R25" H 5900 1500 50  0000 L CNN
+F 1 "330" V 5900 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5830 1350 50  0001 C CNN
+F 3 "~" H 5900 1350 50  0001 C CNN
+	1    5900 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R26
+U 1 1 5F6D6AA8
+P 6100 1350
+F 0 "R26" H 6100 1500 50  0000 L CNN
+F 1 "330" V 6100 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6030 1350 50  0001 C CNN
+F 3 "~" H 6100 1350 50  0001 C CNN
+	1    6100 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R27
+U 1 1 5F6D6AAE
+P 6300 1350
+F 0 "R27" H 6300 1500 50  0000 L CNN
+F 1 "330" V 6300 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6230 1350 50  0001 C CNN
+F 3 "~" H 6300 1350 50  0001 C CNN
+	1    6300 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6750 1200 6750 1100
+Wire Wire Line
+	6950 1100 6950 1200
+Wire Wire Line
+	7150 1100 7150 1200
+$Comp
+L Device:R R28
+U 1 1 5F6D6ABA
+P 6750 1350
+F 0 "R28" H 6750 1500 50  0000 L CNN
+F 1 "330" V 6750 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6680 1350 50  0001 C CNN
+F 3 "~" H 6750 1350 50  0001 C CNN
+	1    6750 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R29
+U 1 1 5F6D6AC0
+P 6950 1350
+F 0 "R29" H 6950 1500 50  0000 L CNN
+F 1 "330" V 6950 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6880 1350 50  0001 C CNN
+F 3 "~" H 6950 1350 50  0001 C CNN
+	1    6950 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R30
+U 1 1 5F6D6AC6
+P 7150 1350
+F 0 "R30" H 7150 1500 50  0000 L CNN
+F 1 "330" V 7150 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7080 1350 50  0001 C CNN
+F 3 "~" H 7150 1350 50  0001 C CNN
+	1    7150 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7600 1200 7600 1100
+Wire Wire Line
+	7800 1100 7800 1200
+Wire Wire Line
+	8000 1100 8000 1200
+$Comp
+L Device:R R31
+U 1 1 5F6D6AD2
+P 7600 1350
+F 0 "R31" H 7600 1500 50  0000 L CNN
+F 1 "330" V 7600 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7530 1350 50  0001 C CNN
+F 3 "~" H 7600 1350 50  0001 C CNN
+	1    7600 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R32
+U 1 1 5F6D6AD8
+P 7800 1350
+F 0 "R32" H 7800 1500 50  0000 L CNN
+F 1 "330" V 7800 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7730 1350 50  0001 C CNN
+F 3 "~" H 7800 1350 50  0001 C CNN
+	1    7800 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R33
+U 1 1 5F6D6ADE
+P 8000 1350
+F 0 "R33" H 8000 1500 50  0000 L CNN
+F 1 "330" V 8000 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7930 1350 50  0001 C CNN
+F 3 "~" H 8000 1350 50  0001 C CNN
+	1    8000 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 1200 8450 1100
+Wire Wire Line
+	8650 1100 8650 1200
+Wire Wire Line
+	8850 1100 8850 1200
+$Comp
+L Device:R R34
+U 1 1 5F6D6AEA
+P 8450 1350
+F 0 "R34" H 8450 1500 50  0000 L CNN
+F 1 "330" V 8450 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8380 1350 50  0001 C CNN
+F 3 "~" H 8450 1350 50  0001 C CNN
+	1    8450 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R35
+U 1 1 5F6D6AF0
+P 8650 1350
+F 0 "R35" H 8650 1500 50  0000 L CNN
+F 1 "330" V 8650 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8580 1350 50  0001 C CNN
+F 3 "~" H 8650 1350 50  0001 C CNN
+	1    8650 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R36
+U 1 1 5F6D6AF6
+P 8850 1350
+F 0 "R36" H 8850 1500 50  0000 L CNN
+F 1 "330" V 8850 1350 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8780 1350 50  0001 C CNN
+F 3 "~" H 8850 1350 50  0001 C CNN
+	1    8850 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 1500 3750 1700
+Wire Wire Line
+	3550 1500 3550 1750
+Wire Wire Line
+	3350 1500 3350 1800
+Wire Wire Line
+	3550 4000 3550 3900
+Wire Wire Line
+	3550 4800 3550 4700
+Wire Wire Line
+	3550 5600 3550 5500
+Wire Wire Line
+	3550 6400 3550 6300
+Wire Wire Line
+	3350 2650 3350 2700
+Wire Wire Line
+	3550 2600 3550 2700
+Wire Wire Line
+	3750 2700 3750 2550
+Wire Wire Line
+	3050 1700 3750 1700
+Wire Wire Line
+	3750 2550 3050 2550
+Wire Wire Line
+	3050 2550 3050 1700
+Wire Wire Line
+	3100 2600 3550 2600
+Wire Wire Line
+	3550 1750 3100 1750
+Wire Wire Line
+	3100 1750 3100 2600
+Wire Wire Line
+	3150 2650 3350 2650
+Wire Wire Line
+	3350 1800 3150 1800
+Wire Wire Line
+	3150 1800 3150 2650
+Wire Wire Line
+	3350 3450 3350 3500
+Wire Wire Line
+	3550 3400 3550 3500
+Wire Wire Line
+	3750 3500 3750 3350
+Wire Wire Line
+	3750 3350 3050 3350
+Wire Wire Line
+	3050 3350 3050 2550
+Wire Wire Line
+	3100 3400 3550 3400
+Wire Wire Line
+	3100 2600 3100 3400
+Wire Wire Line
+	3150 3450 3350 3450
+Wire Wire Line
+	3150 2650 3150 3450
+Wire Wire Line
+	3350 4250 3350 4300
+Wire Wire Line
+	3550 4200 3550 4300
+Wire Wire Line
+	3750 4300 3750 4150
+Wire Wire Line
+	3750 4150 3050 4150
+Wire Wire Line
+	3050 4150 3050 3350
+Wire Wire Line
+	3100 4200 3550 4200
+Wire Wire Line
+	3100 3400 3100 4200
+Wire Wire Line
+	3150 4250 3350 4250
+Wire Wire Line
+	3150 3450 3150 4250
+Wire Wire Line
+	3350 5050 3350 5100
+Wire Wire Line
+	3550 5000 3550 5100
+Wire Wire Line
+	3750 5100 3750 4950
+Wire Wire Line
+	3750 4950 3050 4950
+Wire Wire Line
+	3050 4950 3050 4150
+Wire Wire Line
+	3100 5000 3550 5000
+Wire Wire Line
+	3100 4200 3100 5000
+Wire Wire Line
+	3150 5050 3350 5050
+Wire Wire Line
+	3150 4250 3150 5050
+Wire Wire Line
+	3350 5850 3350 5900
+Wire Wire Line
+	3550 5800 3550 5900
+Wire Wire Line
+	3750 5900 3750 5750
+Wire Wire Line
+	3750 5750 3050 5750
+Wire Wire Line
+	3050 5750 3050 4950
+Wire Wire Line
+	3100 5800 3550 5800
+Wire Wire Line
+	3150 5850 3350 5850
+Connection ~ 3350 1800
+Wire Wire Line
+	3350 1800 3350 1900
+Connection ~ 3550 1750
+Wire Wire Line
+	3550 1750 3550 1900
+Connection ~ 3750 1700
+Wire Wire Line
+	3750 1700 3750 1900
+Connection ~ 3050 2550
+Connection ~ 3100 2600
+Connection ~ 3150 2650
+Connection ~ 3050 3350
+Connection ~ 3100 3400
+Connection ~ 3150 3450
+Connection ~ 3050 4150
+Connection ~ 3100 4200
+Connection ~ 3150 4250
+Connection ~ 3050 4950
+Connection ~ 3100 5000
+Connection ~ 3150 5050
+Wire Wire Line
+	3100 5000 3100 5800
+Wire Wire Line
+	3150 5050 3150 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B4B
+P 3550 3700
+AR Path="/5F6D6B4B" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B4B" Ref="D16"  Part="1" 
+F 0 "D16" V 3700 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 3400 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 3550 3650 50  0001 C CNN
+F 3 "~" H 3550 3650 50  0001 C CNN
+	1    3550 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B51
+P 3550 2900
+AR Path="/5F6D6B51" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B51" Ref="D9"  Part="1" 
+F 0 "D9" V 3700 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 3400 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 3550 2850 50  0001 C CNN
+F 3 "~" H 3550 2850 50  0001 C CNN
+	1    3550 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B57
+P 3550 2100
+AR Path="/5F6D6B57" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B57" Ref="D2"  Part="1" 
+F 0 "D2" V 3700 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 3400 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 3550 2050 50  0001 C CNN
+F 3 "~" H 3550 2050 50  0001 C CNN
+	1    3550 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B5D
+P 3550 5300
+AR Path="/5F6D6B5D" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B5D" Ref="D30"  Part="1" 
+F 0 "D30" V 3700 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 3400 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 3550 5250 50  0001 C CNN
+F 3 "~" H 3550 5250 50  0001 C CNN
+	1    3550 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B63
+P 3550 6100
+AR Path="/5F6D6B63" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B63" Ref="D37"  Part="1" 
+F 0 "D37" V 3700 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 3400 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 3550 6050 50  0001 C CNN
+F 3 "~" H 3550 6050 50  0001 C CNN
+	1    3550 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4400 2400 4400 2300
+Wire Wire Line
+	4400 3200 4400 3100
+Wire Wire Line
+	4600 1500 4600 1700
+Wire Wire Line
+	4400 1500 4400 1750
+Wire Wire Line
+	4200 1500 4200 1800
+Wire Wire Line
+	4400 4000 4400 3900
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B6F
+P 4400 4500
+AR Path="/5F6D6B6F" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B6F" Ref="D24"  Part="1" 
+F 0 "D24" V 4550 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 4250 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 4400 4450 50  0001 C CNN
+F 3 "~" H 4400 4450 50  0001 C CNN
+	1    4400 4500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4400 4800 4400 4700
+Wire Wire Line
+	4400 5600 4400 5500
+Wire Wire Line
+	4400 6400 4400 6300
+Wire Wire Line
+	4200 2650 4200 2700
+Wire Wire Line
+	4400 2600 4400 2700
+Wire Wire Line
+	4600 2700 4600 2550
+Wire Wire Line
+	3900 1700 4600 1700
+Wire Wire Line
+	4600 2550 3900 2550
+Wire Wire Line
+	3900 2550 3900 1700
+Wire Wire Line
+	3950 2600 4400 2600
+Wire Wire Line
+	4400 1750 3950 1750
+Wire Wire Line
+	3950 1750 3950 2600
+Wire Wire Line
+	4000 2650 4200 2650
+Wire Wire Line
+	4200 1800 4000 1800
+Wire Wire Line
+	4000 1800 4000 2650
+Wire Wire Line
+	4200 3450 4200 3500
+Wire Wire Line
+	4400 3400 4400 3500
+Wire Wire Line
+	4600 3500 4600 3350
+Wire Wire Line
+	4600 3350 3900 3350
+Wire Wire Line
+	3900 3350 3900 2550
+Wire Wire Line
+	3950 3400 4400 3400
+Wire Wire Line
+	3950 2600 3950 3400
+Wire Wire Line
+	4000 3450 4200 3450
+Wire Wire Line
+	4000 2650 4000 3450
+Wire Wire Line
+	4200 4250 4200 4300
+Wire Wire Line
+	4400 4200 4400 4300
+Wire Wire Line
+	4600 4300 4600 4150
+Wire Wire Line
+	4600 4150 3900 4150
+Wire Wire Line
+	3900 4150 3900 3350
+Wire Wire Line
+	3950 4200 4400 4200
+Wire Wire Line
+	3950 3400 3950 4200
+Wire Wire Line
+	4000 4250 4200 4250
+Wire Wire Line
+	4000 3450 4000 4250
+Wire Wire Line
+	4200 5050 4200 5100
+Wire Wire Line
+	4400 5000 4400 5100
+Wire Wire Line
+	4600 5100 4600 4950
+Wire Wire Line
+	4600 4950 3900 4950
+Wire Wire Line
+	3900 4950 3900 4150
+Wire Wire Line
+	3950 5000 4400 5000
+Wire Wire Line
+	3950 4200 3950 5000
+Wire Wire Line
+	4000 5050 4200 5050
+Wire Wire Line
+	4000 4250 4000 5050
+Wire Wire Line
+	4200 5850 4200 5900
+Wire Wire Line
+	4400 5800 4400 5900
+Wire Wire Line
+	4600 5900 4600 5750
+Wire Wire Line
+	4600 5750 3900 5750
+Wire Wire Line
+	3900 5750 3900 4950
+Wire Wire Line
+	3950 5800 4400 5800
+Wire Wire Line
+	4000 5850 4200 5850
+Connection ~ 4200 1800
+Wire Wire Line
+	4200 1800 4200 1900
+Connection ~ 4400 1750
+Wire Wire Line
+	4400 1750 4400 1900
+Connection ~ 4600 1700
+Wire Wire Line
+	4600 1700 4600 1900
+Connection ~ 3900 2550
+Connection ~ 3950 2600
+Connection ~ 4000 2650
+Connection ~ 3900 3350
+Connection ~ 3950 3400
+Connection ~ 4000 3450
+Connection ~ 3900 4150
+Connection ~ 3950 4200
+Connection ~ 4000 4250
+Connection ~ 3900 4950
+Connection ~ 3950 5000
+Connection ~ 4000 5050
+Wire Wire Line
+	3950 5000 3950 5800
+Wire Wire Line
+	4000 5050 4000 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6BBA
+P 4400 3700
+AR Path="/5F6D6BBA" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6BBA" Ref="D17"  Part="1" 
+F 0 "D17" V 4550 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 4250 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 4400 3650 50  0001 C CNN
+F 3 "~" H 4400 3650 50  0001 C CNN
+	1    4400 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6BC0
+P 4400 2900
+AR Path="/5F6D6BC0" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6BC0" Ref="D10"  Part="1" 
+F 0 "D10" V 4550 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 4250 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 4400 2850 50  0001 C CNN
+F 3 "~" H 4400 2850 50  0001 C CNN
+	1    4400 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6BC6
+P 4400 2100
+AR Path="/5F6D6BC6" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6BC6" Ref="D3"  Part="1" 
+F 0 "D3" V 4550 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 4250 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 4400 2050 50  0001 C CNN
+F 3 "~" H 4400 2050 50  0001 C CNN
+	1    4400 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6BCC
+P 4400 5300
+AR Path="/5F6D6BCC" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6BCC" Ref="D31"  Part="1" 
+F 0 "D31" V 4550 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 4250 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 4400 5250 50  0001 C CNN
+F 3 "~" H 4400 5250 50  0001 C CNN
+	1    4400 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6BD2
+P 4400 6100
+AR Path="/5F6D6BD2" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6BD2" Ref="D38"  Part="1" 
+F 0 "D38" V 4550 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 4250 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 4400 6050 50  0001 C CNN
+F 3 "~" H 4400 6050 50  0001 C CNN
+	1    4400 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5250 2400 5250 2300
+Wire Wire Line
+	5250 3200 5250 3100
+Wire Wire Line
+	5450 1500 5450 1700
+Wire Wire Line
+	5250 1500 5250 1750
+Wire Wire Line
+	5050 1500 5050 1800
+Wire Wire Line
+	5250 4000 5250 3900
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6BDE
+P 5250 4500
+AR Path="/5F6D6BDE" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6BDE" Ref="D25"  Part="1" 
+F 0 "D25" V 5400 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 5100 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 5250 4450 50  0001 C CNN
+F 3 "~" H 5250 4450 50  0001 C CNN
+	1    5250 4500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5250 4800 5250 4700
+Wire Wire Line
+	5250 5600 5250 5500
+Wire Wire Line
+	5250 6400 5250 6300
+Wire Wire Line
+	5050 2650 5050 2700
+Wire Wire Line
+	5250 2600 5250 2700
+Wire Wire Line
+	5450 2700 5450 2550
+Wire Wire Line
+	4750 1700 5450 1700
+Wire Wire Line
+	5450 2550 4750 2550
+Wire Wire Line
+	4750 2550 4750 1700
+Wire Wire Line
+	4800 2600 5250 2600
+Wire Wire Line
+	5250 1750 4800 1750
+Wire Wire Line
+	4800 1750 4800 2600
+Wire Wire Line
+	4850 2650 5050 2650
+Wire Wire Line
+	5050 1800 4850 1800
+Wire Wire Line
+	4850 1800 4850 2650
+Wire Wire Line
+	5050 3450 5050 3500
+Wire Wire Line
+	5250 3400 5250 3500
+Wire Wire Line
+	5450 3500 5450 3350
+Wire Wire Line
+	5450 3350 4750 3350
+Wire Wire Line
+	4750 3350 4750 2550
+Wire Wire Line
+	4800 3400 5250 3400
+Wire Wire Line
+	4800 2600 4800 3400
+Wire Wire Line
+	4850 3450 5050 3450
+Wire Wire Line
+	4850 2650 4850 3450
+Wire Wire Line
+	5050 4250 5050 4300
+Wire Wire Line
+	5250 4200 5250 4300
+Wire Wire Line
+	5450 4300 5450 4150
+Wire Wire Line
+	5450 4150 4750 4150
+Wire Wire Line
+	4750 4150 4750 3350
+Wire Wire Line
+	4800 4200 5250 4200
+Wire Wire Line
+	4800 3400 4800 4200
+Wire Wire Line
+	4850 4250 5050 4250
+Wire Wire Line
+	4850 3450 4850 4250
+Wire Wire Line
+	5050 5050 5050 5100
+Wire Wire Line
+	5250 5000 5250 5100
+Wire Wire Line
+	5450 5100 5450 4950
+Wire Wire Line
+	5450 4950 4750 4950
+Wire Wire Line
+	4750 4950 4750 4150
+Wire Wire Line
+	4800 5000 5250 5000
+Wire Wire Line
+	4800 4200 4800 5000
+Wire Wire Line
+	4850 5050 5050 5050
+Wire Wire Line
+	4850 4250 4850 5050
+Wire Wire Line
+	5050 5850 5050 5900
+Wire Wire Line
+	5250 5800 5250 5900
+Wire Wire Line
+	5450 5900 5450 5750
+Wire Wire Line
+	5450 5750 4750 5750
+Wire Wire Line
+	4750 5750 4750 4950
+Wire Wire Line
+	4800 5800 5250 5800
+Wire Wire Line
+	4850 5850 5050 5850
+Connection ~ 5050 1800
+Wire Wire Line
+	5050 1800 5050 1900
+Connection ~ 5250 1750
+Wire Wire Line
+	5250 1750 5250 1900
+Connection ~ 5450 1700
+Wire Wire Line
+	5450 1700 5450 1900
+Connection ~ 4750 2550
+Connection ~ 4800 2600
+Connection ~ 4850 2650
+Connection ~ 4750 3350
+Connection ~ 4800 3400
+Connection ~ 4850 3450
+Connection ~ 4750 4150
+Connection ~ 4800 4200
+Connection ~ 4850 4250
+Connection ~ 4750 4950
+Connection ~ 4800 5000
+Connection ~ 4850 5050
+Wire Wire Line
+	4800 5000 4800 5800
+Wire Wire Line
+	4850 5050 4850 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C29
+P 5250 3700
+AR Path="/5F6D6C29" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C29" Ref="D18"  Part="1" 
+F 0 "D18" V 5400 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 5100 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 5250 3650 50  0001 C CNN
+F 3 "~" H 5250 3650 50  0001 C CNN
+	1    5250 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C2F
+P 5250 2900
+AR Path="/5F6D6C2F" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C2F" Ref="D11"  Part="1" 
+F 0 "D11" V 5400 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 5100 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 5250 2850 50  0001 C CNN
+F 3 "~" H 5250 2850 50  0001 C CNN
+	1    5250 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C35
+P 5250 2100
+AR Path="/5F6D6C35" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C35" Ref="D4"  Part="1" 
+F 0 "D4" V 5400 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 5100 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 5250 2050 50  0001 C CNN
+F 3 "~" H 5250 2050 50  0001 C CNN
+	1    5250 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C3B
+P 5250 5300
+AR Path="/5F6D6C3B" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C3B" Ref="D32"  Part="1" 
+F 0 "D32" V 5400 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 5100 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 5250 5250 50  0001 C CNN
+F 3 "~" H 5250 5250 50  0001 C CNN
+	1    5250 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C41
+P 5250 6100
+AR Path="/5F6D6C41" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C41" Ref="D39"  Part="1" 
+F 0 "D39" V 5400 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 5100 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 5250 6050 50  0001 C CNN
+F 3 "~" H 5250 6050 50  0001 C CNN
+	1    5250 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6100 2400 6100 2300
+Wire Wire Line
+	6100 3200 6100 3100
+Wire Wire Line
+	6300 1500 6300 1700
+Wire Wire Line
+	6100 1500 6100 1750
+Wire Wire Line
+	5900 1500 5900 1800
+Wire Wire Line
+	6100 4000 6100 3900
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C4D
+P 6100 4500
+AR Path="/5F6D6C4D" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C4D" Ref="D26"  Part="1" 
+F 0 "D26" V 6250 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 5950 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6100 4450 50  0001 C CNN
+F 3 "~" H 6100 4450 50  0001 C CNN
+	1    6100 4500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6100 4800 6100 4700
+Wire Wire Line
+	6100 5600 6100 5500
+Wire Wire Line
+	6100 6400 6100 6300
+Wire Wire Line
+	5900 2650 5900 2700
+Wire Wire Line
+	6100 2600 6100 2700
+Wire Wire Line
+	6300 2700 6300 2550
+Wire Wire Line
+	5600 1700 6300 1700
+Wire Wire Line
+	6300 2550 5600 2550
+Wire Wire Line
+	5600 2550 5600 1700
+Wire Wire Line
+	5650 2600 6100 2600
+Wire Wire Line
+	6100 1750 5650 1750
+Wire Wire Line
+	5650 1750 5650 2600
+Wire Wire Line
+	5700 2650 5900 2650
+Wire Wire Line
+	5900 1800 5700 1800
+Wire Wire Line
+	5700 1800 5700 2650
+Wire Wire Line
+	5900 3450 5900 3500
+Wire Wire Line
+	6100 3400 6100 3500
+Wire Wire Line
+	6300 3500 6300 3350
+Wire Wire Line
+	6300 3350 5600 3350
+Wire Wire Line
+	5600 3350 5600 2550
+Wire Wire Line
+	5650 3400 6100 3400
+Wire Wire Line
+	5650 2600 5650 3400
+Wire Wire Line
+	5700 3450 5900 3450
+Wire Wire Line
+	5700 2650 5700 3450
+Wire Wire Line
+	5900 4250 5900 4300
+Wire Wire Line
+	6100 4200 6100 4300
+Wire Wire Line
+	6300 4300 6300 4150
+Wire Wire Line
+	6300 4150 5600 4150
+Wire Wire Line
+	5600 4150 5600 3350
+Wire Wire Line
+	5650 4200 6100 4200
+Wire Wire Line
+	5650 3400 5650 4200
+Wire Wire Line
+	5700 4250 5900 4250
+Wire Wire Line
+	5700 3450 5700 4250
+Wire Wire Line
+	5900 5050 5900 5100
+Wire Wire Line
+	6100 5000 6100 5100
+Wire Wire Line
+	6300 5100 6300 4950
+Wire Wire Line
+	6300 4950 5600 4950
+Wire Wire Line
+	5600 4950 5600 4150
+Wire Wire Line
+	5650 5000 6100 5000
+Wire Wire Line
+	5650 4200 5650 5000
+Wire Wire Line
+	5700 5050 5900 5050
+Wire Wire Line
+	5700 4250 5700 5050
+Wire Wire Line
+	5900 5850 5900 5900
+Wire Wire Line
+	6100 5800 6100 5900
+Wire Wire Line
+	6300 5900 6300 5750
+Wire Wire Line
+	6300 5750 5600 5750
+Wire Wire Line
+	5600 5750 5600 4950
+Wire Wire Line
+	5650 5800 6100 5800
+Wire Wire Line
+	5700 5850 5900 5850
+Connection ~ 5900 1800
+Wire Wire Line
+	5900 1800 5900 1900
+Connection ~ 6100 1750
+Wire Wire Line
+	6100 1750 6100 1900
+Connection ~ 6300 1700
+Wire Wire Line
+	6300 1700 6300 1900
+Connection ~ 5600 2550
+Connection ~ 5650 2600
+Connection ~ 5700 2650
+Connection ~ 5600 3350
+Connection ~ 5650 3400
+Connection ~ 5700 3450
+Connection ~ 5600 4150
+Connection ~ 5650 4200
+Connection ~ 5700 4250
+Connection ~ 5600 4950
+Connection ~ 5650 5000
+Connection ~ 5700 5050
+Wire Wire Line
+	5650 5000 5650 5800
+Wire Wire Line
+	5700 5050 5700 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C98
+P 6100 3700
+AR Path="/5F6D6C98" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C98" Ref="D19"  Part="1" 
+F 0 "D19" V 6250 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 5950 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6100 3650 50  0001 C CNN
+F 3 "~" H 6100 3650 50  0001 C CNN
+	1    6100 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6C9E
+P 6100 2900
+AR Path="/5F6D6C9E" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6C9E" Ref="D12"  Part="1" 
+F 0 "D12" V 6250 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 5950 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6100 2850 50  0001 C CNN
+F 3 "~" H 6100 2850 50  0001 C CNN
+	1    6100 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6CA4
+P 6100 2100
+AR Path="/5F6D6CA4" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6CA4" Ref="D5"  Part="1" 
+F 0 "D5" V 6250 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 5950 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6100 2050 50  0001 C CNN
+F 3 "~" H 6100 2050 50  0001 C CNN
+	1    6100 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6CAA
+P 6100 5300
+AR Path="/5F6D6CAA" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6CAA" Ref="D33"  Part="1" 
+F 0 "D33" V 6250 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 5950 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6100 5250 50  0001 C CNN
+F 3 "~" H 6100 5250 50  0001 C CNN
+	1    6100 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6CB0
+P 6100 6100
+AR Path="/5F6D6CB0" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6CB0" Ref="D40"  Part="1" 
+F 0 "D40" V 6250 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 5950 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6100 6050 50  0001 C CNN
+F 3 "~" H 6100 6050 50  0001 C CNN
+	1    6100 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6950 2400 6950 2300
+Wire Wire Line
+	6950 3200 6950 3100
+Wire Wire Line
+	7150 1500 7150 1700
+Wire Wire Line
+	6950 1500 6950 1750
+Wire Wire Line
+	6750 1500 6750 1800
+Wire Wire Line
+	6950 4000 6950 3900
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6CBC
+P 6950 4500
+AR Path="/5F6D6CBC" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6CBC" Ref="D27"  Part="1" 
+F 0 "D27" V 7100 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 6800 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6950 4450 50  0001 C CNN
+F 3 "~" H 6950 4450 50  0001 C CNN
+	1    6950 4500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6950 4800 6950 4700
+Wire Wire Line
+	6950 5600 6950 5500
+Wire Wire Line
+	6950 6400 6950 6300
+Wire Wire Line
+	6750 2650 6750 2700
+Wire Wire Line
+	6950 2600 6950 2700
+Wire Wire Line
+	7150 2700 7150 2550
+Wire Wire Line
+	6450 1700 7150 1700
+Wire Wire Line
+	7150 2550 6450 2550
+Wire Wire Line
+	6450 2550 6450 1700
+Wire Wire Line
+	6500 2600 6950 2600
+Wire Wire Line
+	6950 1750 6500 1750
+Wire Wire Line
+	6500 1750 6500 2600
+Wire Wire Line
+	6550 2650 6750 2650
+Wire Wire Line
+	6750 1800 6550 1800
+Wire Wire Line
+	6550 1800 6550 2650
+Wire Wire Line
+	6750 3450 6750 3500
+Wire Wire Line
+	6950 3400 6950 3500
+Wire Wire Line
+	7150 3500 7150 3350
+Wire Wire Line
+	7150 3350 6450 3350
+Wire Wire Line
+	6450 3350 6450 2550
+Wire Wire Line
+	6500 3400 6950 3400
+Wire Wire Line
+	6500 2600 6500 3400
+Wire Wire Line
+	6550 3450 6750 3450
+Wire Wire Line
+	6550 2650 6550 3450
+Wire Wire Line
+	6750 4250 6750 4300
+Wire Wire Line
+	6950 4200 6950 4300
+Wire Wire Line
+	7150 4300 7150 4150
+Wire Wire Line
+	7150 4150 6450 4150
+Wire Wire Line
+	6450 4150 6450 3350
+Wire Wire Line
+	6500 4200 6950 4200
+Wire Wire Line
+	6500 3400 6500 4200
+Wire Wire Line
+	6550 4250 6750 4250
+Wire Wire Line
+	6550 3450 6550 4250
+Wire Wire Line
+	6750 5050 6750 5100
+Wire Wire Line
+	6950 5000 6950 5100
+Wire Wire Line
+	7150 5100 7150 4950
+Wire Wire Line
+	7150 4950 6450 4950
+Wire Wire Line
+	6450 4950 6450 4150
+Wire Wire Line
+	6500 5000 6950 5000
+Wire Wire Line
+	6500 4200 6500 5000
+Wire Wire Line
+	6550 5050 6750 5050
+Wire Wire Line
+	6550 4250 6550 5050
+Wire Wire Line
+	6750 5850 6750 5900
+Wire Wire Line
+	6950 5800 6950 5900
+Wire Wire Line
+	7150 5900 7150 5750
+Wire Wire Line
+	7150 5750 6450 5750
+Wire Wire Line
+	6450 5750 6450 4950
+Wire Wire Line
+	6500 5800 6950 5800
+Wire Wire Line
+	6550 5850 6750 5850
+Connection ~ 6750 1800
+Wire Wire Line
+	6750 1800 6750 1900
+Connection ~ 6950 1750
+Wire Wire Line
+	6950 1750 6950 1900
+Connection ~ 7150 1700
+Wire Wire Line
+	7150 1700 7150 1900
+Connection ~ 6450 2550
+Connection ~ 6500 2600
+Connection ~ 6550 2650
+Connection ~ 6450 3350
+Connection ~ 6500 3400
+Connection ~ 6550 3450
+Connection ~ 6450 4150
+Connection ~ 6500 4200
+Connection ~ 6550 4250
+Connection ~ 6450 4950
+Connection ~ 6500 5000
+Connection ~ 6550 5050
+Wire Wire Line
+	6500 5000 6500 5800
+Wire Wire Line
+	6550 5050 6550 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D07
+P 6950 3700
+AR Path="/5F6D6D07" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D07" Ref="D20"  Part="1" 
+F 0 "D20" V 7100 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 6800 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6950 3650 50  0001 C CNN
+F 3 "~" H 6950 3650 50  0001 C CNN
+	1    6950 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D0D
+P 6950 2900
+AR Path="/5F6D6D0D" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D0D" Ref="D13"  Part="1" 
+F 0 "D13" V 7100 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 6800 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6950 2850 50  0001 C CNN
+F 3 "~" H 6950 2850 50  0001 C CNN
+	1    6950 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D13
+P 6950 2100
+AR Path="/5F6D6D13" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D13" Ref="D6"  Part="1" 
+F 0 "D6" V 7100 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 6800 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6950 2050 50  0001 C CNN
+F 3 "~" H 6950 2050 50  0001 C CNN
+	1    6950 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D19
+P 6950 5300
+AR Path="/5F6D6D19" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D19" Ref="D34"  Part="1" 
+F 0 "D34" V 7100 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 6800 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6950 5250 50  0001 C CNN
+F 3 "~" H 6950 5250 50  0001 C CNN
+	1    6950 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D1F
+P 6950 6100
+AR Path="/5F6D6D1F" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D1F" Ref="D41"  Part="1" 
+F 0 "D41" V 7100 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 6800 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 6950 6050 50  0001 C CNN
+F 3 "~" H 6950 6050 50  0001 C CNN
+	1    6950 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 2400 7800 2300
+Wire Wire Line
+	7800 3200 7800 3100
+Wire Wire Line
+	8000 1500 8000 1700
+Wire Wire Line
+	7800 1500 7800 1750
+Wire Wire Line
+	7600 1500 7600 1800
+Wire Wire Line
+	7800 4000 7800 3900
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D2B
+P 7800 4500
+AR Path="/5F6D6D2B" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D2B" Ref="D28"  Part="1" 
+F 0 "D28" V 7950 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 7650 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 7800 4450 50  0001 C CNN
+F 3 "~" H 7800 4450 50  0001 C CNN
+	1    7800 4500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 4800 7800 4700
+Wire Wire Line
+	7800 5600 7800 5500
+Wire Wire Line
+	7800 6400 7800 6300
+Wire Wire Line
+	7600 2650 7600 2700
+Wire Wire Line
+	7800 2600 7800 2700
+Wire Wire Line
+	8000 2700 8000 2550
+Wire Wire Line
+	7300 1700 8000 1700
+Wire Wire Line
+	8000 2550 7300 2550
+Wire Wire Line
+	7300 2550 7300 1700
+Wire Wire Line
+	7350 2600 7800 2600
+Wire Wire Line
+	7800 1750 7350 1750
+Wire Wire Line
+	7350 1750 7350 2600
+Wire Wire Line
+	7400 2650 7600 2650
+Wire Wire Line
+	7600 1800 7400 1800
+Wire Wire Line
+	7400 1800 7400 2650
+Wire Wire Line
+	7600 3450 7600 3500
+Wire Wire Line
+	7800 3400 7800 3500
+Wire Wire Line
+	8000 3500 8000 3350
+Wire Wire Line
+	8000 3350 7300 3350
+Wire Wire Line
+	7300 3350 7300 2550
+Wire Wire Line
+	7350 3400 7800 3400
+Wire Wire Line
+	7350 2600 7350 3400
+Wire Wire Line
+	7400 3450 7600 3450
+Wire Wire Line
+	7400 2650 7400 3450
+Wire Wire Line
+	7600 4250 7600 4300
+Wire Wire Line
+	7800 4200 7800 4300
+Wire Wire Line
+	8000 4300 8000 4150
+Wire Wire Line
+	8000 4150 7300 4150
+Wire Wire Line
+	7300 4150 7300 3350
+Wire Wire Line
+	7350 4200 7800 4200
+Wire Wire Line
+	7350 3400 7350 4200
+Wire Wire Line
+	7400 4250 7600 4250
+Wire Wire Line
+	7400 3450 7400 4250
+Wire Wire Line
+	7600 5050 7600 5100
+Wire Wire Line
+	7800 5000 7800 5100
+Wire Wire Line
+	8000 5100 8000 4950
+Wire Wire Line
+	8000 4950 7300 4950
+Wire Wire Line
+	7300 4950 7300 4150
+Wire Wire Line
+	7350 5000 7800 5000
+Wire Wire Line
+	7350 4200 7350 5000
+Wire Wire Line
+	7400 5050 7600 5050
+Wire Wire Line
+	7400 4250 7400 5050
+Wire Wire Line
+	7600 5850 7600 5900
+Wire Wire Line
+	7800 5800 7800 5900
+Wire Wire Line
+	8000 5900 8000 5750
+Wire Wire Line
+	8000 5750 7300 5750
+Wire Wire Line
+	7300 5750 7300 4950
+Wire Wire Line
+	7350 5800 7800 5800
+Wire Wire Line
+	7400 5850 7600 5850
+Connection ~ 7600 1800
+Wire Wire Line
+	7600 1800 7600 1900
+Connection ~ 7800 1750
+Wire Wire Line
+	7800 1750 7800 1900
+Connection ~ 8000 1700
+Wire Wire Line
+	8000 1700 8000 1900
+Connection ~ 7300 2550
+Connection ~ 7350 2600
+Connection ~ 7400 2650
+Connection ~ 7300 3350
+Connection ~ 7350 3400
+Connection ~ 7400 3450
+Connection ~ 7300 4150
+Connection ~ 7350 4200
+Connection ~ 7400 4250
+Connection ~ 7300 4950
+Connection ~ 7350 5000
+Connection ~ 7400 5050
+Wire Wire Line
+	7350 5000 7350 5800
+Wire Wire Line
+	7400 5050 7400 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D76
+P 7800 3700
+AR Path="/5F6D6D76" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D76" Ref="D21"  Part="1" 
+F 0 "D21" V 7950 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 7650 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 7800 3650 50  0001 C CNN
+F 3 "~" H 7800 3650 50  0001 C CNN
+	1    7800 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D7C
+P 7800 2900
+AR Path="/5F6D6D7C" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D7C" Ref="D14"  Part="1" 
+F 0 "D14" V 7950 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 7650 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 7800 2850 50  0001 C CNN
+F 3 "~" H 7800 2850 50  0001 C CNN
+	1    7800 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D82
+P 7800 2100
+AR Path="/5F6D6D82" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D82" Ref="D7"  Part="1" 
+F 0 "D7" V 7950 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 7650 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 7800 2050 50  0001 C CNN
+F 3 "~" H 7800 2050 50  0001 C CNN
+	1    7800 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D88
+P 7800 5300
+AR Path="/5F6D6D88" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D88" Ref="D35"  Part="1" 
+F 0 "D35" V 7950 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 7650 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 7800 5250 50  0001 C CNN
+F 3 "~" H 7800 5250 50  0001 C CNN
+	1    7800 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D8E
+P 7800 6100
+AR Path="/5F6D6D8E" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D8E" Ref="D42"  Part="1" 
+F 0 "D42" V 7950 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 7650 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 7800 6050 50  0001 C CNN
+F 3 "~" H 7800 6050 50  0001 C CNN
+	1    7800 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8650 2400 8650 2300
+Wire Wire Line
+	8650 3200 8650 3100
+Wire Wire Line
+	8850 1500 8850 1700
+Wire Wire Line
+	8650 1500 8650 1750
+Wire Wire Line
+	8450 1500 8450 1800
+Wire Wire Line
+	8650 4000 8650 3900
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6D9A
+P 8650 4500
+AR Path="/5F6D6D9A" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6D9A" Ref="D29"  Part="1" 
+F 0 "D29" V 8800 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 8500 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 8650 4450 50  0001 C CNN
+F 3 "~" H 8650 4450 50  0001 C CNN
+	1    8650 4500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8650 4800 8650 4700
+Wire Wire Line
+	8650 5600 8650 5500
+Wire Wire Line
+	8650 6400 8650 6300
+Wire Wire Line
+	8450 2650 8450 2700
+Wire Wire Line
+	8650 2600 8650 2700
+Wire Wire Line
+	8850 2700 8850 2550
+Wire Wire Line
+	8150 1700 8850 1700
+Wire Wire Line
+	8850 2550 8150 2550
+Wire Wire Line
+	8150 2550 8150 1700
+Wire Wire Line
+	8200 2600 8650 2600
+Wire Wire Line
+	8650 1750 8200 1750
+Wire Wire Line
+	8200 1750 8200 2600
+Wire Wire Line
+	8250 2650 8450 2650
+Wire Wire Line
+	8450 1800 8250 1800
+Wire Wire Line
+	8250 1800 8250 2650
+Wire Wire Line
+	8450 3450 8450 3500
+Wire Wire Line
+	8650 3400 8650 3500
+Wire Wire Line
+	8850 3500 8850 3350
+Wire Wire Line
+	8850 3350 8150 3350
+Wire Wire Line
+	8150 3350 8150 2550
+Wire Wire Line
+	8200 3400 8650 3400
+Wire Wire Line
+	8200 2600 8200 3400
+Wire Wire Line
+	8250 3450 8450 3450
+Wire Wire Line
+	8250 2650 8250 3450
+Wire Wire Line
+	8450 4250 8450 4300
+Wire Wire Line
+	8650 4200 8650 4300
+Wire Wire Line
+	8850 4300 8850 4150
+Wire Wire Line
+	8850 4150 8150 4150
+Wire Wire Line
+	8150 4150 8150 3350
+Wire Wire Line
+	8200 4200 8650 4200
+Wire Wire Line
+	8200 3400 8200 4200
+Wire Wire Line
+	8250 4250 8450 4250
+Wire Wire Line
+	8250 3450 8250 4250
+Wire Wire Line
+	8450 5050 8450 5100
+Wire Wire Line
+	8650 5000 8650 5100
+Wire Wire Line
+	8850 5100 8850 4950
+Wire Wire Line
+	8850 4950 8150 4950
+Wire Wire Line
+	8150 4950 8150 4150
+Wire Wire Line
+	8200 5000 8650 5000
+Wire Wire Line
+	8200 4200 8200 5000
+Wire Wire Line
+	8250 5050 8450 5050
+Wire Wire Line
+	8250 4250 8250 5050
+Wire Wire Line
+	8450 5850 8450 5900
+Wire Wire Line
+	8650 5800 8650 5900
+Wire Wire Line
+	8850 5900 8850 5750
+Wire Wire Line
+	8850 5750 8150 5750
+Wire Wire Line
+	8150 5750 8150 4950
+Wire Wire Line
+	8200 5800 8650 5800
+Wire Wire Line
+	8250 5850 8450 5850
+Connection ~ 8450 1800
+Wire Wire Line
+	8450 1800 8450 1900
+Connection ~ 8650 1750
+Wire Wire Line
+	8650 1750 8650 1900
+Connection ~ 8850 1700
+Wire Wire Line
+	8850 1700 8850 1900
+Connection ~ 8150 2550
+Connection ~ 8200 2600
+Connection ~ 8250 2650
+Connection ~ 8150 3350
+Connection ~ 8200 3400
+Connection ~ 8250 3450
+Connection ~ 8150 4150
+Connection ~ 8200 4200
+Connection ~ 8250 4250
+Connection ~ 8150 4950
+Connection ~ 8200 5000
+Connection ~ 8250 5050
+Wire Wire Line
+	8200 5000 8200 5800
+Wire Wire Line
+	8250 5050 8250 5850
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6DE5
+P 8650 3700
+AR Path="/5F6D6DE5" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6DE5" Ref="D22"  Part="1" 
+F 0 "D22" V 8800 4050 50  0000 R CNN
+F 1 "LED_RCGB" V 8500 3600 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 8650 3650 50  0001 C CNN
+F 3 "~" H 8650 3650 50  0001 C CNN
+	1    8650 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6DEB
+P 8650 2900
+AR Path="/5F6D6DEB" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6DEB" Ref="D15"  Part="1" 
+F 0 "D15" V 8800 3250 50  0000 R CNN
+F 1 "LED_RCGB" V 8500 2800 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 8650 2850 50  0001 C CNN
+F 3 "~" H 8650 2850 50  0001 C CNN
+	1    8650 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6DF1
+P 8650 2100
+AR Path="/5F6D6DF1" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6DF1" Ref="D8"  Part="1" 
+F 0 "D8" V 8800 2450 50  0000 R CNN
+F 1 "LED_RCGB" V 8500 2000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 8650 2050 50  0001 C CNN
+F 3 "~" H 8650 2050 50  0001 C CNN
+	1    8650 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6DF7
+P 8650 5300
+AR Path="/5F6D6DF7" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6DF7" Ref="D36"  Part="1" 
+F 0 "D36" V 8800 5650 50  0000 R CNN
+F 1 "LED_RCGB" V 8500 5200 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 8650 5250 50  0001 C CNN
+F 3 "~" H 8650 5250 50  0001 C CNN
+	1    8650 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6DFD
+P 8650 6100
+AR Path="/5F6D6DFD" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6DFD" Ref="D43"  Part="1" 
+F 0 "D43" V 8800 6450 50  0000 R CNN
+F 1 "LED_RCGB" V 8500 6000 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 8650 6050 50  0001 C CNN
+F 3 "~" H 8650 6050 50  0001 C CNN
+	1    8650 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 2400 4400 2400
+Connection ~ 4400 2400
+Wire Wire Line
+	4400 2400 5250 2400
+Connection ~ 5250 2400
+Wire Wire Line
+	5250 2400 6100 2400
+Connection ~ 6100 2400
+Wire Wire Line
+	6100 2400 6950 2400
+Connection ~ 6950 2400
+Wire Wire Line
+	6950 2400 7800 2400
+Connection ~ 7800 2400
+Wire Wire Line
+	7800 2400 8650 2400
+Wire Wire Line
+	3550 3200 4400 3200
+Connection ~ 4400 3200
+Wire Wire Line
+	4400 3200 5250 3200
+Connection ~ 5250 3200
+Wire Wire Line
+	5250 3200 6100 3200
+Connection ~ 6100 3200
+Wire Wire Line
+	6100 3200 6950 3200
+Connection ~ 6950 3200
+Wire Wire Line
+	6950 3200 7800 3200
+Connection ~ 7800 3200
+Wire Wire Line
+	7800 3200 8650 3200
+Wire Wire Line
+	8650 4000 7800 4000
+Connection ~ 4400 4000
+Wire Wire Line
+	4400 4000 3550 4000
+Connection ~ 5250 4000
+Wire Wire Line
+	5250 4000 4400 4000
+Connection ~ 6100 4000
+Wire Wire Line
+	6100 4000 5250 4000
+Connection ~ 6950 4000
+Wire Wire Line
+	6950 4000 6100 4000
+Connection ~ 7800 4000
+Wire Wire Line
+	7800 4000 6950 4000
+Wire Wire Line
+	3550 4800 4400 4800
+Connection ~ 4400 4800
+Wire Wire Line
+	4400 4800 5250 4800
+Connection ~ 5250 4800
+Wire Wire Line
+	5250 4800 6100 4800
+Connection ~ 6100 4800
+Wire Wire Line
+	6100 4800 6950 4800
+Connection ~ 6950 4800
+Wire Wire Line
+	6950 4800 7800 4800
+Connection ~ 7800 4800
+Wire Wire Line
+	7800 4800 8650 4800
+Wire Wire Line
+	8650 5600 7800 5600
+Connection ~ 4400 5600
+Wire Wire Line
+	4400 5600 3550 5600
+Connection ~ 5250 5600
+Wire Wire Line
+	5250 5600 4400 5600
+Connection ~ 6100 5600
+Wire Wire Line
+	6100 5600 5250 5600
+Connection ~ 6950 5600
+Wire Wire Line
+	6950 5600 6100 5600
+Connection ~ 7800 5600
+Wire Wire Line
+	7800 5600 6950 5600
+Connection ~ 4400 6400
+Wire Wire Line
+	4400 6400 5250 6400
+Connection ~ 5250 6400
+Wire Wire Line
+	5250 6400 6100 6400
+Connection ~ 6100 6400
+Wire Wire Line
+	6100 6400 6950 6400
+Connection ~ 6950 6400
+Wire Wire Line
+	6950 6400 7800 6400
+Connection ~ 7800 6400
+Wire Wire Line
+	7800 6400 8650 6400
+Text HLabel 3350 1100 1    50   Input ~ 0
+Col1-R
+Wire Wire Line
+	3350 1100 3350 1200
+Text HLabel 3550 1100 1    50   Input ~ 0
+Col1-G
+Text HLabel 3750 1100 1    50   Input ~ 0
+Col1-B
+Text HLabel 4200 1100 1    50   Input ~ 0
+Col2-R
+Text HLabel 4400 1100 1    50   Input ~ 0
+Col2-G
+Text HLabel 4600 1100 1    50   Input ~ 0
+Col2-B
+Text HLabel 5050 1100 1    50   Input ~ 0
+Col3-R
+Text HLabel 5250 1100 1    50   Input ~ 0
+Col3-G
+Text HLabel 5450 1100 1    50   Input ~ 0
+Col3-B
+Text HLabel 5900 1100 1    50   Input ~ 0
+Col4-R
+Text HLabel 6100 1100 1    50   Input ~ 0
+Col4-G
+Text HLabel 6300 1100 1    50   Input ~ 0
+Col4-B
+Text HLabel 6750 1100 1    50   Input ~ 0
+Col5-R
+Text HLabel 6950 1100 1    50   Input ~ 0
+Col5-G
+Text HLabel 7150 1100 1    50   Input ~ 0
+Col5-B
+Text HLabel 7600 1100 1    50   Input ~ 0
+Col6-R
+Text HLabel 7800 1100 1    50   Input ~ 0
+Col6-G
+Text HLabel 8000 1100 1    50   Input ~ 0
+Col6-B
+Text HLabel 8450 1100 1    50   Input ~ 0
+Col7-R
+Text HLabel 8650 1100 1    50   Input ~ 0
+Col7-G
+Text HLabel 8850 1100 1    50   Input ~ 0
+Col7-B
+Text HLabel 2750 2400 0    50   Input ~ 0
+Row1-Cathode
+Wire Wire Line
+	2750 2400 3550 2400
+Connection ~ 3550 2400
+Text HLabel 2750 3200 0    50   Input ~ 0
+Row2-Cathode
+Wire Wire Line
+	2750 3200 3550 3200
+Text HLabel 2750 4000 0    50   Input ~ 0
+Row3-Cathode
+Wire Wire Line
+	2750 4000 3550 4000
+Text HLabel 2750 4800 0    50   Input ~ 0
+Row4-Cathode
+Wire Wire Line
+	2750 4800 3550 4800
+Text HLabel 2750 5600 0    50   Input ~ 0
+Row5-Cathode
+Wire Wire Line
+	2750 5600 3550 5600
+Wire Wire Line
+	3550 6400 4400 6400
+Text HLabel 2750 6400 0    50   Input ~ 0
+Row6-Cathode
+Wire Wire Line
+	2750 6400 3550 6400
+Connection ~ 3550 3200
+Connection ~ 3550 4000
+Connection ~ 3550 4800
+Connection ~ 3550 5600
+Connection ~ 3550 6400
+$Comp
+L Device:LED_RCGB D?
+U 1 1 5F6D6B00
+P 3550 4500
+AR Path="/5F6D6B00" Ref="D?"  Part="1" 
+AR Path="/5F67D88E/5F6D6B00" Ref="D23"  Part="1" 
+F 0 "D23" V 3700 4850 50  0000 R CNN
+F 1 "LED_RCGB" V 3400 4400 50  0001 R CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB_Staggered_Pins" H 3550 4450 50  0001 C CNN
+F 3 "~" H 3550 4450 50  0001 C CNN
+	1    3550 4500
+	0    -1   -1   0   
+$EndComp
+$EndSCHEMATC
