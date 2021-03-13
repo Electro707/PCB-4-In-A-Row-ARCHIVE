@@ -1,0 +1,7 @@
+*.out
+*.elf
+*.hex
+*doxygen_out
+/Rev_A/**/.metadata
+/**/Gerber
+*.bak
