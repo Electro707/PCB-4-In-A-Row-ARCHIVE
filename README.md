@@ -1,12 +1,16 @@
-# PCB Digital 4-In-A-Row
+# PCB Digital 4-In-A-Row - ARCHIVED
 
-This a PCB is a soldering kit for a 4-In-A-Row game. This project is still WIP.
+This a PCB is a soldering kit for a 4-In-A-Row game. This specific repo is archived. Previously I didn't use a version manager, and thus I have difference folders for different revs, while now I want to start using git as a version manager (as well as proper releases and stuff). Thus there is a new clean repo for this project, and this is here for archival purposes. 
 
-As of the latest version, it consist of an ATmega328 (same IC as an Arduino) and is able to programmable over USB with the Arduino IDE.
+The new repo can be found here:
+*__Coming Soon__*
 
-Lastest Rev Image:
+Rev A1:
+![Rev A1](.images/DSC04731.jpg)
+Rev A2:
+![Rev A2](.images/DSC03689_01.jpg)
+Latest Rev:
 ![Latest Rev](.images/20210311_013805.jpg)
-
 ## Authors
 
 * **Jamal Bouajjaj** 
