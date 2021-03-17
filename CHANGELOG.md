@@ -19,6 +19,6 @@ This document describes the changes between the different revision:
     - Rev B4:
         - Added FT230X for easy programming
         - Changed ALL "Connect-4" references to "4-In-A-Row" due to potential trademark issues
-    - Rev B5 (Current) (WIP):
+    - Rev B5 (Last one before repo archiving. Moved over to new project repo):
         - Fixed reversed USB+ and USB- data connections to the FT230X
         - Changed some silkscreen text
